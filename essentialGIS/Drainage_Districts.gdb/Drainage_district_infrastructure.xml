@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<origin>Iowa Geological Survey, Department of Natural Resources</origin>
+<pubdate>20050208</pubdate>
+<title>Tile Line and Ditch Infrastructure of the Public Drainage Districts of Iowa</title>
+<edition>20111212</edition>
+<geoform Sync="TRUE">vector digital data</geoform>
+<pubinfo>
+<pubplace>Iowa City, Iowa</pubplace>
+<publish>Iowa DNR, Geological Survey</publish>
+</pubinfo>
+<onlink>ftp://ftp.igsb.uiowa.edu/gis_library/ia_state/agriculture/drainage_districts.zip</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>This GIS coverage represents the infrastructure of the public drainage districts in Iowa.  It includes tiles, and ditches.  This information was digitized mainly from maps provided by county governments, usually the drainage clerk in that county.  The accuracy of this coverage varies widely and should be used mainly as a guide, not exact ground conditions or locations.</abstract>
+<purpose>This digital, geographically referenced data set was developed by the Iowa Department of Natural Resources to carry out agency responsibilities related to management, protection, and development of Iowa&apos;s natural resources.</purpose>
+</descript>
+<timeperd>
+<timeinfo>
+<mdattim>
+<sngdate>
+<caldate>20111212</caldate>
+</sngdate>
+</mdattim>
+</timeinfo>
+<current>edition date</current>
+</timeperd>
+<status>
+<progress>Complete</progress>
+<update>As needed</update>
+</status>
+<spdom>
+<bounding>
+<westbc Sync="TRUE">-96.416970</westbc>
+<eastbc Sync="TRUE">-90.885543</eastbc>
+<northbc Sync="TRUE">43.531485</northbc>
+<southbc Sync="TRUE">41.031749</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>ISO 19115 Topic Category</themekt>
+<themekey>farming</themekey>
+<themekey>inlandWaters</themekey>
+</theme>
+<theme>
+<themekt>None</themekt>
+<themekey>Public Drainage District Infrastructure</themekey>
+<themekey>Tilage</themekey>
+<themekey>soil drainage</themekey>
+</theme>
+<place>
+<placekt>GNIS</placekt>
+<placekey>Iowa</placekey>
+</place>
+</keywords>
+<accconst>None</accconst>
+<useconst>None</useconst>
+<ptcontac>
+<cntinfo>
+<cntperp>
+<cntper>Casey Kohrt</cntper>
+<cntorg>Iowa Department of Natural Resources</cntorg>
+</cntperp>
+<cntpos>Research Geologist</cntpos>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>109 Trowbridge Hall</address>
+<city>Iowa City</city>
+<state>IA</state>
+<postal>52242</postal>
+</cntaddr>
+<cntvoice>319-335-1353</cntvoice>
+<cntemail>casey.kohrt@dnr.iowa.gov</cntemail>
+<hours>8 AM- 4:30 PM</hours>
+</cntinfo>
+</ptcontac>
+<datacred>People contributing to the production of these coverages are:  Andy Asell, Kathryn Benz, Michael J. Bounk, Adam Galluzzo, Katie Gaunt, Jim Giglierano, Amanda Jenkins, Sara Harkins, Jennifer Johnson, Chris Miller, Christina Miller, Emily Miller, Sue Mumm, Beth O&apos;Connor, Heather Quevedo,  Billy Rover, Katy Sheley, Zeb Squires, Julia Tabbut, Stefanie Toftey, Kady Vanderlinden, Teresa Welsh, Calvin Wolter,</datacred>
+<secinfo>
+<secsys>State of Iowa Enterprise Data Classification Standard</secsys>
+<secclass>Public</secclass>
+</secinfo>
+<native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 3; ESRI ArcCatalog 9.3.1.3000</native>
+</idinfo>
+<dataqual>
+<complete>All known drainage districts have been mapped</complete>
+<posacc>
+<horizpa>
+<horizpar>The positional accuracy of this coverage should not be considered very accurate, and should be used as a guide only.  Due to the various scales and the differing production methods of the maps, when they were digitized, they often overlapped.</horizpar>
+</horizpa>
+</posacc>
+<lineage>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>County Governments in Iowa</origin>
+<title>None</title>
+<othercit>County govenrments housed most of the source material.  The Recorder, or Engineers office being the most common place.  Often they were paper maps, occasionally they were digital files.</othercit>
+</citeinfo>
+</srccite>
+<srcscale>varies</srcscale>
+<typesrc>paper, electronic data, mylar</typesrc>
+<srccontr>conversion to digital files.</srccontr>
+</srcinfo>
+<procstep>
+<procdesc>
+-The original data arrives as paper, or possibly Mylar or digital maps of the drainage districts, and ditch and tile lines. Often, there will be several maps for a given area, as districts are updated. The maps are sorted, and compared to remove any unneeded maps.
+
+-Two blank coverages are created. One for the district and sub district outlines, and the other for the tiles and ditches. A system of tics is created with tics at either township or section corners. Sometimes during digitizing, additional tics must be created for maps whose area does not include 4 tics.
+
+-The maps are then digitized in ADS, a subprogram of PC Arc Info. 
+
+-After digitizing, the coverages are overlaid, inspected, and corrected as needed in PC Arc Edit.
+
+-The coverages are imported into ArcView, and converted to shape files. Then they are rechecked, and corrected as needed. Corrections and additions are at this point made in ArcView. 
+
+-Attribute fields are added, and filled.
+
+-Shapefiles are given a final spot check. This is done by someone other then the person originally assigned to do the ArcView work.   
+
+-The original data arrives as paper, or possibly Mylar or digital maps of the drainage districts, and ditch and tile lines. Often, there will be several maps for a given area, as districts are updated. The maps are sorted, and compared to remove any unneeded maps.
+
+-Two blank coverages are created. One for the district and sub district outlines, and the other for the tiles and ditches. A system of tics is created with tics at either township or section corners. Sometimes during digitizing, additional tics must be created for maps whose area does not include 4 tics.
+
+-The maps are then digitized in ADS, a subprogram of PC Arc Info. 
+
+-After digitizing, the coverages are overlaid, inspected, and corrected as needed in PC Arc Edit.
+
+-The coverages are imported into ArcView, and converted to shape files. Then they are rechecked, and corrected as needed. Corrections and additions are at this point made in ArcView. 
+
+-Attribute fields are added, and filled.
+
+-Shapefiles are given a final spot check. This is done by someone other then the person originally assigned to do the ArcView work.
+</procdesc>
+<proccont>
+<cntinfo>
+<cntperp>
+<cntper>Michael J. Bounk</cntper>
+<cntorg>Iowa Geological Survey, DNR</cntorg>
+</cntperp>
+<cntpos>Research Geologist</cntpos>
+<cntemail>mike.bounk@dnr.iowa.gov</cntemail>
+</cntinfo>
+</proccont>
+</procstep>
+<procstep>
+<procdesc>This particular coverage was produced by merging the individual county coverages into one coverage, overlaps into other counties were sometimes clipped at the county boundaries.  For more detailed information, individual county files should be downloaded and utilized</procdesc>
+</procstep>
+</lineage>
+</dataqual>
+<spdoinfo>
+<direct Sync="TRUE">Vector</direct>
+<ptvctinf>
+<sdtsterm Name="Drainage_district_infrastructure">
+<sdtstype Sync="TRUE">String</sdtstype>
+<ptvctcnt Sync="TRUE">81824</ptvctcnt>
+</sdtsterm>
+</ptvctinf>
+</spdoinfo>
+<spref>
+<horizsys>
+<planar>
+<gridsys>
+<gridsysn Sync="TRUE">Universal Transverse Mercator</gridsysn>
+<utm>
+<utmzone Sync="TRUE">15</utmzone>
+<transmer>
+<sfctrmer Sync="TRUE">0.999600</sfctrmer>
+<longcm Sync="TRUE">-93.000000</longcm>
+<latprjo Sync="TRUE">0.000000</latprjo>
+<feast Sync="TRUE">500000.000000</feast>
+<fnorth Sync="TRUE">0.000000</fnorth>
+</transmer>
+</utm>
+</gridsys>
+<planci>
+<plance>coordinate pair</plance>
+<coordrep>
+<absres>0.001024</absres>
+<ordres>0.001024</ordres>
+</coordrep>
+<plandu>meters</plandu>
+</planci>
+</planar>
+<geodetic>
+<horizdn>North American Datum of 1983</horizdn>
+<ellips>Geodetic Reference System 80</ellips>
+<semiaxis>6378137.000000</semiaxis>
+<denflat>298.257222</denflat>
+</geodetic>
+</horizsys>
+</spref>
+<eainfo>
+<detailed Name="Drainage_district_infrastructure">
+<enttyp>
+<enttypl Sync="TRUE">Drainage_district_infrastructure</enttypl>
+</enttyp>
+<attr>
+<attrlabl Sync="TRUE">Shape</attrlabl>
+<attrdef Sync="TRUE">Feature geometry.</attrdef>
+<attrdefs Sync="TRUE">ESRI</attrdefs>
+<attrdomv>
+<udom Sync="TRUE">Coordinates defining the features.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">OBJECTID</attrlabl>
+<attrdef Sync="TRUE">Internal feature number.</attrdef>
+<attrdefs Sync="TRUE">ESRI</attrdefs>
+<attrdomv>
+<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">COMMENTS</attrlabl>
+<attrdef>various comments</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">CO_NO</attrlabl>
+<attrdef>County Number</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">DASHED</attrlabl>
+<attrdef>Meaning unknown, but was recorded.</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">PRIVATE</attrlabl>
+<attrdef>Whether the tile was recorded as being a private tile line</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">NAME</attrlabl>
+<attrdef>Any name give to the tile</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">DIAMETER</attrlabl>
+<attrdef>Diameter given on the map, in inches.</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">LENGTH_FT</attrlabl>
+<attrdef>length given on map, if given, in feet.</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">D_RANGE</attrlabl>
+<attrdef>Diamter range, if given, in inches</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">T_D</attrlabl>
+<attrdef>Tile or Ditch</attrdef>
+<attrdomv>
+<edom>
+<edomv>T</edomv>
+<edomvd>Tile</edomvd>
+</edom>
+<edom>
+<edomv>D</edomv>
+<edomvd>Ditch</edomvd>
+</edom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">Tile_Size</attrlabl>
+<attrdef>Tile size, in inches.  This is a text field that has single values and ranges.</attrdef>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">Shape_Length</attrlabl>
+<attrdef Sync="TRUE">Length of feature in internal units.</attrdef>
+<attrdefs Sync="TRUE">ESRI</attrdefs>
+<attrdomv>
+<udom Sync="TRUE">Positive real numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl Sync="TRUE">calc_ft</attrlabl>
+</attr>
+</detailed>
+<overview></overview>
+</eainfo>
+<distinfo>
+<distrib>
+<cntinfo>
+<cntorgp>
+<cntorg>Iowa Department of Natural Resources, Geological Survey</cntorg>
+<cntper>Casey Kohrt</cntper>
+</cntorgp>
+<cntaddr>
+<addrtype>mailing and physical address</addrtype>
+<address>109 Trowbridge Hall</address>
+<city>Iowa City</city>
+<state>IA</state>
+<postal>52242</postal>
+</cntaddr>
+<cntvoice>319-335-1353</cntvoice>
+<cntemail>gis_library@igsb.uiowa.edu</cntemail>
+</cntinfo>
+</distrib>
+<resdesc Sync="TRUE">Downloadable Data</resdesc>
+<distliab>Although efforts have been made to make it useful to the Department, the Department assumes no responsibility for errors in the information.  Similarly the Department assumes no responsibility for the consequences of inappropriate uses or interpretations of the data made by anyone to whom this data has been made available.  The Department bears no responsibility to inform users of any changes made to this data.  Anyone using this data is advised that precision implied by the coverage may far exceed actual precision.  Comments on this data are invited and the Department would appreciate that documented errors be brought to staff attention.  The development of the coverages in the NRGIS Library represents a major investment of staff time and effort.  As a professional responsibility, we expect that the Iowa DNR will receive proper credit when you utilize these GIS coverages and that the original documentation will remain with any redistribution of these coverages.</distliab>
+<stdorder>
+<digform>
+<digtinfo>
+<formname>File Geodatabase, Feature Class</formname>
+<filedec>zip</filedec>
+<transize Sync="TRUE">0.000</transize>
+</digtinfo>
+<digtopt>
+<onlinopt>
+<computer>
+<networka>
+<networkr>ftp://ftp.igsb.uiowa.edu/gis_library/ia_state/agriculture/drainage_districts.zip</networkr>
+</networka>
+</computer>
+<accinstr>Click on link provided.</accinstr>
+</onlinopt>
+</digtopt>
+</digform>
+<fees>None</fees>
+<ordering>Click on anonymous FTP link given.</ordering>
+<turnarnd>Immediate</turnarnd>
+</stdorder>
+</distinfo>
+<metainfo>
+<metd>2005</metd>
+<metrd>20111212</metrd>
+<metc>
+<cntinfo>
+<cntorgp>
+<cntorg>Iowa Department of Natural Resources - Geological Survey</cntorg>
+<cntper>Casey Kohrt</cntper>
+</cntorgp>
+<cntaddr>
+<addrtype>Mailing and Physical</addrtype>
+<address>109 Trowbridge Hall</address>
+<city>Iowa City</city>
+<state>IA</state>
+<postal>52242-1319</postal>
+</cntaddr>
+<cntvoice>319-335-1353</cntvoice>
+<cntemail>gis_library@igsb.uiowa.edu</cntemail>
+</cntinfo>
+</metc>
+<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+<mettc Sync="TRUE">local time</mettc>
+<metac>None</metac>
+<metuc>None</metuc>
+<metextns>
+<onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof Sync="TRUE">ESRI Metadata Profile</metprof>
+</metextns>
+</metainfo>
+<lineage></lineage>
+</metadata>
