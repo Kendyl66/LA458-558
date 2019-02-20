@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body { background-color: darkslategray}
+        h1 {color: whitesmoke;
+        text-align: center;
+        font-family: sans-serif;
+            font-family: cursive;
+        font-size: 280%}
+        h2 {color: whitesmoke;
+        font-family: verdana;
+        font-size: 140%;
+        text-align: center}
+        h3 { text-align: center;
+        font-family: sans-serif;
+        color: whitesmoke}
+        p {color: lightgrey;
+            font-family: verdana;
+        margin-left: 25%; margin-right: 25%}
+        
+    </style>
+<head>
+    <title> Assignment #1</title>
+    <h1> Learning to Use JavaScript</h1>  
+</head>
+    <body>
+        <h2> <i>Day-dreaming is the best thing to do when it is snowy outside...</i></h2>
+        <h3 style="text-align: center"> LET US DAY-DREAM!
+        <br> *sigh*</h3>
+   
+       <script>
+           //function included
+           var i =0; 
+           var images = [];
+           var time = 4000;
+           
+           //image list
+           images [0] = 'image1.jpg';
+           images [1] = 'image2.jpg'
+           images [2] = 'image3.jpg'
+           images [3] = 'image4.jpg'
+           
+           //change image
+           function changeImg(){
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+        </script>
+        
+       <div style = "text-align: center;">  <img name= "slide" width= "900" height="600"> </div>
+    <p style="text-align: center"> Looking back through some of the pictures I took when I was younger at my home and my family's summer cabin in Idaho, I found these lovely gems which brought back so many memories. These places have always been a place that I have felt comfortable and at peace. How could you not with all this nature around you!</p>
+        
+       <br> <p> Just sitting here thinking of the wonderful places I am going to visit in Scotland this coming summer!</p>
+        
+        <p id="places"></p>
+        
+        <script>
+            //array loop
+            var place, text, fLen, i;
+            place = ["Edinburgh", "Glasgow", "Inverness", "Aberdeenshire", "Isle of Skye"];
+            fLen = place.length;
+            
+            text = "<ul>";
+            for (i=0; i <fLen; i++) {
+                text += "<li>" + place[i] + "</li>";
+            }
+            text += "</ul>";
+            
+            document.getElementById('places').innerHTML = text;
+        </script>
+        
+        <p id="demo"> Its good to remember what day and time it is when you have been  day-dreaming so you still have some sense of reality.  </p>
+        <button type="button"
+onclick="document.getElementById('demo').innerHTML = Date()">
+CLICK ON ME FOR A REALITY CHECK!.</button>
+    </body>
+</html>
