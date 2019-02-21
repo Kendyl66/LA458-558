@@ -18,23 +18,23 @@
             font-family: verdana;
         margin-left: 25%; margin-right: 25%}
         .buttons {text-align: center;}
-        .button { position: absolute;
-        top: 50%}
-        
         
     </style>
 <head>
     <title> Assignment #1</title>
     <h1> Learning to Use JavaScript</h1>  
     <script> alert("Hello! This is an alert box. Don't worry, it won't hurt my feelings if you close me quickly. I understand")</script>
-    <script>
-        var a = "Kendyl";
-        var b = "Landeck";
-        
-        var sum =;
-    </script>
+  
 </head>
     <body>
+        <h2 id="demo"></h2>
+        <script> 
+            //input of two text fields
+            var text1 = "Kendyl"
+            var text2 = "Landeck"
+            var text3 = text1.concat(" ",text2);
+            document.getElementById("demo").innerHTML = text3;
+        </script>
         <h2> <i>Day-dreaming is the best thing to do when it is snowy outside...</i></h2>
         <h3 style="text-align: center"> LET US DAY-DREAM!
         <br> *sigh*</h3>
@@ -43,7 +43,7 @@
            //function included
            var i =0; 
            var images = [];
-           var time = 4000;
+           var time = 3000;
            
            //image list
            images [0] = 'image1.jpg';
@@ -88,7 +88,17 @@
             document.getElementById('places').innerHTML = text;
         </script>
         
-        <p> How are you feeling? <br>
+        <script> 
+            var go = {
+            place: "Isle of Skye",
+            travel: "beautiful",
+            quality: "top notch",
+            desire: true  
+            }
+            console.log(go.place);
+        </script>
+        
+        <p> How are you feeling? <br> <!-- another input field with checkbox-->
             <input type="checkbox" name="feeling" value= "Happiness"> I'm feeling happy! <br> 
             <input type="checkbox" name="feeling" value= "Stressed"> I'm feeling stressed! <br> 
             <input type="checkbox" name="feeling" value= "Tired"> I'm feeling tired!
