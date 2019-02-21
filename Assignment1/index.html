@@ -17,11 +17,22 @@
         p {color: lightgrey;
             font-family: verdana;
         margin-left: 25%; margin-right: 25%}
+        .buttons {text-align: center;}
+        .button { position: absolute;
+        top: 50%}
+        
         
     </style>
 <head>
     <title> Assignment #1</title>
     <h1> Learning to Use JavaScript</h1>  
+    <script> alert("Hello! This is an alert box. Don't worry, it won't hurt my feelings if you close me quickly. I understand")</script>
+    <script>
+        var a = "Kendyl";
+        var b = "Landeck";
+        
+        var sum =;
+    </script>
 </head>
     <body>
         <h2> <i>Day-dreaming is the best thing to do when it is snowy outside...</i></h2>
@@ -63,7 +74,7 @@
         <p id="places"></p>
         
         <script>
-            //array loop
+            //loop with array
             var place, text, fLen, i;
             place = ["Edinburgh", "Glasgow", "Inverness", "Aberdeenshire", "Isle of Skye"];
             fLen = place.length;
@@ -77,9 +88,18 @@
             document.getElementById('places').innerHTML = text;
         </script>
         
-        <p id="demo"> Its good to remember what day and time it is when you have been  day-dreaming so you still have some sense of reality.  </p>
-        <button type="button"
+        <p> How are you feeling? <br>
+            <input type="checkbox" name="feeling" value= "Happiness"> I'm feeling happy! <br> 
+            <input type="checkbox" name="feeling" value= "Stressed"> I'm feeling stressed! <br> 
+            <input type="checkbox" name="feeling" value= "Tired"> I'm feeling tired!
+        </p>
+
+        <p id="demo"> Its good to remember what day and time it is when you have been  day-dreaming so you get back to reality.  </p>
+       
+        <!-- BUTTON IS INCLUDED -->
+    <div class="buttons">     
+    <button class= "button" type="button"
 onclick="document.getElementById('demo').innerHTML = Date()">
-CLICK ON ME FOR A REALITY CHECK!.</button>
+CLICK ON ME TO GO BACK TO REALITY!.</button></div>
     </body>
 </html>
