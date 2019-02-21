@@ -29,7 +29,7 @@
     <body>
         <h2 id="demo"></h2>
         <script> 
-            //input of two text fields
+            //output of input
             var text1 = "Kendyl"
             var text2 = "Landeck"
             var text3 = text1.concat(" ",text2);
@@ -72,13 +72,21 @@
         
        <div style = "text-align: center;">  <img name= "slide" width= "900" height="600"> </div>
     <p style="text-align: center"> Looking back through some of the pictures I took when I was younger at my home and my family's summer cabin in Idaho, I found these lovely gems which brought back so many memories. These places have always been a place that I have felt comfortable and at peace. How could you not with all this nature around you!</p>
-        
-       <br> <p> Just sitting here thinking of the wonderful places I am going to visit in Scotland this coming summer!</p>
+        <br>
+        <p style="text-align: center"> <b>Childhood Memories </b></p>
+        <p  id="mems" style="text-align: center"> </p>
+        <script> //array
+            var memories = [ "Soccer", " Reading",  " Singing", " Basketball"]
+            document.getElementById("mems").innerHTML = memories
+        </script>
+        <br>
+        <p style="text-align: center"> <b> Looking Forward </b></p>
+       <p> Now I'm just sitting here thinking of the wonderful places I am going to visit in Scotland this coming summer!</p>
         
         <p id="places"></p>
         
         <script>
-            //loop with array
+            //array with list/loop
             var place, text, fLen, i;
             place = ["Edinburgh", "Glasgow", "Inverness", "Aberdeenshire", "Isle of Skye"];
             fLen = place.length;
@@ -102,6 +110,8 @@
             console.log(go.place);
         </script>
         
+        <h2> This has been some good day dreaming! Hope it has been as good for you as it has been for me. </h2>
+        
         <p> How are you feeling? <br> <!-- another input field with checkbox-->
             <input type="checkbox" name="feeling" value= "Happiness"> I'm feeling happy! <br> 
             <input type="checkbox" name="feeling" value= "Stressed"> I'm feeling stressed! <br> 
@@ -119,5 +129,16 @@
     <button class= "button" type="button"
 onclick="document.getElementById('demo').innerHTML = Date()">
 CLICK ON ME TO GO BACK TO REALITY!.</button></div>
+        
+    <P id="number"> Now, Lets count to get fully back to reality</P>
+        <script>
+            //loop
+        var text = " "
+        var i; 
+        for (i = 1; i < 10; i++) {
+            text += i + " " + "Mississippi" + "<br>";
+        }
+            document.getElementById("number").innerHTML = text;
+        </script>
     </body>
 </html>
