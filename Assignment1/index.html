@@ -34,13 +34,17 @@
             var text2 = "Landeck"
             var text3 = text1.concat(" ",text2);
             document.getElementById("demo").innerHTML = text3;
+            
         </script>
+        <p id="hour" style="text-align: center"> <b> Good Afternoon/Evening!</b></p>
+            <script> //if, then, or case
+                if (new Date().getHours() <12) { document.getElementById"greeting = "Good Morning1";} </script>
+        
         <h2> <i>Day-dreaming is the best thing to do when it is snowy outside...</i></h2>
         <h3 style="text-align: center"> LET US DAY-DREAM!
         <br> *sigh*</h3>
    
        <script>
-           //function included
            var i =0; 
            var images = [];
            var time = 3000;
@@ -51,7 +55,7 @@
            images [2] = 'image3.jpg'
            images [3] = 'image4.jpg'
            
-           //change image
+           //function included
            function changeImg(){
                document.slide.src = images [i];
                
@@ -88,7 +92,7 @@
             document.getElementById('places').innerHTML = text;
         </script>
         
-        <script> 
+        <script> //object
             var go = {
             place: "Isle of Skye",
             travel: "beautiful",
@@ -102,6 +106,10 @@
             <input type="checkbox" name="feeling" value= "Happiness"> I'm feeling happy! <br> 
             <input type="checkbox" name="feeling" value= "Stressed"> I'm feeling stressed! <br> 
             <input type="checkbox" name="feeling" value= "Tired"> I'm feeling tired!
+        </p>
+        <p> Are you ready to be done day dreaming? <br> <!--another input with radio-->
+            <input type="radio" name="answer" value="Yes"> Yes, I am.
+            <input type="radio" name="answer" value="No"> No, I am not.
         </p>
 
         <p id="demo"> Its good to remember what day and time it is when you have been  day-dreaming so you get back to reality.  </p>
