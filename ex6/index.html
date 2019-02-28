@@ -67,11 +67,11 @@ marker1.bindPopup("Minnehaha Park", {
 })
   marker1.openPopup();
 
-var circle = L.circle ([44.958611, -93.274167],{ radius: 900,
+var circle = L.circle ([44.968056, -93.288611],{ radius: 500,
 fill: true,
 color: '#1c9099',
 fillColor: '#2c7fb8',
-}).bindPopup("Minneapolis Institute of Art").addTo(map);
+}).bindPopup("Walk Art Center and Minneapolis Sculpture Garden").addTo(map);
 
 var circlem = L.circleMarker ([44.974747, -93.235353],
  {radius:40, 
@@ -79,7 +79,7 @@ var circlem = L.circleMarker ([44.974747, -93.235353],
  color: '#636363',
  weight: 2,
  opacity: 0.75,
- fillOpacity: 0.5}).bindPopup ("University of Minnesota").addTo(map);
+ fillOpacity: 0.5}).addTo(map);
 
 var latlngs = [
     [44.9763, -93.2739],
@@ -89,7 +89,7 @@ var latlngs = [
 var polyline = L.polyline(latlngs, 
  {color:'blue',
  lineCap:'round',
- }).bindPopup('MSP to Downtown').addTo(map);
+ }).bindPopup('MSP International Airport to Central Downtown').addTo(map);
 // zoom the map to the polyline
 map.fitBounds(polyline.getBounds());
 
