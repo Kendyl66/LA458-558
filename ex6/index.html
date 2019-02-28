@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by Kendyl66 (http://jsbin.com/zojavib/6/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+
+<head>
+    <meta name="description" content="LA 458/558 11a Leaflet starter file - 2019">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 6</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+<style id="jsbin-css">
+#map {
+  width: 500px;
+  height: 400px;
+  /* background-color: red; */
+}
+</style>
+</head>
+
+<body>
+    <div id='map'></div>
+<script id="jsbin-javascript">
+var map = L.map('map').setView([44.983333, -93.266667], 10);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+
+
+var blueIcon = L.icon ({
+  iconUrl:'https://www.google.com/mapfiles/marker.png',
+  shadowUrl: 'http://www.google.com/mapfiles/shadow50.png',
+
+    iconSize:[20,34],
+    shadowSize: [20,34],
+    iconAnchor: [15,30],
+    shadowAnchor: [9,30],
+    popupAnchor: [0,0],
+})
+
+var marker1 = L.marker ([44.915, -93.21], {
+  icon: blueIcon,
+  draggable: true,
+  title: "Minnehaha Park",
+  opacity: 1
+}).addTo(map);
+
+marker1.bindPopup("Minnehaha Park", {
+  maxWidth: 100,
+  minWidth: 50,
+  maxHeight: 40,
+  autoPan: true,
+  keepInView: false,
+  closeButton: true,
+  offset: [-5,-10]
+  
+  
+})
+  marker1.openPopup();
+
+var circle = L.circle ([44.958611, -93.274167],{ radius: 900,
+fill: true,
+color: '#1c9099',
+fillColor: '#2c7fb8',
+}).bindPopup("Minneapolis Institute of Art").addTo(map);
+
+var circlem = L.circleMarker ([44.974747, -93.235353],
+ {radius:40, 
+ fillColor:'#8856a7',
+ color: '#636363',
+ weight: 2,
+ opacity: 0.75,
+ fillOpacity: 0.5}).bindPopup ("University of Minnesota").addTo(map);
+
+var latlngs = [
+    [44.9763, -93.2739],
+    [44.881944, -93.221667],
+];
+
+var polyline = L.polyline(latlngs, 
+ {color:'blue',
+ lineCap:'round',
+ }).bindPopup('MSP to Downtown').addTo(map);
+// zoom the map to the polyline
+map.fitBounds(polyline.getBounds());
+
+var bounds = [[44.955, -93.265833], [44.948653, -93.253067]];
+L.rectangle (bounds, {color:'#de2d26', weight:1.5}).bindPopup('Midtown Phillips Neighborhood').addTo(map);
+
+map.fitBounds(bounds);
+
+</script>
+</body>
+</html>
