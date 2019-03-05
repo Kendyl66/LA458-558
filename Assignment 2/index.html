@@ -117,7 +117,7 @@ Released under the MIT license: http://jsbin.mit-license.org
    
     <script id="jsbin-javascript">
 
-    var map = L.map('map').setView([44.881944, -93.221667], 10);
+        var map = L.map('map').setView([44.881944, -93.221667], 10);
         
 // added OpenStreetMap tile layer
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -135,7 +135,7 @@ Released under the MIT license: http://jsbin.mit-license.org
             $('#theZoom').html(x);
         });
 
-//Map extent of Castle, Edinburgh, and Glasgow with link to website
+//Map extent of Castle, Edinburgh, and Loch with link to website
         
         $("#Castle").click(function(e){
         map.setView([57.274028, -5.516111], 14);
@@ -182,7 +182,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 
 
 //Ineraction Event Disabling the Context Menu
-        map.on ('contextmenu', function(e){console.log ('Context Menu Disabled');
+        map.on('contextmenu', function(e){console.log ('Context Menu Disabled');
         });
 
 //multiple markers to show some other random places we are going
@@ -193,17 +193,14 @@ Released under the MIT license: http://jsbin.mit-license.org
             ];
         function getColor(t) {
         return  t == "city" ? 'http://www.googlemapsmarkers.com/v1/377eb8' :
-                t == "cityen" ? 'http://www.googlemapsmarkers.com/v1/4daf4a' :
-                t == "city2" ? 'http://www.googlemapsmarkers.com/v1/de2d26'  :  
-                        'http://www.googlemapsmarkers.com/v1/FFFFFF';
+                t == "cityen" ? 'http://www.googlemapsmarkers.com/v1/4daf4a':
+                t == "city2" ? 'http://www.googlemapsmarkers.com/v1/de2d26': 'http://www.googlemapsmarkers.com/v1/FFFFFF';
             }
         
         for (var i=0; i <mymarkers.length; i++) {
             marker = new L.marker ([mymarkers[i][0], mymarkers[i][1]], {
             icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[15,20], iconAnchor: [5,17], popupAnchor: [0,-10]}), title: mymarkers[i][3], opacity:0.85}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
             }
-        
-//need to include animation, location, and interaction
 
 //Function for lat/lng 
         function button(){
@@ -211,7 +208,9 @@ Released under the MIT license: http://jsbin.mit-license.org
             [58.47839, -4.41799],
             [54.527, -1.5526]
             ]);
-        }
+        };
+// Function: Mouse Event
+        map.on('click',function(e) {alert(ev.latlng)});
 </script>
 </body>
 </html>
