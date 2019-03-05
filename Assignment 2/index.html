@@ -185,7 +185,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         $("#LochNess").click(function(e){
         map.setView([57.3, -4.45], 13);
         });
-        var marker2 = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup(0);
+        var marker2 = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup();
         
         $("#Glasgow").click(function(e) {
             map.setView([55.860916, -4.251433], 11);
@@ -196,7 +196,9 @@ Released under the MIT license: http://jsbin.mit-license.org
         $("#zoomOut").click(function(){
             map.setZoom(6);
         });
-
+// Function: Mouse Event
+        map.on('click',function(ev) {e.clearSelection();
+                                     alert(ev.latlng)});
         
 //Console Popup open and close notes.
         map.on('popupopen', function (e) { console.log ('PopUp is Opened'); });
@@ -248,8 +250,7 @@ Released under the MIT license: http://jsbin.mit-license.org
             [54.527, -1.5526]
             ]);
         };
-// Function: Mouse Event
-        map.on('click',function(ev) {alert(ev.latlng)});
+
 </script>
 </body>
 </html>
