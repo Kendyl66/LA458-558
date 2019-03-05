@@ -25,6 +25,9 @@ Released under the MIT license: http://jsbin.mit-license.org
         align-content: center;
         align-items:center;
         position: relative;
+        border-style: solid;
+        border-width: thick;
+        border-color: black;
  
         }
 
@@ -35,7 +38,7 @@ Released under the MIT license: http://jsbin.mit-license.org
     body:after {
         background: url(scotland-5.jpg);
         content: "";
-        opacity: 0.5;
+        opacity: 0.3;
         position: fixed;
         top: 0;
         bottom: 0;
@@ -55,27 +58,32 @@ Released under the MIT license: http://jsbin.mit-license.org
     p {
         text-align: center;
         color: black;
-        background: white;
+        font-weight: 1000;
+        
+        border-radius: 20px;
         opacity: 0.9;
         padding-left: 2%;
         padding-right: 2%;
         margin-left: 3%;
         margin-right: 3%;
         }
+    ul { text-align: inherit;
+        align-content: center}
         
     li {color: black;
-        font-size: 88%;
-        background: white;
-        opacity: 0.9;
+        font-size: 108%;
+        font-weight: 800;
+        opacity: 1;
         margin-left: 3%;
         margin-right: 3%;
         padding-left: 2%;
         padding-right: 2%;
         font-family: verdana;
+        
         }
 
     #Scotland{
-        background: white;
+
         opacity: 0.9;
         justify-content: center;
         align-content: center;
@@ -113,13 +121,15 @@ Released under the MIT license: http://jsbin.mit-license.org
     
 <p>
     Our journey starts in Minneapolis. We get on a plane and depart for Europe. 
-    <li> The first stop is Edinburgh! Go on Click the button!!</li>
-    <li> Then we will travel to see the famous Loch Ness! See for yourself!!</li>
-    <li> Next, we go by bus to visit the beautiful Eilean Donan Castle. Check it out!</li>
-    <li> Our trip will end with us touring around the area surrounding Glasgow. Take a look!</li>
-    <li> Finally, we will depart. If you click to zoom out, you will see the places we are visiting and some others that may also be on our list! </li>
-    
 </p>
+    <ul> 
+        <li> The first stop is Edinburgh! Go on Click the button!!</li>
+        <li> Then we will travel to see the famous Loch Ness! See for yourself!!</li>
+        <li> Next, we go by bus to visit the beautiful Eilean Donan Castle. Check it out!</li>
+        <li> Our trip will end with us touring around the area surrounding Glasgow. Take a look!</li>
+        <li> Finally, we will depart. If you click to zoom out, you will see the places we are visiting and some others that may also be on our list! </li>
+    </ul>
+
   
     <div id="Scotland">
         <button id="Edinburgh" type="button"> Edinburgh</button> 
