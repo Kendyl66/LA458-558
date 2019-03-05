@@ -136,20 +136,27 @@ Released under the MIT license: http://jsbin.mit-license.org
         });
 
 //Map extent of Castle, Edinburgh, and Glasgow with link to website
-        $("#Castle").click(function(){
-        map.setView([57.28, -5.72], 10);
+        
+        $("#Castle").click(function(e){
+        map.setView([57.274028, -5.516111], 14);
         });
-        var marker3 = L.marker([57.274028, -5.516111], {draggable: false,}).addTo(map).bindPopup('<a href="https://www.eileandonancastle.com" target="_blank"> Eilean Donan Castle </a>').openPopup([0]);
+        var marker = L.marker([57.274028, -5.516111], {draggable: false,}).addTo(map).bindPopup('<a href="https://www.eileandonancastle.com" target="_blank"> Eilean Donan Castle </a>').openPopup([0]);
 
-        $("#Edinburgh").click(function(){
+        $("#Edinburgh").click(function(e){
         map.setView([55.953, -3.189], 12);
         });
-        var marker1 = L.marker([55.953, -3.189], {draggable: true,}).addTo(map).bindPopup('<a href="https://edinburgh.org/" target="_blank"> Edinburgh </a>').openPopup([0]);
+        var marker = L.marker([55.953, -3.189], {draggable: true,}).addTo(map).bindPopup('<a href="https://edinburgh.org/" target="_blank"> Edinburgh </a>').openPopup([0]);
 
-        $("#LochNess").click(function(){
+        $("#LochNess").click(function(e){
         map.setView([57.3, -4.45], 13);
         });
-        var marker2 = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup([0]);
+        var marker = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup([0]);
+        
+        $("#Glasgow").click(function(e) {
+            c=new
+            L.LatLng(55.860916, -4.251433);
+            map.setView (c,11);
+        });
 
 // Zoom Out
         $("#zoomOut").click(function(){
