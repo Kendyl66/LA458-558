@@ -153,10 +153,9 @@ Released under the MIT license: http://jsbin.mit-license.org
         var marker = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup([0]);
         
         $("#Glasgow").click(function(e) {
-            c=new
-            L.LatLng(55.860916, -4.251433);
-            map.setView (c,11);
+            map.setView([55.860916, -4.251433], 11);
         });
+        
 
 // Zoom Out
         $("#zoomOut").click(function(){
