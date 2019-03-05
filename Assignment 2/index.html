@@ -28,7 +28,6 @@ Released under the MIT license: http://jsbin.mit-license.org
  
         }
 
-        
     body   { 
         color: black;
         font-family: verdana;
@@ -56,7 +55,8 @@ Released under the MIT license: http://jsbin.mit-license.org
     p {
         text-align: center;
         color: black;
-        background: lightgrey;
+        background: white;
+        opacity: 0.9;
         padding-left: 2%;
         padding-right: 2%;
         margin-left: 3%;
@@ -65,15 +65,18 @@ Released under the MIT license: http://jsbin.mit-license.org
         
     li {color: black;
         font-size: 88%;
-        background: lightgrey;
+        background: white;
+        opacity: 0.9;
         margin-left: 3%;
         margin-right: 3%;
         padding-left: 2%;
         padding-right: 2%;
+        font-family: verdana;
         }
 
     #Scotland{
-        background: lightgrey;
+        background: white;
+        opacity: 0.9;
         justify-content: center;
         align-content: center;
         align-items: center;
@@ -83,19 +86,17 @@ Released under the MIT license: http://jsbin.mit-license.org
         }
     #Castle{
         background: lightblue;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        position: relative;
         }
+        
     div {
-        align-content: center; vertical-align: middle; margin: auto; color: black;
+        text-align: center; 
+        vertical-align: middle; 
+        margin: auto; 
+        color: black;
         font-family: verdana;
         }
-    .button {
-        align-content: center;
-        justify-content: center;
-        align-items: center;
+    button {
+        font-size: 100%;
         }
 
     </style>
@@ -121,11 +122,11 @@ Released under the MIT license: http://jsbin.mit-license.org
 </p>
   
     <div id="Scotland">
-        <button id="Edinburgh" type="button"> Edinburgh</button> <br>
-        <button id="LochNess" type="button"> Loch Ness</button> <br>
-        <button id="Castle" type="button"> Eilean Donan Castle</button> <br>
-        <button id="Glasgow" type="button"> Glasgow</button> <br>
-        <button id="zoomOut" type="button"> Zoom out to Scotland</button> <br> 
+        <button id="Edinburgh" type="button"> Edinburgh</button> 
+        <button id="LochNess" type="button"> Loch Ness</button> 
+        <button id="Castle" type="button"> Eilean Donan Castle</button>
+        <button id="Glasgow" type="button"> Glasgow</button> 
+        <button id="zoomOut" type="button"> Zoom out to Scotland</button> 
         <button id="getZoom" type="button"> What is the zoom level?</button> 
             The Level Is <span id="theZoom"> </span>
     </div>
