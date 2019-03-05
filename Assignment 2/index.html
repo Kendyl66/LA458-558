@@ -203,8 +203,12 @@ Released under the MIT license: http://jsbin.mit-license.org
             }
 
 //Function for lat/lng 
+        var boundary1 = L.latLng(58.47839, -4.41799),
+            boundary2 = L.latLng(54.527, -1.5526),
+            bounds = L.latLngBounds(boundary1,boundary2);
+        
         function button(){
-        map.fitBound([
+        map.fitBounds([
             [58.47839, -4.41799],
             [54.527, -1.5526]
             ]);
