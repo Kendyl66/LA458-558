@@ -27,12 +27,26 @@ Released under the MIT license: http://jsbin.mit-license.org
         position: relative;
  
         }
+
+        
     body   { 
-        background: url(https://independenthostels.co.uk/wp-content/uploads/2015/02/scotland-5.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
+        color: black;
         font-family: verdana;
         }
+    body:after {
+        background: url(scotland-5.jpg);
+        content: "";
+        opacity: 0.5;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;   
+        width:auto;
+        height: 100%;
+        }
+        
     h1 {text-align: center;
         color: Black;
         font-family: cursive;
@@ -76,7 +90,8 @@ Released under the MIT license: http://jsbin.mit-license.org
         }
     div {
         align-content: center; vertical-align: middle; margin: auto; color: black;
-        font-family: verdana;}
+        font-family: verdana;
+        }
     .button {
         align-content: center;
         justify-content: center;
@@ -87,6 +102,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 </head>
   
 <body>
+    
   <h1> Assignment 2: A Trip to Scotland</h1>
   <p> 
       This map is showing you our some-what planned trip to Scotland for our Honeymoon in July!! You will be able to interact with some of the big places we will be going to while zooming in and out of the map to make sure you know your location. Please make sure you utilized the button features and links to get the whole experience.
