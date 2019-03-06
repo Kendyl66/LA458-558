@@ -72,15 +72,14 @@ Released under the MIT license: http://jsbin.mit-license.org
         margin-right: 3%;
         }
     ul { 
-        margin-left: 25%;
-        margin-right: 25%;
-        padding-bottom: 2%;
+        margin-left: 26%;
+        margin-right: 26%;
+        padding-bottom: 1%;
         padding-top: 2%}
         
     li {color: black;
         font-size: 108%;
         font-weight: 600;
-        opacity: 1;
         margin-left: 3%;
         margin-right: 3%;
         padding-left: 2%;
@@ -129,7 +128,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         <li> Then we will travel to see the famous Loch Ness! See for yourself!!</li>
         <li> Next, we go by bus to visit the beautiful Eilean Donan Castle. Check it out!</li>
         <li> Our trip will end with us touring around the area surrounding Glasgow. Take a look!</li>
-        <li> Finally, we will depart. If you click to zoom out, you will see the places we are visiting and some others that may also be on our list! </li>
+        <li> Finally, we will depart. If you click to zoom out, you will see the places we just looked through and some others that we may also be visiting! </li>
     </ul>
 
   
@@ -204,7 +203,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 
 //Popup Event with alert
         marker2.on ('popupclose', function () {
-        alert("Could you find the monster??? <br> Well...you won't actually find the Loch Ness Monster... Sorry! <br> He is, after all, just a mythical creature.");
+        alert("Could you find the monster??? Well...you won't actually find the Loch Ness Monster... Sorry!  He is, after all, just a mythical creature.");
         });
 
 //Tooltip Event: added with question and you can see it when hovered over marker.
@@ -223,11 +222,13 @@ Released under the MIT license: http://jsbin.mit-license.org
         [56.412, -5.472, "city", "Oban"],
         [54.966667, -1.6, "cityen", "Newcastle upon Tyne"],
         [57.15, -2.11, "aber", "Aberdeen"],
+        [57.083333, -3.666667, "park", "Cairngorms National Park"],
             ];
         function getColor(s) {
         return  s == "city" ? 'http://www.googlemapsmarkers.com/v1/377eb8' :
                 s == "cityen" ? 'http://www.googlemapsmarkers.com/v1/a50f15':
                 s == "aber" ? 'http://www.googlemapsmarkers.com/v1/c51b8a':
+                s == "park" ? 'http://www.googlemapsmarkers.com/v1/7bccc4':
             'http://www.googlemapsmarkers.com/v1/FFFFFF';
             }
         
@@ -250,7 +251,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 //Location Event:
         map.on('mouseover',       
                function (e) { console.log('mouseover'); });
-//Event     
+//Interaction Event     
         map.on('focus', function (e) { console.log('focus'); });
 </script>
 </body>
