@@ -64,7 +64,6 @@ Released under the MIT license: http://jsbin.mit-license.org
         text-align: center;
         color: black;
         font-weight: 1000;
-        
         border-radius: 20px;
         opacity: 0.9;
         padding-left: 2%;
@@ -77,7 +76,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         
     li {color: black;
         font-size: 108%;
-        font-weight: 800;
+        font-weight: 600;
         opacity: 1;
         margin-left: 3%;
         margin-right: 3%;
@@ -161,7 +160,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 }).addTo(map);
 
 //This is a marker for our starting point in Minneapolis
-        var marker = L.marker([44.881944, -93.221667]).addTo(map).bindPopup('Minneapolis-St. Paul International Airport').openPopup(0);
+        var marker = L.marker([44.881944, -93.221667]).addTo(map).bindPopup('Minneapolis-St. Paul International Airport');
         
 
  //Function to get zoom of clicked button
@@ -175,17 +174,17 @@ Released under the MIT license: http://jsbin.mit-license.org
         $("#Castle").click(function(e){
         map.setView([57.274028, -5.516111], 14);
         });
-        var marker = L.marker([57.274028, -5.516111], {draggable: false,}).addTo(map).bindPopup('<a href="https://www.eileandonancastle.com" target="_blank"> Eilean Donan Castle </a>').openPopup();
+        var marker3 = L.marker([57.274028, -5.516111], {draggable: false,}).addTo(map).bindPopup('<a href="https://www.eileandonancastle.com" target="_blank"> Eilean Donan Castle </a>');
 
         $("#Edinburgh").click(function(e){
         map.setView([55.953, -3.189], 12);
         });
-        var marker1 = L.marker([55.953, -3.189], {draggable: true,}).addTo(map).bindPopup('<a href="https://edinburgh.org/" target="_blank"> Edinburgh </a>').openPopup();
+        var marker1 = L.marker([55.953, -3.189], {draggable: true,}).addTo(map).bindPopup('<a href="https://edinburgh.org/" target="_blank"> Edinburgh </a>');
 
         $("#LochNess").click(function(e){
-        map.setView([57.3, -4.45], 13);
+        map.setView([57.3, -4.45], 9.5);
         });
-        var marker2 = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://c.ndtvimg.com/urquhart-castle-loch-ness-afp_625x300_1529210107848.jpg" target="_blank"> Loch Ness </a>').openPopup();
+        var marker2 = L.marker([57.3, -4.45], {draggable: false,}).addTo(map).bindPopup ('<a href="https://www.historic-uk.com/wp-content/uploads/2017/04/loch-ness-monster-2800x1440.jpg" target="_blank"> Loch Ness </a>');
         
         $("#Glasgow").click(function(e) {
             map.setView([55.860916, -4.251433], 11);
@@ -207,11 +206,11 @@ Released under the MIT license: http://jsbin.mit-license.org
 
 //Popup Event with alert
         marker2.on ('popupclose', function () {
-        alert("Could you find the moster??? Well...you actually won't find the Loch Ness Monster... Sorry! He is just mythical creature.");
+        alert("Could you find the monster??? <br> Well...you won't actually find the Loch Ness Monster... Sorry! <br> He is, after all, just a mythical creature.");
         });
 
 //Tooltip Event: added with question and you can see it when hovered over marker.
-        marker2.bindTooltip('I wonder if You can Spot the Loch Ness Monster...').openTooltip([0,8]);
+        marker2.bindTooltip('I wonder if you can spot the <br> Famous Loch Ness Monster... <br> click and see!').openTooltip([0,8]);
 
         map.on ('tooltipopen', function (e) {console.log ('Tooltip Opened');});
 
@@ -226,16 +225,19 @@ Released under the MIT license: http://jsbin.mit-license.org
         [56.412, -5.472, "city2", "Oban"],
         [55.860916, -4.251433, "city", "Glasgow" ],
         [54.966667, -1.6, "cityen", "Newcastle upon Tyne"],
+        [57.15, -2.11, "aber", "Aberdeen"],
             ];
         function getColor(s) {
         return  s == "city" ? 'http://www.googlemapsmarkers.com/v1/377eb8' :
                 s == "cityen" ? 'http://www.googlemapsmarkers.com/v1/4daf4a':
-                s == "city2" ? 'http://www.googlemapsmarkers.com/v1/de2d26': 'http://www.googlemapsmarkers.com/v1/FFFFFF';
+                s == "city2" ? 'http://www.googlemapsmarkers.com/v1/de2d26':
+                s == "aber" ? 'http://www.googlemapsmarkers.com/v1/c51b8a':
+            'http://www.googlemapsmarkers.com/v1/FFFFFF';
             }
         
         for (var i=0; i <mymarkers.length; i++) {
             marker = new L.marker ([mymarkers[i][0], mymarkers[i][1]], {
-            icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[15,20], iconAnchor: [5,17], popupAnchor: [0,-10]}), title: mymarkers[i][3], opacity:0.85}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
+            icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[20,30], iconAnchor: [10,30], popupAnchor: [0,-15]}), title: mymarkers[i][3], opacity:0.85}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
             }
 
 //Location:  lat/lng 
