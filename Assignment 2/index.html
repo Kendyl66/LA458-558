@@ -196,11 +196,10 @@ Released under the MIT license: http://jsbin.mit-license.org
         $("#zoomOut").click(function(){
             map.setZoom(6);
         });
-// Function: Mouse Event
-        map.on('click',function(ev) {e.clearSelection();
-                                     alert(ev.latlng)});
+// Map Event: Zoom
+        map.on("zoom", function() {console.log ('MAP IS BEING ZOOMED!');});
         
-//Console Popup open and close notes.
+//Popup Event: Console Popup open and close notes.
         map.on('popupopen', function (e) { console.log ('PopUp is Opened'); });
 
         map.on('popupclose', function (e){console.log ('PopUp is Closed');});
@@ -211,7 +210,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         alert("Could you find the moster??? Well...you actually won't find the Loch Ness Monster... Sorry! He is just mythical creature.");
         });
 
-//Tooltip added with question and you can see it when hovered over marker.
+//Tooltip Event: added with question and you can see it when hovered over marker.
         marker2.bindTooltip('I wonder if You can Spot the Loch Ness Monster...').openTooltip([0,8]);
 
         map.on ('tooltipopen', function (e) {console.log ('Tooltip Opened');});
@@ -239,7 +238,7 @@ Released under the MIT license: http://jsbin.mit-license.org
             icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[15,20], iconAnchor: [5,17], popupAnchor: [0,-10]}), title: mymarkers[i][3], opacity:0.85}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
             }
 
-//Function for lat/lng 
+//Location:  lat/lng 
         var boundary1 = L.latLng(58.47839, -4.41799),
             boundary2 = L.latLng(54.527, -1.5526),
             bounds = L.latLngBounds(boundary1,boundary2);
@@ -250,7 +249,8 @@ Released under the MIT license: http://jsbin.mit-license.org
             [54.527, -1.5526]
             ]);
         };
-
+//Location Event:
+        map.on('click', function(ev) {})
 </script>
 </body>
 </html>
