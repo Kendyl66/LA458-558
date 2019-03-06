@@ -71,8 +71,11 @@ Released under the MIT license: http://jsbin.mit-license.org
         margin-left: 3%;
         margin-right: 3%;
         }
-    ul { text-align: inherit;
-        align-content: center}
+    ul { 
+        margin-left: 25%;
+        margin-right: 25%;
+        padding-bottom: 2%;
+        padding-top: 2%}
         
     li {color: black;
         font-size: 108%;
@@ -96,9 +99,6 @@ Released under the MIT license: http://jsbin.mit-license.org
         margin-left: 3%;
         margin-right: 3%;
         }
-    #Castle{
-        background: lightblue;
-        }
         
     div {
         text-align: center; 
@@ -120,12 +120,10 @@ Released under the MIT license: http://jsbin.mit-license.org
   <p> 
       This map is showing you our some-what planned trip to Scotland for our Honeymoon in July!! You will be able to interact with some of the big places we will be going to while zooming in and out of the map to make sure you know your location. Please make sure you utilized the button features and links to get the whole experience.
       <br>Also, make sure to take a look at the console log for even more fun!
+      <br><br> Our journey starts in Minneapolis. We get on a plane and depart for Europe.
     </p>
     <div id='map'></div>
     
-<p>
-    Our journey starts in Minneapolis. We get on a plane and depart for Europe. 
-</p>
     <ul> 
         <li> The first stop is Edinburgh! Go on Click the button!!</li>
         <li> Then we will travel to see the famous Loch Ness! See for yourself!!</li>
@@ -160,7 +158,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 }).addTo(map);
 
 //This is a marker for our starting point in Minneapolis
-        var marker = L.marker([44.881944, -93.221667]).addTo(map).bindPopup('Minneapolis-St. Paul International Airport');
+        var marker = L.marker([44.881944, -93.221667]).addTo(map).bindPopup('Minneapolis-St. Paul International Airport').openPopup(0);
         
 
  //Function to get zoom of clicked button
@@ -189,7 +187,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         $("#Glasgow").click(function(e) {
             map.setView([55.860916, -4.251433], 11);
         });
-        
+        var marker4 = L.marker([55.860916, -4.251433], {draggable: true,}).addTo(map).bindPopup ('<a href="https://peoplemakeglasgow.com/" target="_blank"> Glasgow </a>');
 
 // Zoom Out
         $("#zoomOut").click(function(){
@@ -222,22 +220,20 @@ Released under the MIT license: http://jsbin.mit-license.org
 
 //multiple markers to show some other random places we are going
         var mymarkers = [
-        [56.412, -5.472, "city2", "Oban"],
-        [55.860916, -4.251433, "city", "Glasgow" ],
+        [56.412, -5.472, "city", "Oban"],
         [54.966667, -1.6, "cityen", "Newcastle upon Tyne"],
         [57.15, -2.11, "aber", "Aberdeen"],
             ];
         function getColor(s) {
         return  s == "city" ? 'http://www.googlemapsmarkers.com/v1/377eb8' :
-                s == "cityen" ? 'http://www.googlemapsmarkers.com/v1/4daf4a':
-                s == "city2" ? 'http://www.googlemapsmarkers.com/v1/de2d26':
+                s == "cityen" ? 'http://www.googlemapsmarkers.com/v1/a50f15':
                 s == "aber" ? 'http://www.googlemapsmarkers.com/v1/c51b8a':
             'http://www.googlemapsmarkers.com/v1/FFFFFF';
             }
         
         for (var i=0; i <mymarkers.length; i++) {
             marker = new L.marker ([mymarkers[i][0], mymarkers[i][1]], {
-            icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[20,30], iconAnchor: [10,30], popupAnchor: [0,-15]}), title: mymarkers[i][3], opacity:0.85}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
+            icon: L.icon({iconUrl: getColor(mymarkers[i][2]), iconSize:[20,30], iconAnchor: [10,30], popupAnchor: [0,-15]}), title: mymarkers[i][3], opacity:0.9}).bindPopup('<b>' +mymarkers[i][3]+ '</b>').addTo(map);
             }
 
 //Location:  lat/lng 
@@ -254,6 +250,8 @@ Released under the MIT license: http://jsbin.mit-license.org
 //Location Event:
         map.on('mouseover',       
                function (e) { console.log('mouseover'); });
+//Event     
+        map.on('focus', function (e) { console.log('focus'); });
 </script>
 </body>
 </html>
