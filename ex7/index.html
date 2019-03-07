@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8"/>
     <meta name="exercises" content="Exercise 7 Leaflet and layer control"/>
-<title> Exercise 7</title>
+<title> Exercise 7 </title>
    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
    crossorigin=""/> 
@@ -13,12 +13,28 @@
         
     <style>
         #map {
-            width: 800px;
-            height: 800px;
-            margin: 0; padding: 0;}
+            width: 900px;
+            height: 900px;
+            margin: 0; padding: 0;
+            border: solid;
+            border-color: black; 
+            border-width: 10px;
+            align-content: center;
+            align-items:center;
+            position: relative;}
+        div {
+            display: block; 
+            margin-left: 0 auto;
+            margin-right: 0 auto;
+            
+        }
+
     </style>
     </head>
     <body>
+        <h1 style="font-family: calibri; font-size: 300%;"> Exercise 7: Some Places I have Traveled
+        </h1>
+    
         <div id="map"></div>
     <script>
 //Base Layers
@@ -76,8 +92,12 @@
     var desmoines = L.marker([41.590833, -93.620833]).bindPopup('Des Moines, Iowa'),
         chicago = L.marker([41.836944, -87.684722]).bindPopup('Chicago, Illinois'),
         minneapolis = L.marker([44.983333, -93.266667]).bindPopup('Minneapolis, Minnesota'),
-        omaha = L.marker([41.25, -96]).bindPopup('Omaha, Nebraska'),
-        madison = L.marker([43.066667, -89.4]).bindPopup('Madison, Wisconsin');
+        omaha = L.marker([41.867222, -103.660833]).bindPopup('Scottsbluff, Nebraska'),
+        lacrosse = L.marker([43.813333, -91.233056]).bindPopup('La Crosse, Wisconsin'),
+        helena = L.marker([46.595805, -112.027031]).bindPopup('Helena, Montana'),
+        neworleans = L.marker([29.95, -90.08]).bindPopup('New Orleans, Louisiana'),
+        nashville = L.marker([36.166667, -86.783333]).bindPopup('Nasville, Tennessee'),
+        raleigh = L.marker([35.766667, -78.633333]).bindPopup('Raleigh, North Carolina');
         
     
 //polygon and polyline
@@ -94,10 +114,14 @@
     
     var pointA = new L.LatLng (41.590833, -93.620833);
     var pointB = new L.LatLng (41.836944, -87.684722);
-    var pointC = new L.LatLng (44.983333, -93.266667);
-    var pointD = new L.LatLng (41.25, -96);
-    var pointE = new L.LatLng (43.066667, -89.4);
-        var pointList = [pointA, pointB, pointC, pointD, pointE];
+    var pointC = new L.LatLng (43.813333, -91.233056);
+    var pointD = new L.LatLng (44.983333, -93.266667);
+    var pointE = new L.LatLng (46.595805, -112.027031);
+    var pointF = new L.LatLng (41.867222, -103.660833);
+    var pointG = new L.LatLng (29.95, -90.08);
+    var pointH = new L.LatLng (36.166667, -86.783333);
+    var pointI = new L.LatLng (35.766667, -78.633333);
+        var pointList = [pointA, pointB, pointC, pointD, pointE,pointF,pointG,pointH, pointI];
         
     var myPolyline = new L.Polyline(pointList, {
         color: 'blue',
@@ -107,13 +131,13 @@
     });
 
  //Layer Groups
-    var cityLayerGroup = L.layerGroup([desmoines,chicago,madison,omaha]);
+    var cityLayerGroup = L.layerGroup([desmoines,chicago,lacrosse,omaha,nashville,neworleans,helena, raleigh]);
         
     
 //Create Map
         
     var map = L.map('map', {
-        center: new L.LatLng(42.0908, -93.6208),
+        center: new L.LatLng(40.0908, -95.6208),
         zoom: 5,
         layers: [OSM, OpenRailwayMap, cityLayerGroup]
     });
@@ -127,14 +151,16 @@
     };
     
     var overlayMaps = {
+        "Outline": Stamen_TonerLines,
         "Railway Map": OpenRailwayMap,
+        "Minneapolis": minneapolis,
         "African American Population": JusticeMap_black,
         "Hispanic Population": JusticeMap_hispanic,
         "Radar": nexrad,
         "Cities": cityLayerGroup,
         "Polygon": polygon,
         "Polyline": myPolyline,
-        "Minneapolis": minneapolis,
+        
     };
     
         L.control.layers(baseMaps,overlayMaps).addTo(map);
