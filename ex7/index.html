@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <meta name="exercises" content="Exercise 7 Leaflet and layer control"/>
+<title> Exercise 7</title>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/> 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script> 
+        
+    <style>
+        #map {
+            width: 800px;
+            height: 800px;
+            margin: 0; padding: 0;}
+    </style>
+    </head>
+    <body>
+        <div id="map"></div>
+    <script>
+//Base Layers
+        var OSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});  
+        var Stamen_Watercolor = L.tileLayer('http://{s}.tile.stamen.com/watercolor/{z}/{x}/{y}.png', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+	subdomains: 'abcd',
+	minZoom: 1,
+	maxZoom: 16
+});
+
+
+        
+//overlay layers
+     var Stamen_TonerLines = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+});
+        var OpenRailwayMap = 
+         L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
+	   maxZoom: 19,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});   
+    var nexrad = new L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+        layers: 'nexrad-n0r-900913',
+        format: 'image/png',
+        transparent: true,
+        attribution: "Weather data &copy; 2012 IEM Nexrad"
+		});
+        
+    var JusticeMap_black = 
+        L.tileLayer('http://www.justicemap.org/tile/{size}/black/{z}/{x}/{y}.png', {
+	attribution: '<a href="http://www.justicemap.org/terms.php">Justice Map</a>',
+	size: 'county',
+	bounds: [[14, -180], [72, -56]]
+});
+    
+    var JusticeMap_hispanic =       
+        L.tileLayer('http://www.justicemap.org/tile/{size}/hispanic/{z}/{x}/{y}.png', {
+	attribution: '<a href="http://www.justicemap.org/terms.php">Justice Map</a>',
+	size: 'county',
+	bounds: [[14, -180], [72, -56]]
+});
+//Vector and Marker Layers
+
+//individual markers
+    var desmoines = L.marker([41.590833, -93.620833]).bindPopup('Des Moines, Iowa'),
+        chicago = L.marker([41.836944, -87.684722]).bindPopup('Chicago, Illinois'),
+        minneapolis = L.marker([44.983333, -93.266667]).bindPopup('Minneapolis, Minnesota'),
+        omaha = L.marker([41.25, -96]).bindPopup('Omaha, Nebraska'),
+        madison = L.marker([43.066667, -89.4]).bindPopup('Madison, Wisconsin');
+        
+    
+//polygon and polyline
+    var polygon = L.polygon([
+        [40,-90],
+        [40, -92],
+        [42, -92],
+        [42,-90],
+     ], {
+        color:'black',
+        fillColor: 'pink',
+        fillOpacity: 0.5
+    });
+    
+    var pointA = new L.LatLng (41.590833, -93.620833);
+    var pointB = new L.LatLng (41.836944, -87.684722);
+    var pointC = new L.LatLng (44.983333, -93.266667);
+    var pointD = new L.LatLng (41.25, -96);
+    var pointE = new L.LatLng (43.066667, -89.4);
+        var pointList = [pointA, pointB, pointC, pointD, pointE];
+        
+    var myPolyline = new L.Polyline(pointList, {
+        color: 'blue',
+        weight: 4,
+        opacity: 0.6,
+        smoothFactor: 1
+    });
+
+ //Layer Groups
+    var cityLayerGroup = L.layerGroup([desmoines,chicago,madison,omaha]);
+        
+    
+//Create Map
+        
+    var map = L.map('map', {
+        center: new L.LatLng(42.0908, -93.6208),
+        zoom: 5,
+        layers: [OSM, OpenRailwayMap, cityLayerGroup]
+    });
+        
+        
+//Layer Control
+    var baseMaps = {
+        "Street Map": OSM,
+        "Satellite Images": Esri_WorldImagery,
+        "Watercolor": Stamen_Watercolor,
+    };
+    
+    var overlayMaps = {
+        "Railway Map": OpenRailwayMap,
+        "African American Population": JusticeMap_black,
+        "Hispanic Population": JusticeMap_hispanic,
+        "Radar": nexrad,
+        "Cities": cityLayerGroup,
+        "Polygon": polygon,
+        "Polyline": myPolyline,
+        "Minneapolis": minneapolis,
+    };
+    
+        L.control.layers(baseMaps,overlayMaps).addTo(map);
+    </script>
+    </body>
+</html>
