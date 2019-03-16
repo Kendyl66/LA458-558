@@ -32,8 +32,6 @@
             border-style: groove}    
     </style>
         
-       
-        //Here is what I have! I am having some trouble putting these things together!
         
     
         <h1>Exercise 8: Acceptance Rates of Top Universities in the United States
@@ -46,13 +44,19 @@
     <div id="map"> </div>
  <script> 
     var map = L.map('map').setView([40, -95], 4);
-
-   var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+     //OpenStreetMap added
+   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 18
     }).addTo(map);
      
-   
+   function addPopup (feture, layer) {
+       layer.bindPopup ("University: " + feature.properties.description + "<br> Ranking: " + feature.properties.Ranking + "<br> Acceptance Rate: " + feature.properties.acceptancerate);
+   }
+     
+L.geoJson(universities).addTo(map);
+     
+     
      function style (feature) {
          return {
              fillColor: getColor(feature.properties.number),
@@ -63,7 +67,7 @@
      }
      
    
-    function getColor(d) {
+    function getColor(d) {uni
         return  d == 3 ? '#ff0000': //red
                 d == 2 ? '#feec12': //yellow
                 d == 1 ? '#00d700': // green
@@ -102,22 +106,22 @@
 
     }
      
-var legend = L.control({ 
-position: 'bottomleft'});
+//var legend = L.control({ 
+//position: 'bottomleft'});
      
-     legend.onAdd = function(map) {
-         var div = L.DomUntil.create('div', 'info legend'), 
-             breaks = [3,2,1], 
-             labels = ['Very Low Acceptance Rate', 'Low Acceptance Rate', 'Higher Acceptance Rate'];;
+     //legend.onAdd = function(map) {
+        // var div = L.DomUntil.create('div', 'info legend'), 
+           //  breaks = [3,2,1], 
+         //    labels = ['Very Low Acceptance Rate', 'Low Acceptance Rate', 'Higher Acceptance Rate'];;
          
-        for (var i = 0 i <number.length; i++){ 
-        div.innerHTML += <i style= "background: + getColor(number [1]) + ' "> </i> ' + number[i] + ' ' + 
-            labels [i] + '<br>';
+    //    for (var i = 0 i <number.length; i++){ 
+    //    div.innerHTML += <i style= "background: + getColor(number [1]) + ' "> </i> ' + number[i] + ' ' + 
+    //        labels [i] + '<br>';
             
-        }
-         return div;
-     };
-     legend.addTo(map);
+   //     }
+ //        return div;
+ //    };
+ //    legend.addTo(map);
 </script>
     
     </body>

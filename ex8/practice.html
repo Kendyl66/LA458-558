@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   <meta charset="utf-8"/>
+    <meta name="exercises" content="Exercise 8: GEOJson"/> 
+<title> Exercise 8 </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+	
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+       <script
+        src= "https://kendyl66.github.io/LA458-558/ex8/universities.js"></script>     
+     <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+        <style>
+        
+        h1 { font-family: monospace;
+            font: Verdana;
+            text-align: left;
+            color: crimson;
+        }
+        h2, body {
+            font: Verdana;
+            font-family: monospace;
+            background-color: lightgray;
+            margin: 0;
+        }
+            #map {width: 700px;
+            height: 600px;
+            border-style: groove}    
+    </style>
+        
+        
+    
+        <h1>Exercise 8: Acceptance Rates of Top Universities in the United States
+        </h1>
+        <h2> This map is showing the top 20 universities in the United States and then they are categorized by the acceptance rates. It is interesting to see where the top 20 universities in the United States are located and their corresponding acceptance rates. 
+        </h2>
+    </head>
+<body> 
+    
+    <div id="map"> </div>
+ <script> 
+    var map = L.map('map').setView([40, -95], 4);
+     //OpenStreetMap added
+   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
+    }).addTo(map);
+     
+   function addPopup (feture, layer) {
+       layer.bindPopup ("University: " + feature.properties.description + "<br> Ranking: " + feature.properties.Ranking + "<br> Acceptance Rate: " + feature.properties.acceptancerate);
+   }
+     
+L.geoJson(universities).addTo(map);
