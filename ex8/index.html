@@ -3,7 +3,7 @@
     <head>
    <meta charset="utf-8"/>
     <meta name="exercises" content="Exercise 8: GEOJson"/>
-        
+        <script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
 <title> Exercise 8 </title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
@@ -11,7 +11,11 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script>
-    <style>
+       <script
+        src= "https://kendyl66.github.io/LA458-558/ex8/map.geojson"></script>     
+     <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+        <style>
+        
         h1 { font-family: monospace;
             font: Verdana;
             text-align: left;
@@ -20,14 +24,101 @@
         h2, body {
             font: Verdana;
             font-family: monospace;
-            background-color: azure;
+            background-color: lightgray;
             margin: 0;
         }
+            #map {width: 700px;
+            height: 600px;
+            border-style: groove}    
     </style>
+        
+       
+        //Here is what I have! I am having some trouble putting these things together!
+        
+    
         <h1>Exercise 8: Acceptance Rates of Top Universities in the United States
         </h1>
-        <h2>
+        <h2> This map is showing the top 20 universities in the United States and then they are categorized by the acceptance rates. It is interesting to see where the top 20 universities in the United States are located and their corresponding acceptance rates. 
         </h2>
     </head>
+<body> 
     
+    <div id="map"> </div>
+ <script> 
+    var map = L.map('map').setView([40, -95], 4);
+
+   var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
+    }).addTo(map);
+     
+   
+     function style (feature) {
+         return {
+             fillColor: getColor(feature.properties.number),
+             weight: 1,
+             opacity: 0.5,
+             
+         };
+     }
+     
+   
+    function getColor(d) {
+        return  d == 3 ? '#ff0000': //red
+                d == 2 ? '#feec12': //yellow
+                d == 1 ? '#00d700': // green
+                '#ff0000'; //white   
+        function style(feature) {
+            return { 
+            fillColor: getcolor(feature.properties.number), 
+            weight: 1,
+            opacity: 0.9,
+            color: 'white',
+            fillOpacity: 0.7};
+        }
+    
+    URL = "https://kendyl66.github.io/LA458-558/ex8/map.geojson";
+
+     
+    var geojsonLayer = new L.GeoJSON.AJAX(URL, {
+        style: style,
+        pointToLayer: function (feature, latlng) {
+            return new L.CircleMarker (latlng, 
+                { stroke: true,
+                weight: 0.8,
+                opacity: 1,
+                fillColor: 'red',
+                fillOpacity:0.5,
+                 radius : feature.properties.number + 4,
+                });
+        }, 
+        onEachFeature: function (feature, layer) {
+            htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.rank + "</b> <br> Acceptance Rating" + feature.propreties.acceptancerate; 
+        layer.bindPopup (htmlText);
+                layer.bindTooltip(feature.proeprties.description);
+        }
+    }).addTo(map);
+     
+
+    }
+     
+var legend = L.control({ 
+position: 'bottomleft'});
+     
+     legend.onAdd = function(map) {
+         var div = L.DomUntil.create('div', 'info legend'), 
+             breaks = [3,2,1], 
+             labels = ['Very Low Acceptance Rate', 'Low Acceptance Rate', 'Higher Acceptance Rate'];;
+         
+        for (var i = 0 i <number.length; i++){ 
+        div.innerHTML += <i style= "background: + getColor(number [1]) + ' "> </i> ' + number[i] + ' ' + 
+            labels [i] + '<br>';
+            
+        }
+         return div;
+     };
+     legend.addTo(map);
+</script>
+    
+    </body>
 </html>
