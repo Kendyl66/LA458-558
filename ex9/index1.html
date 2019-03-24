@@ -5,63 +5,164 @@
   <meta name="viewport" content="width=device-width">
   <title>Highchart Map</title>
     
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script src="https://code.highcharts.com/maps/modules/data.js"></script>
 <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/maps/modules/offline-exporting.js"></script>
-<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+<script src="https://code.highcharts.com/maps/modules/pattern-fill.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
 
-<div id="container" style="height: 500px; min-width: 310px; max-width: 800px; margin: 0 auto"></div>
+<div id="container"></div>
+
+    <style>
+    #container {
+    height: 800px;
+    min-width: 500px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+</style>
 
 </head>
 <body>
 <script>
 
-$.getJSON('https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/world-population.json', function (data) {
+// We use a darker border for some states
+var darkBorderColor = '#252525';
 
-    Highcharts.mapChart('container', {
-        chart: {
-            borderWidth: 1,
-            map: 'custom/world'
-        },
 
-        title: {
-            text: 'World Female Population Precentage 2017 by Country'
-        },
+// Define the data, linking flags to each point's color.pattern.image. We
+// specify a smaller border width for the smaller states. For some states we
+// also specify an explicit x/y offset for the images, where the default is
+// not satisfactory. Aspect ratio is provided in series definition, and the
+// width height for each image is calculated automatically based on that and the
+// bounding box of each state.
+var data = [
+    ['Alabama', 'https://cdn.shopify.com/s/files/1/0101/2792/files/Crayon_s_Children_s_Ministry_Curriculum_large.png?6279406349771310294', 1, null, null, darkBorderColor],
+    ['Alaska', 'https://i5.walmartimages.com/asr/229a4399-61ea-4a9f-ac7b-de99ce41653f_1.713b23e68c8920f74eb23a4a06e83fb1.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, 10, -10, darkBorderColor],
+    ['Arizona', 'https://cdn.shopify.com/s/files/1/2534/8132/products/lol_surprise_doll_strips_1200x1200.PNG?v=1541344744', 1, 10, -10, darkBorderColor],
+    ['Arkansas', 'http://tes77.com/wp-content/uploads/2017/10/dark-chocolate-bar-squares.jpg'],
+    ['California', 'https://www.brainmdhealth.com/blog/wp-content/uploads/cinnamonrollsmoothie.jpg', 1, 10, 10, darkBorderColor],
+    ['Colorado', 'https://images-na.ssl-images-amazon.com/images/I/71uBOlRzGgL._SY355_.jpg', 1, null, null, darkBorderColor],
+    ['Connecticut', 'https://1.bp.blogspot.com/-7eqjV_BrTnE/WarBmrhuQiI/AAAAAAAAGIg/LUf6Zb7tkagSwxJa7_VIVlFyM1i5gtREQCKgBGAs/s640/ghost%2Bin%2Bte%2Bshell.jpg', 1, null, null, darkBorderColor],
+    ['Delaware', 'https://i5.walmartimages.com/asr/ccd9b7e4-510c-4a68-9ef7-9435021200c7_2.7a680d2a26eca05ecdbe32c3fdf79ad3.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Florida', 'https://images-na.ssl-images-amazon.com/images/I/31ysez5xFGL.jpg', 1, 22, null, darkBorderColor],
+    ['Georgia', 'https://assets.pcmag.com/media/images/377305-fisher-price-laugh-and-learn-smart-stages-chair.jpg?width=1299&height=1500', 1, null, null, darkBorderColor],
+    ['Hawaii', 'https://i.ytimg.com/vi/h57z2SLSiW4/maxresdefault.jpg', 1, 1, 1, darkBorderColor],
+    ['Idaho', 'https://i.ebayimg.com/images/g/TzMAAOSw-3FZE~eZ/s-l1600.jpg', 1, 1, 1, darkBorderColor],
+    ['Illinois', 'https://farm4.staticflickr.com/3315/3523134995_5d02695a10.jpg', 1, darkBorderColor],
+    ['Indiana', 'https://images-na.ssl-images-amazon.com/images/I/81tVWrjQ6PL._SL1500_.jpg', 1, null, null, darkBorderColor],
+    ['Iowa', 'https://i5.walmartimages.com/asr/c0d92342-e707-427f-a9b7-e5c66953d261_2.5f90744a495157246fa7181d46738c29.png?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Kansas', 'https://www.picclickimg.com/d/l400/pict/142532877390_/Ozark-Trail-30Oz-Tumblers-Various-Colors-Styles.jpg', 1, null, null, darkBorderColor],
+    ['Kentucky', 'https://www.walmartphotocentre.ca/assets/shared/cms/product_images/lg/ed09a4f6-f1a1-4468-9de5-26321ec74869_lg_1545922213.jpg', 1, null, null, darkBorderColor],
+    ['Louisiana', 'https://images-na.ssl-images-amazon.com/images/I/818Ct7nXNAL._SL1500_.jpg', 1, null, null, darkBorderColor],
+    ['Maine', 'https://duncanhines.com/wp-content/uploads/2018/01/00644209311323_CL___GS1_JPEG-800x800.jpg', 1, null, null, darkBorderColor],
+    ['Maryland', 'https://www.joann.com/on/demandware.static/-/Sites-joann-product-catalog/default/dwc24ea318/images/hi-res/16/16651945.jpg', 1, null, null, darkBorderColor],
+    ['Massachusetts', 'https://images.homedepot-static.com/productImages/01a87c8a-5e89-430d-8e55-217f1d1f097d/svn/fingerprint-resistant-stainless-steel-whirlpool-french-door-refrigerators-wrx735sdhz-64_1000.jpg', 1, null, null, darkBorderColor],
+    ['Michigan', 'https://i5.walmartimages.com/asr/4a0307c8-d991-4ac0-8238-b3fff564b40b_1.8a625e3b345a3e6e65dd75c978338694.jpeg', 1, null, null, darkBorderColor],
+    ['Minnesota', 'https://i.kinja-img.com/gawker-media/image/upload/s--V0O9o11A--/c_scale,f_auto,fl_progressive,q_80,w_800/nrbxs1re9j64expbuipt.jpg', 1, null, null, darkBorderColor],
+    ['Mississippi', 'https://i5.walmartimages.com/asr/91f60535-bc6e-4b8f-aade-0a1711f8eb52_1.b62fde159fea026a9f5c585f53d3d911.jpeg', 1, null, null, darkBorderColor],
+    ['Missouri', 'https://www.candywarehouse.com/assets/item/regular/Life-Savers-5flavors-ic-127364.jpg', 1, null, null, darkBorderColor],
+    ['Montana', 'https://images-na.ssl-images-amazon.com/images/I/918cTUjYmDL.jpg', 1, null, null, darkBorderColor],
+    ['Nebraska', 'https://ae01.alicdn.com/kf/HTB1sHCyNXXXXXa9XFXXq6xXFXXXQ/3Color-Sugar-Box-New-Fabulous-Pressed-Face-Make-up-Powder-Makeup-Powder-Palette-Skin-Finish.jpg', 1, null, null, darkBorderColor],
+    ['Nevada', 'https://images-na.ssl-images-amazon.com/images/I/515clSeS4LL.jpg', 1, null, null, darkBorderColor],
+    ['New Hampshire', 'https://i5.walmartimages.com/asr/8d1bf7e7-6051-4650-a751-e2db15888954_1.3fae1e8cf848ebc2f2cb3f5e301f8bb8.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['New Jersey', 'https://i5.walmartimages.com/asr/bf6e1be5-4fdc-421a-a95d-ed4cce88f552_2.1b19959678dc58b81c3233aab31f02c6.png', 1, null, null, darkBorderColor],
+    ['New Mexico', 'https://www.momsandmunchkins.ca/wp-content/uploads/2013/08/best-dry-cat-food-for-mature-cats-1.jpg', 1, null, null, darkBorderColor],
+    ['New York', 'https://www.lifemadedelicious.ca/-/media/images/productlanding/brand-family-thumbnails/cheerios.jpg?w=800', 1, null, null, darkBorderColor],
+    ['North Carolina', 'https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2017/04/19010139/fc80ts076-02-thumb1x1.jpg', 1, null, null, darkBorderColor],
+    ['North Dakota', 'https://i.pinimg.com/originals/fb/6b/b7/fb6bb7fdaa3746488846c01c517438ac.jpg'],
+    ['Ohio', 'https://i5.walmartimages.com/asr/2fbf654f-3092-4aec-9954-377f67727d2a_2.6121baf9d3aea65ce21ea4e348727fe2.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Oklahoma', 'https://i5.walmartimages.com/asr/bb04a53e-b18d-42e6-86bb-1ee3fb1b978c_1.1d6baeed13314e714b604fd3dd9469dc.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Oregon', 'https://icdn3.digitaltrends.com/image/humidifiers-header.jpg?ver=1'],
+    ['Pennsylvania', 'https://images-na.ssl-images-amazon.com/images/I/81MbG92pHbL._SX425_.jpg', 1, null, null, darkBorderColor],
+    ['Rhode Island', 'https://www.wheretotakeourchildren.co.uk/sites/default/files/christmas%20lights.jpg', 1, null, null, darkBorderColor],
+    ['South Carolina', 'https://i5.walmartimages.com/asr/0b0620cc-192d-437e-927b-8f3cd5fc1614_1.2333b8a741b811d158dd94a9cfbe7a58.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['South Dakota', 'https://www.acs.org/content/acs/en/pressroom/presspacs/2015/acs-presspac-january-21-2015/oranges-versus-orange-juice-which-one-might-be-better-for-your-health/_jcr_content/pressPacContent/columnsbootstrap/column1/image.img.jpg/1421826829406.jpg', 1, null, null, darkBorderColor],
+    ['Tennessee', 'https://images-na.ssl-images-amazon.com/images/I/91Tgx1hmzeL.jpg', 1, null, null, darkBorderColor],
+    ['Texas', 'https://images.homedepot-static.com/productImages/99a577aa-aed7-4df0-b412-eb164502768b/svn/commercial-electric-tv-wall-mounts-xd2470-64_1000.jpg', 1, null, null, darkBorderColor],
+    ['Utah', 'https://i5.walmartimages.com/asr/447141c9-e351-4c6a-97b0-f94aedd2088e_1.b0e1e62e47cced66a7f6ab7b28ccde9c.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Vermont', 'https://www.delmonte.com/sites/default/files/goldensweetwholekernelcorn.png', 1, null, null, darkBorderColor],
+    ['Virginia', 'https://i5.walmartimages.com/asr/c10cd7c2-ba4e-4925-8350-ef49447d9517_1.84d21668fd4631b7b2ef54ed28b0bcd2.jpeg?odnHeight=560&odnWidth=560&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Washington', 'https://www.theflavorbender.com/wp-content/uploads/2018/03/Vanilla-Buttercream-Frosting-The-Flavor-Bender-Featured-Image-SQ-6.jpg', 1, null, null, darkBorderColor],
+    ['West Virginia', 'https://i.ebayimg.com/images/g/j-IAAOSwLEtYmqWl/s-l640.jpg', 1, null, null, darkBorderColor],
+    ['Wisconsin', 'https://i5.walmartimages.com/asr/3188292e-a8bf-4ef9-9cf8-a5f5b0653809_2.6e4a196f7ab48837d689b9760f5b23d2.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF', 1, null, null, darkBorderColor],
+    ['Wyoming','https://i.etsystatic.com/6087155/r/il/ef8d7a/840988070/il_794xN.840988070_mcar.jpg', 1, null, null, darkBorderColor]
+];
 
-        subtitle: {
-            text: 'Demo of Highcharts map with bubbles'
-        },
+// Create the chart
+Highcharts.mapChart('container', {
+    chart: {
+        map: 'countries/us/us-all'
+    },
 
-        legend: {
-            enabled: false
-        },
+    title: {
+        text: ' 2017: Top-Selling Walmart Products in Every State'
+    },
 
-        mapNavigation: {
-            enabled: true,
-            buttonOptions: {
-                verticalAlign: 'bottom'
+    subtitle: {
+        text: 'Source: <a href="https://www.cnbc.com/2018/01/09/walmarts-top-selling-items-in-every-us-state.html">CNBC</a>'
+    },
+
+    // Add zoom/pan
+    mapNavigation: {
+        enabled: true,
+        enableDoubleClickZoomTo: true,
+        buttonOptions: {
+            verticalAlign: 'bottom'
+        }
+    },
+
+    // Limit zoom
+    xAxis: {
+        minRange: 3350
+    },
+
+    // We do not want a legend
+    legend: {
+        enabled: false
+    },
+
+    // Make tooltip show full image
+    tooltip: {
+        useHTML: true,
+        borderColor: '#252525',
+        headerFormat: '<b>{point.point.name}</b><br>',
+        pointFormat: '<img style="width: 180px; height: 150px;" src=\'{point.options.color.pattern.image}\'>'
+    },
+
+    // Define the series
+    series: [{
+        name: 'State flags',
+        keys: [
+            'name', 'color.pattern.image', 'borderWidth', 'color.pattern.x', 'color.pattern.y', 'borderColor'
+        ],
+        joinBy: 'name',
+        data: data,
+        borderColor: '#252525',
+        color: {
+            pattern: {
+                // This is inherited by the individual pattern definitions for
+                // each point. As long as a width/height for the pattern is not
+                // defined, Highcharts will automatically fill the bounding box
+                // while preserving the aspect ratio defined here. Without an
+                // aspect ratio defined, Highcharts will simply fill the
+                // bounding box with the image, stretching it to fit.
+                aspectRatio: 3 / 2
             }
         },
-
-        series: [{
-            name: 'Countries',
-            color: '#E0E0E0',
-            enableMouseTracking: false
-        }, {
-            type: 'mapbubble',
-            name: 'Population 2016',
-            joinBy: ['iso-a3', 'code3'],
-            data: data,
-            minSize: 4,
-            maxSize: '12%',
-            tooltip: {
-                pointFormat: '{point.properties.hc-a2}: {point.z} thousands'
+        states: {
+            hover: {
+                borderColor: '#cb181d',
+                borderWidth: 5,
             }
-        }]
-    });
+        }
+    }, {
+        /* Separator lines */
+        type: 'mapline',
+        nullColor: '#aaa'
+    }]
 });
+
 
 </script>
 </body>
