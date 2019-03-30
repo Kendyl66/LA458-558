@@ -12,18 +12,18 @@
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script>
        <script
-        src= "https://kendyl66.github.io/LA458-558/ex8/universities.js"></script>     
+        src= "https://kendyl66.github.io/LA458-558/ex8/map.geojson"></script>     
      <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
         <style>
         
-        h1 { font-family: monospace;
-            font: Verdana;
+        h1 { font-family: inherit;
+            font: Arial ;
             text-align: left;
             color: crimson;
         }
         h2, body {
-            font: Verdana;
-            font-family: monospace;
+            font: Arial;
+            font-family: sans-serif;
             background-color: lightgray;
             margin: 0;
         }
@@ -43,22 +43,37 @@
     
     <div id="map"> </div>
  <script> 
-    var map = L.map('map').setView([40, -95], 4);
-     //OpenStreetMap added
-   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 18
-    }).addTo(map);
      
-   function addPopup (feture, layer) {
-       layer.bindPopup ("University: " + feature.properties.description + "<br> Ranking: " + feature.properties.Ranking + "<br> Acceptance Rate: " + feature.properties.acceptancerate);
-   }
+     //basemaps added
+     var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+     var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});
      
-L.geoJson(universities).addTo(map);
+    var map = L.map('map', { 
+    center: [40, -95],
+    zoom: 4,
+    layers: [osm]
+    });
+     
+var baseMaps = { "streets": osm,
+                "aerial": esriWorldImagery};
+     
+     
+  L.control.layers(baseMaps).addTo(map);
+
+     
+//my data
+
+var myURL = "https://kendyl66.github.io/LA458-558/ex8/map.geojson"
+    
      
      
      function style (feature) {
          return {
+             stroke: true,
              fillColor: getColor(feature.properties.number),
              weight: 1,
              opacity: 0.5,
@@ -66,9 +81,30 @@ L.geoJson(universities).addTo(map);
          };
      }
      
-   
-    function getColor(d) {uni
-        return  d == 3 ? '#ff0000': //red
+ 
+    var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
+        style: style,
+        pointToLayer: function (feature, latlng) {
+            return new L.CircleMarker (latlng, 
+                { stroke: true,
+                weight: 0.8,
+                opacity: 1,
+                fillColor: 'red',
+                fillOpacity:0.5,
+                 radius : feature.properties.number + 3,
+                });
+        }, 
+        onEachFeature: function (feature, layer) {
+            htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.rank + "</b> <br> Acceptance Rating" + feature.propreties.acceptancerate; 
+        layer.bindPopup (htmlText);
+                layer.bindTooltip(feature.proeprties.description);
+        }
+    }).addTo(map);
+    
+    var breaks = [3,2,1];
+    var labels = ['Very Low Acceptance Rate', 'Low Acceptance Rate', 'Higher Acceptance Rate'];
+    function getColor(d) {
+         return  d == 3 ? '#ff0000': //red
                 d == 2 ? '#feec12': //yellow
                 d == 1 ? '#00d700': // green
                 '#ff0000'; //white   
@@ -78,50 +114,26 @@ L.geoJson(universities).addTo(map);
             weight: 1,
             opacity: 0.9,
             color: 'white',
-            fillOpacity: 0.7};
-        }
-    
-    URL = "https://kendyl66.github.io/LA458-558/ex8/universities.js";
-
-     
-    var geojsonLayer = new L.GeoJSON.AJAX(URL, {
-        style: style,
-        pointToLayer: function (feature, latlng) {
-            return new L.CircleMarker (latlng, 
-                { stroke: true,
-                weight: 0.8,
-                opacity: 1,
-                fillColor: 'red',
-                fillOpacity:0.5,
-                 radius : feature.properties.number + 4,
-                });
-        }, 
-        onEachFeature: function (feature, layer) {
-            htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.rank + "</b> <br> Acceptance Rating" + feature.propreties.acceptancerate; 
-        layer.bindPopup (htmlText);
-                layer.bindTooltip(feature.proeprties.description);
-        }
-    }).addTo(map);
-     
+            fillOpacity: 0.7};}
 
     }
+ //Cretaing the legend
      
-//var legend = L.control({ 
-//position: 'bottomleft'});
+var legend = L.control({ 
+    position: 'bottomleft'});
      
-     //legend.onAdd = function(map) {
-        // var div = L.DomUntil.create('div', 'info legend'), 
-           //  breaks = [3,2,1], 
-         //    labels = ['Very Low Acceptance Rate', 'Low Acceptance Rate', 'Higher Acceptance Rate'];;
+legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'); 
+           
+        div.innerHTML += "<b> Acceptance Rates</b> <br>"
          
-    //    for (var i = 0 i <number.length; i++){ 
-    //    div.innerHTML += <i style= "background: + getColor(number [1]) + ' "> </i> ' + number[i] + ' ' + 
-    //        labels [i] + '<br>';
-            
-   //     }
- //        return div;
- //    };
- //    legend.addTo(map);
+    for (var i = 0; i <breaks.length; i++){ 
+    div.innerHTML +=
+        '<i style="background:' + getColor(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
+        }
+    return div;
+     };
+     legend.addTo(map);
 </script>
     
     </body>
