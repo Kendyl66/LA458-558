@@ -2,11 +2,24 @@
 <html>
 <head>
      <meta charset="utf-8"/>
-    <meta name="exercises" content="Exercise 8: GEOJson"/>
+    <meta name="Assignment" content="coming all together"/>
         <script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<div id="container" style="max-width: 400; min-width: 200px; height: 450px; align-content: center; margin-left: 20px; margin-right: 20px"></div>
+
     <title> Vienna, Austria</title>
 <style>
     body {background-color: black}
+    h1, h2 {
+        font-family: sans-serif;
+        color: white;
+        text-align: center;
+        
+        
+    }
     p {text-align: center;
         font-family: sans-serif;
         color: white}
@@ -28,43 +41,110 @@
 
     </style>
 </head>
+    
+<h1> Vienna: The City of Music </h1>
+     <body data-gr-c-s-loaded="true">
+        <img name="slide" id="slide" width="900" height="600" src=" ">
+   
+       <script>
+           var i =0; 
+           var images = [];
+           var time = 2000;
+           
+           images [0] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8227.jpg";
+           images [1] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8316.jpg";
+           images [2] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9081.jpg";
+           images [3] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9669.jpg";
+           
+           //function 
+           function changeImg() {
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+        </script> 
+    </body>
     <body>
-        
-        
-    <!--video with interactive buttons-->
-        <div style="text-align:center"> 
-<video id="video1" width="1000"  controls>
-    <source src="Vienna.mp4" type="video/mp4">
-    <source src="Vienna.ogg" type="video/ogg">
-    Your browser does not support HTML5 video.
-</video> <br>
-  <button onclick="playPause()">Play/Pause</button> 
-  <button onclick="makeSmall()">Small</button>
-  <button onclick="makeNormal()">Normal</button>
-  <br><br>
+        <script style="align-content:center"> Highcharts.chart('container', {
+    chart: {
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Average Monthly Temperature and Rainfall in Vienna'
+    },
+    subtitle: {
+        text: 'Source: holiday-weather.com'
+    },
+    xAxis: [{
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value}°F',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        title: {
+            text: 'Temperature',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+    }, { // Secondary yAxis
+        title: {
+            text: 'Rainfall',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        labels: {
+            format: '{value} mm',
+            style: {
+                color: Highcharts.getOptions().colors[0]
+            }
+        },
+        opposite: true
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 120,
+        verticalAlign: 'top',
+        y: 100,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || 'rgba(255,255,255,0.25)'
+    },
+    series: [{
+        name: 'Rainfall',
+        type: 'column',
+        yAxis: 1,
+        data: [38,42,41,51,61,74,63,58,45,41,50,43],
+        tooltip: {
+            valueSuffix: ' mm'
+        }
 
-</div> 
-    
-    <script> //video control buttons 
-        var myVideo = document.getElementById("video1"); 
+    }, {
+        name: 'Temperature',
+        type: 'spline',
+        data: [36,39,48,57,68,73,75,75,66,57,45,36],
+        tooltip: {
+            valueSuffix: '°F'
+        }
+    }]
+});</script>
 
-        function playPause() { 
-            if (myVideo.paused) 
-                myVideo.play(); 
-            else 
-                myVideo.pause(); 
-        } 
-
-        function makeSmall() { 
-            myVideo.width = 420; 
-        } 
-
-        function makeNormal() { 
-            myVideo.width = 1000; 
-    
-        } 
-    </script> 
-<p style="text-align: center;margin: auto">
-    <b> Video: Kendyl Landeck</b> </p>
     </body>
 </html>
