@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <title> Universities and Parks of Vienna
@@ -23,16 +23,22 @@
 	
 </head>
 <body>
-<div id="map"></div>
-    <script>
-    var map = L.map('map').setView([48.2, 16.366667], 12);
-
+        <div id="map"> </div>
+ <script> 
+     
      //basemaps added
      var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 18
-}).addTo(map);
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}); 
 
+var map = L.map('map', { 
+    center: [48.2, 16.366667],
+    zoom: 11,
+    layers: [osm]
+    });
+     
+var baseMaps = { "streets": osm}
+L.control.layers(baseMaps,overlayMaps).addTo(map);
 
 var marker1 = L.marker([48.204722, 16.380556], {
 		icon: L.AwesomeMarkers.icon({
@@ -88,7 +94,8 @@ var marker6 = L.marker([48.241389, 16.3025], {
 			iconColor: 'white',
 			spin: false
 		}) 
-});        
+});  
+     //marker for Votiv Park 
 var marker7 = L.marker([48.2157, 16.3583], {
          icon: L.AwesomeMarkers.icon({
 			icon: 'leaf', 
@@ -98,13 +105,34 @@ var marker7 = L.marker([48.2157, 16.3583], {
 			spin: false
 		}) 
 });        
-      // Creates a red square marker with the coffee icon
-  var squareRedMarker = L.AwesomeMarkers.icon({
+      // purple square marker with the school icon to view the universities
+var squareRedMarker = L.AwesomeMarkers.icon({
     icon: 'school',
     markerColor: 'darkpurple'
     className: 'awesome-marker awesome-marker-square'
   });
-        var marker7 = L.marker([48.198889, 16.37], {
+     //University of Vienna
+     var marker8 = L.marker([48.213056, 16.359722], {
+		icon: squareRedMarker
+});  
+         //TU Wien
+     var marker8 = L.marker([48.198889, 16.37], {
+		icon: squareRedMarker
+});
+     //Vienna University of Economics and Business
+     var marker8 = L.marker([48.214167, 16.408056], {
+		icon: squareRedMarker
+});
+     //Medical University of Vienna
+     var marker8 = L.marker([8.22, 16.351389], {
+		icon: squareRedMarker
+});
+     //University of Natural Resources and Life Sciences, Vienna
+     var marker8 = L.marker([48.236667, 16.337222], {
+		icon: squareRedMarker
+});
+     //Academy of Fine Arts Vienna
+     var marker8 = L.marker([48.201389, 16.365278], {
 		icon: squareRedMarker
 });
     </script>
