@@ -317,7 +317,7 @@ var overlayMaps = {"Outline": Stamen_TonerHybrid,"Railway": OpenRailwayMap};
         pointToLayer: function (feature, latlng) {
             return new L.circleMarker (latlng, 
                 { stroke: true,
-                fillOpacity:1,
+                fillOpacity:0.75,
                  radius : feature.properties.Ranking + 14,
                 });
         }, 
