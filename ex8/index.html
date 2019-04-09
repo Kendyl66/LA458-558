@@ -112,7 +112,7 @@ var myURL = "https://kendyl66.github.io/LA458-558/ex8/map.geojson";
                 });
         }, 
         onEachFeature: function (feature, layer) {
-            htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.Ranking + "</b> <br> Acceptance Rating:" + feature.properties.acceptancerate; 
+            htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.ranking + "</b> <br> Acceptance Rating:" + feature.properties.acceptancerate; 
         layer.bindPopup (htmlText);
                 layer.bindTooltip(feature.properties.description);
         }
