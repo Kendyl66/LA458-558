@@ -2,19 +2,111 @@
 <html lang="en">
 
 <head>
-
-<meta name="description" content="LA 458/558 19d Leaflet awesome markers plugin intro">
+<title> Universities and Parks of Vienna
+    </title>
+<meta name="description" content="plugin for markers with Leaflet">
     <meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
+<!--Loaded in external JS-->	    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/> 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+
+<!--Added Marker External CSS Plugin from ionic framework and leaflet awesome markers-->
+    <link rel="stylesheet" href="https://profseeger.github.io/LA558/classes/Leaflet.awesome-markers/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+    <script src="js/leaflet.awesome-markers.js"></script>
 	
-	<!--Added Marker External CSS-->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
-	
-	<!--Loaded in external JS-->	
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-    <script src=""> </script>
 </head>
 <body>
 <div id="map"></div>
+    <script>
+    var map = L.map('map').setView([48.2, 16.366667], 12);
+
+     //basemaps added
+     var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+    maxZoom: 18
+}).addTo(map);
+
+
+var marker1 = L.marker([48.204722, 16.380556], {
+		icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});
+
+var marker2 = L.marker([48.184722, 16.302778], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});
+var marker3 = L.marker([48.208056, 16.361111], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});       
+var marker4 = L.marker([48.234, 16.415], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});    
+var marker5 = L.marker([48.216111, 16.395556], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});   
+var marker6 = L.marker([48.241389, 16.3025], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});        
+var marker7 = L.marker([48.2157, 16.3583], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});        
+      // Creates a red square marker with the coffee icon
+  var squareRedMarker = L.AwesomeMarkers.icon({
+    icon: 'school',
+    markerColor: 'darkpurple'
+    className: 'awesome-marker awesome-marker-square'
+  });
+        var marker7 = L.marker([48.198889, 16.37], {
+		icon: squareRedMarker
+});
+    </script>
 </body>
 </html>
