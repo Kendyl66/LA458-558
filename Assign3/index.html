@@ -4,6 +4,16 @@
      <meta charset="utf-8"/>
     <meta name="Assignment" content="coming all together"/>
         <script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/> 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+        <!--ajax plugin import and geojson file -->
+       <script
+        src= "https://kendyl66.github.io/LA458-558/ex8/map.geojson"></script>     
+     <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
 
 
     <title> Vienna, Austria</title>
@@ -56,6 +66,20 @@
         align-content: justify;
         margin: 30px 30px 20px 20px
     }
+    * {
+  box-sizing: border-box;
+}
+   .img-container {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+.clearfix1::after {
+  content: "";
+  clear: both;
+  display: table;
+}
     
     .text {
         margin: 30px 30px 40px 40px;
@@ -102,14 +126,21 @@
          </h2>
          <div class="clearfix">
          <img id="quality" src="Quality%20of%20life.png" width="300" height="300">
-             <p class="text" style="text-align: inherit"> For the 9th year in a row, Vienna has been named the Best City to Live In by the annual Mercer Quality of Life survey. It is said that “Vienna is the cultural, political and economic centre of Austria, and scores highly in a number of categories. Among others, the city provides a safe and stable environment for expatriates to live in; it has an extensive offering of international consumer goods, a high level of public utilities and transportation facilities, and good recreational facilities.” (<a href="https://www.independent.co.uk/travel/news-and-advice/vienna-best-place-live-quality-life-mercer-survey-sarajevo-a8262976.html">Independent</a>) </p>
+             <p class="text" style="text-align: inherit"> <br>  For the 9th year in a row, Vienna has been named the Best City to Live In by the annual Mercer Quality of Life survey. It is said that “Vienna is the cultural, political and economic centre of Austria, and scores highly in a number of categories. Among others, the city provides a safe and stable environment for expatriates to live in; it has an extensive offering of international consumer goods, a high level of public utilities and transportation facilities, and good recreational facilities.” (<a href="https://www.independent.co.uk/travel/news-and-advice/vienna-best-place-live-quality-life-mercer-survey-sarajevo-a8262976.html">Independent</a>) </p>
               </div>
+         <p> This past spring break I traveled with a group of planning students to Vienna where we studied how Vienna has become one of the most livable cities in the world because of their smart growth measures. The smart city concepts include, consuming less resources and protecting the climate, improving quality of living through innovations, and social inclusion as a guarantee for all people in the city. This is what Vienna is striving to be by 2050, and they are well on their way. </p>
          <div class="clearfix1">
-             <img id="smart" src="smart%20city.jpg" width="300" height="300">
-             <img id="smart2" src="bikes.jpg" width="300" height="300">
-        <p> </p>
-         </div>
-     
+    <div class="img-container">
+        <img src="bikes.jpg" alt="Bike Share" style="width:100%">
+             </div>
+    <div class="img-container">
+        <img src="smart%20city.jpg" alt="Smart City Framework" style="width:100%">
+             </div>
+    <div class="img-container">
+        <img src="IMG_8263.jpg" alt="Sustainability and Recycling" style="width:100%">
+             </div>
+         </div> 
+         <p> Vienna was a good contender for the smart city program because it had an excellent starting point, especially in the following areas: social housing, public transport, business, water, waste management, and green spaces. </p>
     </body>
     <body>
   
@@ -198,6 +229,89 @@
     }]
 });</script>
 
+    </body>
+    <body>
+        <p>While our class was in Vienna to learn about planning, the best parts were definitely spending time walking around the city, riding the public transportation, talking to locals and taking in the incredible, old buildings. </p>
+    
+    <div id="map"> </div>
+ <script> 
+     
+     //basemaps added
+     var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+     
+    var map = L.map('map', { 
+    center: [40, -95],
+    zoom: 4,
+    layers: [osm]
+    });
+     
+var baseMaps = { "streets": osm,
+                "aerial": esriWorldImagery};
+     
+     
+  L.control.layers(baseMaps).addTo(map);
+
+     
+//my data
+    var myURL = "https://kendyl66.github.io/LA458-558/Assign3/sites.geojson";
+     function style (feature) {
+         return {
+             stroke: false,
+             fillColor: getColor(feature.properties.number),
+             weight: 1,
+             opacity: 0.5,
+             
+         };
+     }
+     
+ 
+    var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
+        style: style,
+        pointToLayer: function (feature, latlng) {
+            return new L.circleMarker (latlng, 
+                { stroke: true,
+                fillOpacity:0.8,
+                 radius : feature.properties.ranking + 12,
+                });
+        }, 
+        onEachFeature: function (feature, layer) {
+            htmlText = "Site:" + "<strong>" + feature.properties.Place + "</strong> <br> Top Sites Ranking:<b>" + feature.properties.Ranking; 
+        layer.bindPopup (htmlText);
+                layer.bindTooltip(feature.properties.Place);
+        }
+    }).addTo(map);
+    
+    var breaks = [4,3,2,1];
+    var labels = ['YOU MUST GO', 'You Need to Go', 'You Should Go', 'You Might Go'];
+    function getColor(d) {
+         return d == 4 ? '#fee08b': // yellowish
+                d == 3 ? '#d53e4f': //redish
+                d == 2 ? '#abdda4': //greenish
+                d == 1 ? '#3288bd': // blue
+                '#ff0000'; //white   
+        
+    }
+ //Cretaing the legend
+     
+var legend = L.control({ 
+    position: 'bottomleft'});
+     
+legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'); 
+           
+        div.innerHTML += "<b> Top Sites Ranking</b> <br>"
+         
+    for (var i = 0; i <breaks.length; i++){ 
+    div.innerHTML +=
+        '<i style="background:' + getColor(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
+        }
+    return div;
+     };
+     legend.addTo(map);
+
+        </script>
     </body>
     <body>
         <p> If you want to learn about Vienna's Roman city and ruins, <a href="index1.html"> follow this link!</a> </p>
