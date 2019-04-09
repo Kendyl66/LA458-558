@@ -1,7 +1,70 @@
 <!Doctype html>
 <html>
 <head>
+     <meta charset="utf-8"/>
+    <meta name="exercises" content="Exercise 8: GEOJson"/>
+        <script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
+    <title> Vienna, Austria</title>
+<style>
+    body {background-color: black}
+    p {text-align: center;
+        font-family: sans-serif;
+        color: white}
     
+    button {
+        display: inline-block;
+        font-size: 12px;
+        background: black; /* light grey color*/
+        font-family: sans-serif;
+        color: white;
+        text-align: center;
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 8px;
+        transition: all 0.5s;
+        margin: 5px;
+        float: center;
+    }
 
+    </style>
 </head>
+    <body>
+        
+        
+    <!--video with interactive buttons-->
+        <div style="text-align:center"> 
+<video id="video1" width="1000"  controls>
+    <source src="Vienna.mp4" type="video/mp4">
+    <source src="Vienna.ogg" type="video/ogg">
+    Your browser does not support HTML5 video.
+</video> <br>
+  <button onclick="playPause()">Play/Pause</button> 
+  <button onclick="makeSmall()">Small</button>
+  <button onclick="makeNormal()">Normal</button>
+  <br><br>
+
+</div> 
+    
+    <script> //video control buttons 
+        var myVideo = document.getElementById("video1"); 
+
+        function playPause() { 
+            if (myVideo.paused) 
+                myVideo.play(); 
+            else 
+                myVideo.pause(); 
+        } 
+
+        function makeSmall() { 
+            myVideo.width = 420; 
+        } 
+
+        function makeNormal() { 
+            myVideo.width = 1000; 
+    
+        } 
+    </script> 
+<p style="text-align: center;margin: auto">
+    <b> Video: Kendyl Landeck</b> </p>
+    </body>
 </html>
