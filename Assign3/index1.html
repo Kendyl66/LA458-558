@@ -9,9 +9,7 @@
         <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
    crossorigin=""></script> 
-    <!--ajax plugin import and geojson file -->
-       <script
-        src= "https://kendyl66.github.io/LA458-558/Assign3/Ancient.geojson"></script>   
+    <!--ajax plugin import and geojson file -->  
      <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script> 
   <title> Ancient Vienna</title>  
@@ -20,6 +18,12 @@
 <body>
     <div id="map"> </div>
     <script>
+        
+    var map; 
+        
+         //load in my geojson file
+    var myURL = "https://kendyl66.github.io/LA458-558/Assign3/Ancient.geojson";
+        
         //basemaps added
     var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -49,14 +53,10 @@
     var map = L.map('map', { 
         center: new L.LatLng(48.2, 16.366667),
         zoom: 4,
-        layers: [osm, BasemapAT_orthofoto, esriWorldImagery]    
+        layers: [osm, BasemapAT_orthofoto]    
     });
      
-    var baseMaps = { "streets": osm,
-                "aerial": esriWorldImagery,
-                   "austria": BasemapAT_orthofoto};
-     
-        //Layer Control
+        //Layer Controls
     var baseMaps = {
         "Street Map": osm,
         "Satellite Images": esriWorldImagery,
@@ -70,9 +70,7 @@
     }; 
   L.control.layers(baseMaps).addTo(map);
         
-        //my data
-
-var myURL = "https://kendyl66.github.io/LA458-558/Assign3/Ancient.geojson";
+   //I AM CONFUSED HERE    
      function style (feature) {
          return {
              stroke: false,
@@ -86,7 +84,7 @@ var myURL = "https://kendyl66.github.io/LA458-558/Assign3/Ancient.geojson";
         style: style,
         pointToLayer: function (feature, latlng) {
             return new L.circleMarker (latlng, 
-                { stroke: true,
+             { stroke: true,
                 fillOpacity:0.8,
                  radius : feature.properties.number + 10,
                 });
