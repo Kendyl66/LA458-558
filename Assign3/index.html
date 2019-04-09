@@ -15,8 +15,8 @@
 
 
     <title> Vienna, Austria</title>
-<style> 
-
+<style>//*Assign3: designed page(s) using proper CSS to organize page*//
+    
     body {background-color: black}
     h1 {
         font-family: sans-serif;
@@ -47,17 +47,18 @@
         a:hover{ color: cadetblue}
 
     #quality { float: left;
-    display: block;
-    margin: auto;
-    padding: 15px 20px}
+        display: block;
+        margin: auto;
+        padding: 15px 20px}
     
     #smart { float: right;
-    display: block;
-    margin: auto;
-    padding: 15px 20px;}
+        display: block;
+        margin: auto;
+        padding: 15px 20px;}
     
       
-    #container { margin: auto;
+    #container { margin: 0 auto;
+        display: block;
     }
     
     .clearfix {
@@ -69,38 +70,50 @@
   box-sizing: border-box;
 }
    .img-container {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
+        float: left;
+       width: 33.33%;
+       padding: 5px;
 }
-
+    .img-container2{
+        margin: 0 auto;
+        float:inherit;
+        width: 33.33%;
+        padding: 5px;
+    
+}
     .clearfix1::after {
-    content: "";
-    clear: both;
-    display: table;
+        content: "";
+        clear: both;
+        display: table;
+}
+    .clearfix2::after {
+        content: "";
+        clear: both;
+        display: table;
+        margin: 0 auto;
 }
     #map {width: 700px;
-     height: 600px;
-     border-style: outset;
-     margin: 0 auto;
-    display: block;
+        height: 600px;
+        border-style: outset;
+        margin: 0 auto;
+        display: block;
         } 
     
-        .legend { line-height: 14px;
+    .legend { line-height: 14px;
         color: #555}
-        .legend i {
-            width: 16px;
-            height: 17px;
-            float: left;
-            margin-right: 5px;
-            opacity: 0.75;
+    .legend i {
+        width: 16px;
+        height: 17px;
+        float: left;
+        margin-right: 5px;
+        opacity: 0.75;
     }
-        .info {
-            padding: 9px 9px;
-            font: 10px/17px Arial, Verdana, sans-serif;
-            background: rgba(225,225,225,0.9);
-            box-shadow: 0 0 15px rgba( 0,0,0,0.5);
-            border-radius: 10px;
+    .info {
+        padding: 9px 9px;
+        font: 10px/17px Arial, Verdana, sans-serif;
+        background: rgba(225,225,225,0.9);
+        box-shadow: 0 0 15px rgba( 0,0,0,0.5);
+        border-radius: 10px;
         }
     
     .text {
@@ -119,10 +132,11 @@
         <img name="slide" id="slide" width="900" height="600" src=" " style="align-content: center">
    
        <script>
+           //Assign3: include at least 2 images
            var i =0; 
            var images = [];
            var time = 2000;
-           //added in images as a slideshow: no less than 2 images
+           //images were taken on my trip to Vienna
            images [0] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8227.jpg";
            images [1] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8316.jpg";
            images [2] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9081.jpg";
@@ -148,9 +162,12 @@
          </h2>
          <div class="clearfix">
          <img id="quality" src="Quality%20of%20life.png" width="300" height="300">
+             <!--information regarding quality of life in Vienna-->
              <p class="text" style="text-align: inherit"> <br>  For the 9th year in a row, Vienna has been named the Best City to Live In by the annual Mercer Quality of Life survey. It is said that “Vienna is the cultural, political and economic centre of Austria, and scores highly in a number of categories. Among others, the city provides a safe and stable environment for expatriates to live in; it has an extensive offering of international consumer goods, a high level of public utilities and transportation facilities, and good recreational facilities.” (<a href="https://www.independent.co.uk/travel/news-and-advice/vienna-best-place-live-quality-life-mercer-survey-sarajevo-a8262976.html">Independent</a>) </p>
               </div>
          <p> This past spring break I traveled with a group of planning students to Vienna where we studied how Vienna has become one of the most livable cities in the world because of their smart growth measures. The smart city concepts include, consuming less resources and protecting the climate, improving quality of living through innovations, and social inclusion as a guarantee for all people in the city. This is what Vienna is striving to be by 2050, and they are well on their way. </p>
+    
+         <!-- images added to show some smart city aspects-->
          <div class="clearfix1">
     <div class="img-container">
         <img src="bikes.jpg" alt="Bike Share" style="width:100%">
@@ -165,10 +182,20 @@
          <p> Vienna was a good contender for the smart city program because it had an excellent starting point, especially in the following areas: social housing, public transport, business, water, waste management, and green spaces. </p>
     </body>
     <body>
-  
-    </body>
+             <!-- images added to show some smart city aspects-->
+         <div class="clearfix2">
+    <div class="img-container2">
+        <img src="IMG_9340.jpg" alt="Bike Share" style="width:100%">
+             </div>
+    <div class="img-container2">
+        <img src="IMG_9398.jpg" alt="Sustainability and Recycling" style="width:100%">
+             </div>
+         </div>
+         </body>
+    <br>
     <body>
-        <!-- adding in a highchart-->
+        <!-- Assign3: Include a highcharts or highmap -->
+        <!--adding in a highchart-->
         <p>
         As discussed above, quality of life in Vienna is the best and one aspect I think partially realates to this is the weather. 
         It is interesting how Vienna's average monthly temperatures are quite similar to where I grew up in Idaho, yet, when you look at the rainfall over the year something is much different. While it could be possible for Vienna to get snow, they rarely do and during the winter time, the do not get as much rain as one might think. Instead, Vienna gets most of its rain during the summer months. If you look at the graph below, you can see that June is actually the rainiest time in Vienna, while also being almost the hottest month temperature wise.
@@ -262,7 +289,7 @@
     <div id="map"> </div>
  <script> 
      
-     //basemaps added
+     //Assign3: include 2 basemaps 
      var osm= L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }); 
@@ -274,7 +301,7 @@
 	format: 'jpeg',
 	bounds: [[46.35877, 8.782379], [49.037872, 17.189532]]
 });
-     // 2 overlays added
+     // Assign3: include 2 overlays added
      var Stamen_TonerHybrid = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}{r}.{ext}', {
 	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	subdomains: 'abcd',
@@ -296,11 +323,11 @@
 var baseMaps = { "streets": osm, "Austria": BasemapAT_orthofoto};
 var overlayMaps = {"Outline": Stamen_TonerHybrid,"Railway": OpenRailwayMap};
      
-     
+  //Assign3:   include a layer control manager 
   L.control.layers(baseMaps,overlayMaps).addTo(map);
 
      
-//my data
+//my data: Assign3 External GeoJson Data
     var myURL = "https://kendyl66.github.io/LA458-558/Assign3/sites.geojson";
      function style (feature) {
          return {
@@ -337,7 +364,8 @@ var overlayMaps = {"Outline": Stamen_TonerHybrid,"Railway": OpenRailwayMap};
                 d == 1 ? '#3288bd': // blue
                 '#ff0000'; //white       
     }
- //Cretaing the legend
+ 
+     //Cretaing the legend: Assign 3 include leaflet legend
      
 var legend = L.control({ 
     position: 'bottomleft'});
@@ -358,12 +386,12 @@ legend.onAdd = function (map) {
         </script>
     </body>
     <body>
-        <p> 
+        <p> //Thought it would be fun to include a video I made from my trip to //test my java skills
         <b> Check out my YouTube Video Below to see some of the beautiful places in Vienna!</b>
     <iframe width="1200" height="700" src="https://www.youtube.com/embed/w8fEHJDNUC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </p>
     </body>
-    <body>
+    <body> //link to external page with map and awesome markers
         <p> If you want to learn about Vienna's Universities and Parks, <a href="index2.html"> follow this link to check them out!</a> </p>
 </body>
 </html>
