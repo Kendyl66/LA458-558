@@ -35,11 +35,14 @@
         font-family: sans-serif;
         color: white;
         font-size: 20px;
+        margin: 0px 50px 0px 50px;
     }
     
     #slide { align-content: center;
         display: block;
         margin: auto;
+        width: 1000px;
+        height: 700px
     }
     a:link{ color: whitesmoke; font-size: 100%}
         a:visited{ color: salmon}
@@ -63,7 +66,7 @@
     .clearfix {
         overflow: auto;
         align-content: justify;
-        margin: 30px 30px 20px 20px
+        margin: 30px 200px 20px 200px
     }
     * {
   box-sizing: border-box;
@@ -84,6 +87,7 @@
         content: "";
         clear: both;
         display: table;
+        margin: ;
 }
     .clearfix2::after {
         content: "";
@@ -91,8 +95,8 @@
         display: table;
         margin: 0 auto;
 }
-    #map {width: 700px;
-        height: 600px;
+    #map {width: 800px;
+        height: 670px;
         border-style: outset;
         margin: 0 auto;
         display: block;
@@ -101,7 +105,7 @@
     .legend { line-height: 14px;
         color: #555}
     .legend i {
-        width: 16px;
+        width: 20px;
         height: 17px;
         float: left;
         margin-right: 5px;
@@ -117,6 +121,12 @@
     
     .text {
         margin: 30px 30px 40px 40px;
+    }
+    .movie {
+        border: solid;
+        border-color: ghostwhite; 
+        border-style:double;
+        border-width: 10px
     }
     </style>
     
@@ -141,6 +151,7 @@
            images [2] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9081.jpg";
            images [3] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9669.jpg";
            images [4] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9433.jpg";
+           images [5] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9203.jpg";
            
            //function 
            function changeImg() {
@@ -160,11 +171,12 @@
              Vienna is one of the most interesting cities I have ever traveled. The architecture is amazing, the people so friendly, and the city lively. 
          </h2>
          <div class="clearfix">
-         <img id="quality" src="Quality%20of%20life.png" width="300" height="300">
+         <img id="quality" src="Quality%20of%20life.png" width="400" height="400" >
              <!--information regarding quality of life in Vienna-->
              <p class="text" style="text-align: inherit"> <br>  For the 9th year in a row, Vienna has been named the Best City to Live In by the annual Mercer Quality of Life survey. It is said that “Vienna is the cultural, political and economic centre of Austria, and scores highly in a number of categories. Among others, the city provides a safe and stable environment for expatriates to live in; it has an extensive offering of international consumer goods, a high level of public utilities and transportation facilities, and good recreational facilities.” (<a href="https://www.independent.co.uk/travel/news-and-advice/vienna-best-place-live-quality-life-mercer-survey-sarajevo-a8262976.html">Independent</a>) </p>
               </div>
-         <p> This past spring break I traveled with a group of planning students to Vienna where we studied how Vienna has become one of the most livable cities in the world because of their smart growth measures. The smart city concepts include, consuming less resources and protecting the climate, improving quality of living through innovations, and social inclusion as a guarantee for all people in the city. This is what Vienna is striving to be by 2050, and they are well on their way. </p>
+         <p> This past spring break I traveled with a group of planning students to Vienna where we studied how Vienna has become one of the most livable cities in the world because of their smart growth measures. The smart city concepts include, consuming less resources and protecting the climate, improving quality of living through innovations, and social inclusion as a guarantee for all people in the city. This is what Vienna is striving to be by 2050, and they are well on their way. </p> <br>
+         <p> Vienna was a good contender for the smart city program because it had an excellent starting point, especially in the following areas: social housing, public transport, business, water, waste management, and green spaces. </p> <br>
     
          <!-- images added to show some smart city aspects-->
          <div class="clearfix1">
@@ -178,7 +190,7 @@
         <img src="IMG_8263.jpg" alt="Sustainability and Recycling" style="width:100%">
              </div>
          </div> 
-         <p> Vienna was a good contender for the smart city program because it had an excellent starting point, especially in the following areas: social housing, public transport, business, water, waste management, and green spaces. </p>
+         
     </body>
 
     <br>
@@ -189,12 +201,12 @@
         As discussed above, quality of life in Vienna is the best and one aspect I think partially realates to this is the weather. 
         It is interesting how Vienna's average monthly temperatures are quite similar to where I grew up in Idaho, yet, when you look at the rainfall over the year something is much different. While it could be possible for Vienna to get snow, they rarely do and during the winter time, the do not get as much rain as one might think. Instead, Vienna gets most of its rain during the summer months. If you look at the graph below, you can see that June is actually the rainiest time in Vienna, while also being almost the hottest month temperature wise.
         <b> <br>But no matter what time of year it is, people are always out and about</b>
-        </p>
+        </p> <br>
             <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-<div id="container" style="max-width: 400; min-width: 200px; height: 450px; align-content: center; mmargin: 0 auto"></div>
+<div id="container" style="max-width: 400; min-width: 200px; height: 450px; align-content: center; margin: 0 auto"></div>
         <script style="align-content:center"> Highcharts.chart('container', {
     chart: {
         zoomType: 'xy'
@@ -273,7 +285,7 @@
     <body>
         <br>
         <h2> While Learning is Fun, Site Seeing is Much Better </h2>
-        <p>Eventough our class was in Vienna to learn about planning, the best parts were definitely spending time walking around the city, riding the public transportation, talking to locals and taking in the incredible, old buildings. </p>
+        <p>Eventough our class was in Vienna to learn about planning, the best parts were definitely spending time walking around the city, riding the public transportation, talking to locals and taking in the incredible, old buildings. </p> <br>
     
     <div id="map"> </div>
  <script> 
@@ -372,15 +384,16 @@ legend.onAdd = function (map) {
      };
      legend.addTo(map);
 
-        </script>
+        </script> <br>
     </body>
-    <body>
+    <body> <br>
+        
         <p> <!--Thought it would be fun to include a video I made from my trip to test my java skills-->
-        <b> Check out my YouTube Video Below to see some of the beautiful places in Vienna!</b>
-    <iframe width="1200" height="700" src="https://www.youtube.com/embed/w8fEHJDNUC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <b> Check out my YouTube Video Below to see some of the beautiful places in Vienna!</b><br><br>
+    <iframe class="movie" width="1000" height="700" src="https://www.youtube.com/embed/w8fEHJDNUC8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </p>
     </body>
     <body> <!-- link to another page that includes my markers-->
-        <p> If you want to learn about Vienna's Universities and Parks, <a href="index2.html"> follow this link to check them out!</a> </p>
+        <p> If you want to learn about Vienna's Universities and Parks, <a href="test.html"> follow this link to check them out!</a> </p>
 </body>
 </html>

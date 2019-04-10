@@ -44,6 +44,7 @@
         body   { 
         color: black;
         font-family: verdana;
+            margin: 0 auto;
         }
     body:after {
         background: url(IMG_9275.HEIC);
@@ -77,11 +78,19 @@
         font-family: sans-serif;
         color: black;
         font-size: 20px;
+        margin: 0px 50px 0px 50px;
     }
-       a:link{ color: black; font-size: 100%}
+    a:link{ color: black; font-size: 100%}
         a:visited{ color: salmon}
         a:hover{ color: palevioletred}
         }
+        
+    #slide { align-content: center;
+        display: block;
+        margin: 0 auto;
+        width: 1000px;
+        height: 700px;
+    }
 
     </style>
     </head>
@@ -137,18 +146,132 @@
     };
     
         L.control.layers(baseMaps,overlayMaps).addTo(map);
-        
+ 
 var marker1 = L.marker([48.204722, 16.380556], { 
     icon: L.AwesomeMarkers.icon({
-			icon: 'leaf', 
-			prefix:'ion', //from ion
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
 			markerColor: 'green',
 			iconColor: 'white',
-			spin: false
 		}) 
 });
-        marker1.addTo(map);
+
+var marker2 = L.marker([48.184722, 16.302778], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});
+var marker3 = L.marker([48.208056, 16.361111], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});       
+var marker4 = L.marker([48.234, 16.415], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});    
+var marker5 = L.marker([48.216111, 16.395556], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});   
+var marker6 = L.marker([48.241389, 16.3025], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});  
+     //marker for Votiv Park 
+var marker7 = L.marker([48.2157, 16.3583], {
+         icon: L.AwesomeMarkers.icon({
+			icon: 'tree', 
+			prefix:'fa', //from fonts awesome
+			markerColor: 'green',
+			iconColor: 'white',
+		}) 
+});        
+      // purple square marker with the school icon to view the universities
+var squareRedMarker = L.AwesomeMarkers.icon({
+    icon: 'school',
+    markerColor: 'darkpurple'
+    className: 'awesome-marker awesome-marker-square'
+  });
+     //University of Vienna
+     var marker8 = L.marker([48.213056, 16.359722], {
+		icon: squareRedMarker
+});  
+         //TU Wien
+     var marker8 = L.marker([48.198889, 16.37], {
+		icon: squareRedMarker
+});
+     //Vienna University of Economics and Business
+     var marker8 = L.marker([48.214167, 16.408056], {
+		icon: squareRedMarker
+});
+     //Medical University of Vienna
+     var marker8 = L.marker([8.22, 16.351389], {
+		icon: squareRedMarker
+});
+     //University of Natural Resources and Life Sciences, Vienna
+     var marker8 = L.marker([48.236667, 16.337222], {
+		icon: squareRedMarker
+});
+     //Academy of Fine Arts Vienna
+     var marker8 = L.marker([48.201389, 16.365278], {
+		icon: squareRedMarker
+});
         
     </script>
+    <p> <br>
+        According the City of Vienna, nearly 50% of Vienna are green areas and a large part of these are able to be used by the public. These areas are so beautiful and enjoyed by all who pass by or travel to see them. Vienna's public spaces are very important to all the residents and the city does an incredible job working toward preserving local environments. 
+        </p>
     </body>
+     <body data-gr-c-s-loaded="true">
+        <img name="slide" id="slide" width="900" height="600" src=" " style="margin: 0 auto">
+     <script>
+           //Assign3: include at least 2 images
+           var i =0; 
+           var images = [];
+           var time = 2000;
+           //images were taken on my trip to Vienna
+           images [0] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8418.jpg";
+           images [1] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9340.jpg";
+           images [2] = "https://kendyl66.github.io/LA458-558/Assign3/view.jpg";
+           images [3] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9669.jpg";
+           images [4] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9433.jpg";
+           images [5] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9203.jpg";
+           
+           //function 
+           function changeImg() {
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+        </script>
+    <p>
+        There are 
+        </p>
+        </body>
 </html>
