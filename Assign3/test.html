@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <meta name="exercises" content="universities"/>
+<title> Parks and Universities </title>
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/> 
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script> 
+
+    <link rel="stylesheet" href="http://kendyl66.github.io/LA458-558/Assign3/Leaflet.awesome-markers-master/dist/leaflet.awesome-markers.css">
+    <link rel= "http://kendyl66.github.io/LA458-558/Assign3/Leaflet.awesome-markers-master/dist/leaflet.awesome-markers.js">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+        
+    <style>
+        #map {
+            width:700px;
+            height: 600px;
+            margin: 0 auto; padding: 10px;
+            border: solid;
+            border-color: black; 
+            border-width: 10px;
+            }
+        div {
+            display: block; 
+            margin-left: 0 auto;
+            margin-right: 0 auto;
+            
+        }
+        body   { 
+        color: black;
+        font-family: verdana;
+        }
+    body:after {
+        background: url(IMG_9275.HEIC);
+        content: "";
+        opacity: 0.15;
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -100;   
+        width:auto;
+        height: 100%;
+        background-size: cover;
+        }
+     h1 {
+        font-family: sans-serif;
+        color: black;
+        text-align: center;
+        font-size: 45px;    
+    }
+    
+     h2 {
+        font-family: sans-serif;
+        color: black;
+        text-align: center;
+        font-size: 25px;     
+    }
+    
+    p {text-align: center;
+        font-family: sans-serif;
+        color: black;
+        font-size: 20px;
+    }
+       a:link{ color: black; font-size: 100%}
+        a:visited{ color: salmon}
+        a:hover{ color: palevioletred}
+        }
+
+    </style>
+    </head>
+    <body>
+        <h1 style=" font-size: 300%;"> Vienna's Universities and Parks
+        </h1>
+    
+        <div id="map"></div>
+    
+    <script>
+//Base Layers
+        var OSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+});  
+
+       
+//overlay layers
+     var Stamen_TonerLines = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lines/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+});
+        var OpenRailwayMap = 
+         L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
+	   maxZoom: 19,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}); 
+        
+        //Create Map
+        
+    var map = L.map('map', {
+        center: new L.LatLng(48.2, 16.366667),
+        zoom: 10,
+        layers: [OSM,]
+    });
+        
+        
+//Layer Control
+    var baseMaps = {
+        "Street Map": OSM,
+        "Satellite Images": Esri_WorldImagery,
+    };
+    
+    var overlayMaps = {
+        "Outline": Stamen_TonerLines,
+        "Railway Map": OpenRailwayMap,
+          
+    };
+    
+        L.control.layers(baseMaps,overlayMaps).addTo(map);
+        
+var marker1 = L.marker([48.204722, 16.380556], { 
+    icon: L.AwesomeMarkers.icon({
+			icon: 'leaf', 
+			prefix:'ion', //from ion
+			markerColor: 'green',
+			iconColor: 'white',
+			spin: false
+		}) 
+});
+        marker1.addTo(map);
+        
+    </script>
+    </body>
+</html>
