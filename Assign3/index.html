@@ -343,7 +343,7 @@ var overlayMaps = {"Outline": Stamen_TonerHybrid,"Railway": OpenRailwayMap};
              
          };
      }
-     
+     //Using AJAX Plugin
     var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
         style: style,
         pointToLayer: function (feature, latlng) {
