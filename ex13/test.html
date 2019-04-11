@@ -26,8 +26,8 @@
             height: 600px;
             margin: 0 auto; padding: 10px;
             border: solid;
-            border-color: black; 
-            border-width: 10px;
+            border-color: darkgreen; 
+            border-width: 15px;
             }
         div {
             display: block; 
@@ -41,7 +41,7 @@
             margin: 0 auto;
         }
     body:after {
-        background: url(IMG_9275.HEIC);
+        background: url(palouse.jpg);
         content: "";
         opacity: 0.15;
         position:fixed;
@@ -404,7 +404,7 @@
 
         
     function getColor(Historic) {
-        return Historic == 1 ? 'red':
+        return Historic == 1 ? '#a8ddb5': //greenblue
                 Historic == 2 ? 'blue':
                     'white';
         
@@ -434,20 +434,23 @@ var district = L.geoJson(moscow, {style: style}).addTo(map);
         </script>
         
         <script>
-                var myURL = "https://kendyl66.github.io/LA458-558/ex13/eating.geojson";
-     function style (feature) {
+    //GeoJson map using AJAX Plugin
+            var myURL = "https://kendyl66.github.io/LA458-558/ex13/eating.geojson";
+     
+        function style(feature) {
          return {
              stroke: false,
              fillColor: getColor(feature.properties.ranking),
              weight: 1,
-             opacity: 0.5,
+             opacity: 0.5,};
+        }
         
-             var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
+        var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
         style: style,
         pointToLayer: function (feature, latlng) {
             return new L.circleMarker (latlng, 
                 { stroke: true,
-                fillOpacity:0.75,
+                fillOpacity:0.85,
                  radius : feature.properties.ranking + 10,
                 });
         }, 
@@ -462,7 +465,7 @@ var district = L.geoJson(moscow, {style: style}).addTo(map);
     var labels = ['My Favorite', 'Really Good', 'Still Good'];
     function getColor(d) {
          return d == 3 ? '#d53e4f': //redish
-                d == 2 ? '#abdda4': //greenish
+                d == 2 ? '#ffff33': //greenish
                 d == 1 ? '#3288bd': // blue
                 '#ff0000'; //white       
     }
