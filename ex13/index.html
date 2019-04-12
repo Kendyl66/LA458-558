@@ -22,7 +22,7 @@
         
     <style>
         #map {
-            width:700px;
+            width:800px;
             height: 600px;
             margin: 0 auto; padding: 10px;
             border: solid;
@@ -74,39 +74,30 @@
         font-size: 20px;
         margin: 0px 50px 0px 50px;
     }
-    a:link{ color: black; font-size: 100%}
-        a:visited{ color: salmon}
-        a:hover{ color: palevioletred}
-    
-        
-    #slide { align-content: center;
-        display: block;
-        margin: 0 auto;
-        width: 1000px;
-        height: 700px;
-        border: solid;
-            border-color:black;
-            border-width: thick;
+    .legend { line-height: 14px;
+        color: #ffff}
+    .legend i {
+        width: 20px;
+        height: 17px;
+        float: right;
+        margin-right: 5px;
+        opacity: 0.75;
     }
-    #slide1 { align-content: center;
-        display: block;
-        margin: 0 auto;
-        width: 1000px;
-        height: 700px;
-        border: solid;
-            border-color:black;
-            border-width: thick;
-    }
-    .mySlides {
-            border: solid;
-            border-color:black;
-            border-width: thick;
+    .info {
+        padding: 9px 9px;
+        font: 10px/17px Arial, Verdana, sans-serif;
+        background: #252525;
+        box-shadow: 0 0 15px rgba( 0,0,0,0.6);
+        border-radius: 10px;
         }
+    
     </style>
     </head>
     <body>
         <h1 style=" font-size: 300%;"> Exercise 13: AJAX Plugin and GeoJson
         </h1>
+        <p>
+        This map shows my hometown of Moscow, Idaho. The polygons show the Historic District (green) and a Historic Landmark (blue) that make Moscow very special. The circle markers shows my rankings of the places I like to eat from 1-3 or My Favorite-Still Good! </p> <br>
     
         <div id="map"></div>
         
@@ -470,7 +461,7 @@ var district = L.geoJson(moscow, {style: style}).addTo(map);
                 '#ff0000'; //white       
     }
             var legend = L.control({ 
-    position: 'bottomleft'});
+    position: 'topleft'});
      
 legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'); 
