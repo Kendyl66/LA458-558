@@ -12,19 +12,16 @@
         
         <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
         integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
-        
-        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>	
-        <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
+
         
 <!--Add in StyleSheets for markers-->
         
-        <link rel="stylesheet" href="http://kendyl66.github.io/LA458-558/Assign3/Leaflet.awesome-markers-master/dist/leaflet.awesome-markers.css">
-        
-        <link rel= "http://kendyl66.github.io/LA458-558/Assign3/Leaflet.awesome-markers-master/dist/leaflet.awesome-markers.js">
-        
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
+      
+<script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+      
         
     <!--Styling a manual slideshow-->
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -113,7 +110,7 @@
         }
     </style>
     </head>
-    <body>
+    <body data-gr-c-s-loaded="true">
         <h1 style=" font-size: 300%;"> Vienna's Parks and Universities
         </h1>
     
@@ -147,7 +144,7 @@
         
     var map = L.map('map', {
         center: new L.LatLng(48.2, 16.366667),
-        zoom: 10,
+        zoom: 11,
         layers: [OSM,]
     });
         
@@ -166,105 +163,49 @@
     
         L.control.layers(baseMaps,overlayMaps).addTo(map);
         
- //trying to use Awesome Markers Plugin, but not working
-var marker1 = L.marker([48.204722, 16.380556], { 
-    icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});
-
-var marker2 = L.marker([48.184722, 16.302778], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});
-var marker3 = L.marker([48.208056, 16.361111], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});       
-var marker4 = L.marker([48.234, 16.415], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});    
-var marker5 = L.marker([48.216111, 16.395556], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});   
-var marker6 = L.marker([48.241389, 16.3025], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});  
-      
-var marker7 = L.marker([48.2157, 16.3583], {
-         icon: L.AwesomeMarkers.icon({
-			icon: 'tree', 
-			prefix:'fa', //from fonts awesome
-			markerColor: 'green',
-			iconColor: 'white',
-		}) 
-});        
-      // purple square marker with the school icon to view the universities
-var squareRedMarker = L.AwesomeMarkers.icon({
-    icon: 'university',
-    markerColor: 'darkpurple'
-    className: 'awesome-marker awesome-marker-square'
-  });
-     //University of Vienna
-     var marker8 = L.marker([48.213056, 16.359722], {
-		icon: squareRedMarker
-});  
-         //TU Wien
-     var marker8 = L.marker([48.198889, 16.37], {
-		icon: squareRedMarker
-});
-     //Vienna University of Economics and Business
-     var marker8 = L.marker([48.214167, 16.408056], {
-		icon: squareRedMarker
-});
-     //Medical University of Vienna
-     var marker8 = L.marker([8.22, 16.351389], {
-		icon: squareRedMarker
-});
-     //University of Natural Resources and Life Sciences, Vienna
-     var marker8 = L.marker([48.236667, 16.337222], {
-		icon: squareRedMarker
-});
-     //Academy of Fine Arts Vienna
-     var marker8 = L.marker([48.201389, 16.365278], {
-		icon: squareRedMarker
+ var whiteTree = L.AwesomeMarkers.icon({
+  icon: 'tree',
+  prefix: 'fa', //font awesome rather than bootstrap
+  markerColor: 'green', // see colors above
+  iconColor: 'black',
+  extraClasses: 'fas', //this might not be needed
 });
         
+var marker_1 = L.marker([48.204722, 16.380556], {icon: whiteTree}).addTo(map);
+
+var marker_2 = L.marker([48.184722, 16.302778], {icon: whiteTree}).addTo(map);
+
+var marker_3 = L.marker([48.208056, 16.361111], {icon: whiteTree}).addTo(map);
+
+var marker_4 = L.marker([48.234, 16.415], {icon: whiteTree}).addTo(map);
+        
+var marker_5 = L.marker([48.216111, 16.395556], {icon: whiteTree}).addTo(map);
+
+var marker_6 = L.marker([48.241389, 16.3025], {icon: whiteTree}).addTo(map);
+        
+var marker_7 = L.marker([48.2157, 16.3583], {icon: whiteTree}).addTo(map);
+  
+ //trying to use Awesome Markers Plugin, but not working
+  
+var universityMarker = L.AwesomeMarkers.icon({
+    icon: 'coffee',
+    markerColor: 'darkpurple',
+    prefix: 'fa', //font awesome rather than bootstrap 
+  });
+      
+        L.marker([48.213056, 16.359722], {icon: universityMarker, title: "University of Vienna",}).addTo(map);
+        L.marker([48.198889, 16.37], {icon: universityMarker, title: "TU Wien",}).addTo(map);
+        L.marker([48.214167, 16.408056], {icon: universityMarker, title: "Vienna University of Economics and Business",}).addTo(map);
+        L.marker([8.22, 16.351389], {icon: universityMarker, title: "Medical University of Vienna",}).addTo(map);
+        L.marker([48.236667, 16.337222], {icon: universityMarker, title: "University of Natural Resources and Life Sciences, Vienna",}).addTo(map);
+        L.marker([48.201389, 16.365278], {icon: universityMarker, title: "Academy of Fine Arts Vienna",}).addTo(map);
+            
     </script>
     <p> <br>
         The tree markers indicate some parks and garden areas. According the City of Vienna, nearly 50% of Vienna are green areas and a large part of these are able to be used by the public. These areas are so beautiful and enjoyed by all who pass by or travel to see them. Vienna's public spaces are very important to all the residents and the city does an incredible job working toward preserving local environments. 
         </p> <br>
-    </body>
-    
-    <!-- slideshow with images from my time in vienna showing the parks-->
-    
-     <body data-gr-c-s-loaded="true">
+  
+
         <img name="slide" id="slide" width="900" height="600" src=" " style="margin: 0 auto">
      <script>
            
@@ -296,8 +237,8 @@ var squareRedMarker = L.AwesomeMarkers.icon({
     <p> <br>
         The other markers on the map depict some of the univerisites in Vienna. As we traveled around the city, they did not develop campuses for their universities like we do here in the United States. All of the buildings are mixed in with the existing built environment. I definitely would love to study and learn in an environemnt like that!
         </p> 
-        </body><br>
-<body> <!-- created a manual slideshow-->
+<br>
+<!-- created a manual slideshow-->
     <div class="w3-content w3-display-container">
   <img class="mySlides" src="IMG_8837.jpg" style="width:100%">
   <img class="mySlides" src="IMG_8880.jpg" style="width:100%">
