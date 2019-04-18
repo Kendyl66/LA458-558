@@ -18,7 +18,15 @@
 <script>
     var bbox = turf.bbox(features);
 </script>
-	
+	<style>
+        p {margin-right:20px;
+            margin-left: 20px;
+        font-size: 140%}
+        
+        li {margin-left: 20px;
+            margin-right: 40px
+        }
+    </style>
 </head>
 <body>
     <h1> Exercise 15: Turf and Proj4js</h1>
@@ -27,7 +35,7 @@
   <p> Question 1: Tools
    	<li> <b>bboxPolygon:</b> first you have to use the bbox tool, which is used to take a set of features and calculate all the inputs and returns a bounding box, ultimately a GeoJSON object. Then you take the bbox and make it an equivalent to a polygon. I think this is especially useful when mapping specific areas, possibly in cloropleth form, that only have boundary locations and you need to create a polygon that can be color coded and read properly. </li>
    	<li> <b>intersect:</b> this tool takes 2 polygons and finds the intersections and then it can be decided what you want it to return. I think that using this tool with the return for area shared by the two polygons would be really beneficial when trying to figure out how two or more data sets interact with one another and why that is important.  </li>
-	<li> <b> buffer:</b> this tool pretty much just provides a buffer around the point that you created. This is a really beneficial tool to use, particularly when working with data that could have noise impacts, pollution impacts or or any data dealing with possible adverse affects on an area (i guess they could also be positive effects as well). </li>
+	<li> <b> buffer:</b> this tool pretty much just provides a buffer around the point that you created. This is a really beneficial tool to use, particularly when working with data that could have noise impacts, pollution impacts or or any data dealing with possible adverse affects on an area (I guess they could also be positive effects as well). </li>
    	<li> <b>getCoord or getCoords:</b> these tool outputs the coordinates of a single point or a feature, array or geometry object, in an array. I think this type of tool could be useful when you need to figure out a specific coordinate within an object or of a single line. If you don't know what geo-location the point or polygon is showing, you can easily get the numbers outputted so you know what you are looking at. </li>
      	<li> <b>Named Projections from Proj4js:</b> this tool allows you to define a projection as a string in 2 ways; an array or as an already predefinied named projection. As a way to web-map similarly to ArcGIS, it is really important to have the capabilities to change the projection of everything on your map to make sure the features all match and work together. This could really be useful in the future when using data taken and downloaded from different places who might have created the features with different map projections. </li>
     </p>
