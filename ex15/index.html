@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Exercise 15: Turf and Proj4js</title>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+	
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+	
+	
+<script src="https://code.jquery.com/jquery-2.0.3.js"></script>
+	
+<script src="https://npmcdn.com/@turf/turf@3.5.1/turf.min.js"></script>	
+	
+<script>
+    var bbox = turf.bbox(features);
+</script>
+	
+</head>
+<body>
+    <h1> Exercise 15: Turf and Proj4js</h1>
+	<div id="mapid" style="width: 600px; height: 400px;"></div>	 
+  
+  <p> Question 1:
+    <li>bboxPolygon: first you have to use the bbox tool, which is used to take a set of features and calculate all the inputs and returns a bounding box, ultimately a GeoJSON object. Then you take the bbox and make it an equivalent to a polygon. I think this is especially useful when mapping specific areas, possibly in cloropleth form, that only have boundary locations and you need to create a polygon that can be color coded and read properly. </li>
+    <li> intersect: this tool takes 2 polygons and finds the intersections and then it can be decided what you want it to return. I think that using this tool with the return for area shared by the two polygons would be really beneficial when trying to figure out how two or more data sets interact with one another and why that is important.  </li>
+    <li> buffer: this tool pretty much just provides a buffer around the point that you created. This is a really beneficial tool to use, particularly when working with data that could have noise impacts, pollution impacts or or any data dealing with possible adverse affects on an area (i guess they could also be positive effects as well). </li>
+    <li>getCoord or getCoords: these tool outputs the coordinates of a single point or a feature, array or geometry object, in an array. I think this type of tool could be useful when you need to figure out a specific coordinate within an object or of a single line. If you don't know what geo-location the point or polygon is showing, you can easily get the numbers outputted so you know what you are looking at. </li>
+      <li>Named Projections from Proj4js: this tool allows you to define a projection as a string in 2 ways; an array or as an already predefinied named projection. As a way to web-map similarly to ArcGIS, it is really important to have the capabilities to change the projection of everything on your map to make sure the features all match and work together. This could really be useful in the future when using data taken and downloaded from different places who might have created the features with different map projections. </li>
+    </p>
+    <script>
+    //note that http://icons.webtoolhub.com/icon-p4s2023-set.aspx  used for the green icon source.
+
+//JSON of the line
+var myLine = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -93.77,
+            41.9921602333763
+          ],
+          [
+            -93.66342544555664,
+            42.1
+          ], 
+          [
+            -93.63853454589844,
+            41.98960848263661
+          ],
+          [
+            -93.62892150878906,
+            42.01052981889534
+          ]
+        ]
+      }
+    }
+  ]
+};//Change 1: I changed the length of the first and second portions of the line so the first moved west and the second moved north.
+
+
+//JSON of the Polygon
+var myPolygon = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -93.6,
+              41.96485119205757
+            ],
+            [
+              -93.5,
+              41.96485119205757
+            ], //change2: I changed the two markers above to different lengths and it made the polygon change shape.
+            [
+              -93.6390495300293,
+              41.97940045674709
+            ],
+            [
+              -93.65861892700195,
+              41.97940045674709
+            ],
+            [
+              -93.65861892700195,
+              41.96485119205757
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+};
+
+
+
+//change 3: I changed the length into kilometers from miles to see how it changed in the console log. 
+var length = turf.lineDistance(myLine, 'kilometers');
+console.log("myLine = "+ length + " kilometers");
+
+
+
+//calculates the area of the mPolygon in sq meters and sq miles
+var area = turf.area(myPolygon);
+	console.log(area + " sq meters");
+	console.log(area * 0.000000386102158542 + " sq miles");
+	
+
+//The green marker point on the map
+var myPoint = {
+  "type": "Feature",
+  "properties": {
+    "marker-color": "#0f0"
+  },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-93.6, 41] 
+    //change4:here I changed the coordinates of this marker so that the marker moved and the circle color changed  to the southern most white circle.
+  }
+};
+
+
+//these are the three white circle markers
+var myPointCollection = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+		  id: 1
+	  },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.69,
+              41.98]
+      }
+    }, {
+      "type": "Feature",
+      "properties": {
+		  		  id: 2
+	  },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.78,
+              42.0145]
+      } //change5:changed the location of this marker and it moved to the west of the map.
+    },{
+      "type": "Feature",
+      "properties": {
+		  		  id: 3
+	  },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.64,
+              42]
+      }//change6:Changed the coordinates of the white marker and it moved more south
+    }
+  ]
+};
+
+
+
+
+//This calculation is geodesic distance of the white circle that is closest to the green marker.
+var nearest = turf.nearest(myPoint, myPointCollection);
+
+var nearestID = nearest.properties.id;
+
+console.log(nearest.properties.id);
+
+
+
+
+
+
+
+
+
+	
+
+
+//*****************
+var mapCenter = L.latLng(42.05,-93.6);
+
+	
+var map = L.map('mapid').setView(mapCenter, 11);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+		maxZoom: 18,
+		attribution: ''
+	}).addTo(map);
+
+var mapCenterMarker = L.marker(mapCenter).addTo(map);
+
+var myStyle = {
+    "color": "blue", 
+    "weight": 4,
+    "opacity": 0.5
+}; //change7:changed the color, opacity, and weight of the polygon and line.
+
+
+var myPointIcon = L.icon({
+		iconUrl: 'https://profseeger.github.io/LA558/images/chartreuseMapMarker.png',
+		iconSize: [32, 32],
+		iconAnchor: [16, 32],
+		//popupAnchor: [0, -28]
+	});
+
+startPoint =  L.geoJSON(myPoint, {
+		pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {icon: myPointIcon});
+		},
+		//onEachFeature: onEachFeature
+	}).addTo(map);
+
+
+L.geoJSON(myLine, {
+    style: myStyle
+}).addTo(map);
+
+
+L.geoJSON(myPolygon, {
+    style: myStyle
+}).addTo(map);
+
+
+//if the ID of the item identified as being the nearest matches d, then change color of item to orange.
+function getColor(d) {
+    return d == nearestID ? 'orange' :
+                'white';
+}
+
+var geojsonMarkerOptions = {
+    radius: 7,
+    //fillColor: "white",
+    color: "red",
+    weight: 2,
+    opacity: 1,
+    fillOpacity: 0.75
+}; //change8:again, I changed the colors and line size here
+
+L.geoJSON(myPointCollection, {
+    pointToLayer: function (feature, latlng) {
+        return L.circleMarker(latlng, geojsonMarkerOptions);
+    },
+	style: function(feature) {
+	console.log(feature.properties.id);//note this is how you access contents of the id within L.geoJson
+		return {
+					//radius: some property from geojson,
+					fillColor: getColor(feature.properties.id)
+				};
+			},
+			onEachFeature: function (feature, layer) {
+				layer.bindPopup("ID: "+feature.properties.id);
+			}
+	
+}).addTo(map);
+        
+</script>
+    </body>  
+</html>
