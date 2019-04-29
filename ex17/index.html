@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="Ex. 17: MapBox Tiile Layers and Intro">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 17:Adding MapBox TitleLayer to Leaflet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+      <style>
+          #map { 
+          width: 600px;
+          height: 500px;}
+      </style>
+  </head>
+
+  <body>
+    <div id='map'></div>
+      <script>
+      var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+    var landuse = L.titleLayer ('https://api.mapbox.com/styles/v1/kendyl6649/cjv2jtn905hgw1fo4ufgibcm2/titles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VuZHlsNjY0OSIsImEiOiJjanYyZmtrNTEwYWtuM3lvY3E3cWo0bzFxIn0.O1MrddDMXnNFeQWlkbCHRA', {attribution: 'Kendyl made this'
+                                });
+    
+    var map = L.map('map', {center: [40, -109],
+                           zoom: 5,
+                           layers: [osm]
+                           });
+    var baseMaps = {
+        "OpenStreetMap": osm,
+        "Kendyl's Mapbox Map": landuse
+    };
+          
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
+      </script>
+  </body>
+
+</html>
