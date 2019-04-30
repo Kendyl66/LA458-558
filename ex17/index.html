@@ -11,31 +11,37 @@
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
       <style>
           #map { 
-          width: 600px;
-          height: 500px;}
+          width: 700px;
+          height: 500px;
+          margin: 0 auto;
+        }
       </style>
   </head>
 
   <body>
+      <h1 style="text-align: center; font-family: arial"> Landuse Map with Markers of  8 National Park Locations</h1>
     <div id='map'></div>
       <script>
       var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
-    var landuse = L.titleLayer ('https://api.mapbox.com/styles/v1/kendyl6649/cjv2jtn905hgw1fo4ufgibcm2/titles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VuZHlsNjY0OSIsImEiOiJjanYyZmtrNTEwYWtuM3lvY3E3cWo0bzFxIn0.O1MrddDMXnNFeQWlkbCHRA', {attribution: 'Kendyl made this'
+    var landuse = L.tileLayer ('https://api.mapbox.com/styles/v1/kendyl6649/cjv2jtn905hgw1fo4ufgibcm2/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2VuZHlsNjY0OSIsImEiOiJjanYyZmtrNTEwYWtuM3lvY3E3cWo0bzFxIn0.O1MrddDMXnNFeQWlkbCHRA', {attribution: 'Kendyl made this'
                                 });
     
     var map = L.map('map', {center: [40, -109],
                            zoom: 5,
-                           layers: [osm]
+                           layers: [landuse]
                            });
     var baseMaps = {
         "OpenStreetMap": osm,
-        "Kendyl's Mapbox Map": landuse
+        "Kendyl's Landuse and National Parks MapBox Map": landuse
     };
           
     L.control.layers(baseMaps).addTo(map);
       </script>
+      <p style="text-align: center; margin: 20px 40px 20px 40px; font-size: 140%">
+        I deceided to created a new basemap that changes the colors and weights of the countries around the world, but also specifically the Untied States. Changing these colors, I believe, help differentiate the variety of land uses better than the original zoom levels. If you zoom in, you can see the changes of the colors that help distinquish the land uses. <br><br>I also wanted to try to add data to the map and included circle markers that have changing styles as you zoom in and out.  
+      </p>
   </body>
 
 </html>
