@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="description" content="Ex. 17: MapBox Tiile Layers and Intro">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 17:Adding MapBox Map to Leaflet</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script
+        src= "https://kendyl66.github.io/LA458-558/ex8/map.geojson"></script>     
+     <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+        <style>
+      <style>
+          #map { 
+          width: 700px;
+          height: 500px;
+          margin: 0 auto;
+        }
+      </style>
+  </head>
+
+  <body>
+      <h1 style="text-align: center; font-family: arial"> Landuse Map with Markers of  8 National Park Locations</h1>
+    <div id='map'></div>
+      <script>
+      var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+    var map = L.map('map', {center: [40, -109],
+                           zoom: 5,
+                           layers: [osm]
+                           });
+    var baseMaps = {
+        "OpenStreetMap": osm,
+    };
+          
+    L.control.layers(baseMaps).addTo(map);
+      </script>
+    </body>
+</html>
