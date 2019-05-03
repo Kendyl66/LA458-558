@@ -1,0 +1,113 @@
+   #map {
+            width:700px;
+            height: 600px;
+            margin: 0 auto; padding: 10px;
+            border: solid;
+            border-color: black; 
+            border-width: 5x;
+            }
+        div {
+            display: block; 
+            margin-left: 0 auto;
+            margin-right: 0 auto;
+            
+        }
+        body   { 
+        color: black;
+            margin: 0 auto;
+        }
+    body:after {
+        background: url(DesMoines.jpg);
+        content: "";
+        opacity: 0.19;
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -100;   
+        width:auto;
+        height: 100%;
+        background-size: cover;
+        }
+     h1 {
+        font-family: 'Roboto';
+        font-size: 50px;
+        font-weight: 400;
+        color: black;
+        text-align: center;    
+    }
+    
+     h2 {
+        font-family: 'Roboto';
+        color: black;
+        text-align: center;
+        font-size: 25px;     
+    }
+    
+    p {text-align: center;
+        font-family: 'Raleway', sans-serif;
+        color: black;
+        font-size: 20px;
+        margin: 0px 50px 0px 50px;
+    }
+    a:link{ color: black; font-size: 100%}
+        a:visited{ color: navy}
+        a:hover{ color: palevioletred}
+    
+        
+    #slide { align-content: center;
+        display: block;
+        margin: 0 auto;
+        width: 1000px;
+        height: 700px;
+        border: solid;
+            border-color:black;
+            border-width: thick;
+    }
+    #slide1 { align-content: center;
+        display: block;
+        margin: 0 auto;
+        width: 1000px;
+        height: 700px;
+        border: solid;
+            border-color:black;
+            border-width: thick;
+    }
+    .mySlides {
+            border: solid;
+            border-color:black;
+            border-width: thick;
+        }
+    .navbar {
+        width: 100%;
+        background-color: darkgrey;
+        overflow: auto;
+        font-family: 'Raleway', sans-serif;
+        }
+
+    .navbar a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+.navbar a:hover {
+  background-color: #000;
+}
+.navbar a:visited {
+  color: white;
+}
+.active {
+  background-color: grey;
+}
+    
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}

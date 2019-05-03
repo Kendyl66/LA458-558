@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8"/>
+    <meta name="exercises" content="universities"/>
+<title> Home Page</title>
+        
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/> 
+        
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
+        
+<!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
+         <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+<!--Add in StyleSheets for markers-->
+        
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
+      
+<script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+ <!-- made sure to work on learning how to reference other files, as well as creating the separate files for css-->     
+<link rel="stylesheet" href="homepage.css">
+        
+    </head>
+    <body data-gr-c-s-loaded="true">
+
+<!-- I need to make sure and put links to each section when done-->
+<div class="navbar">
+  <a class="active"href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+   <a  href="#"><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+  <a href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a href="timeline/index.html"><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
+  <a href="#"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
+    <a href="#"><i class="fa fa-fw fa-book"></i> Narrative</a>
+  <a href="#"><i class="fa fa-fw fa-user"></i> Sources</a>
+    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+</div>
+
+<h1>The Legacy of Segregation and Redlining on Des Moines, Iowa </h1>
+<p> I will be putting in the overview here along with my purpose for my project and the importance of the project. </p>
+
+    
+        <div id="map"></div>
+    
+    <script>
+//Base Layers Added
+        var OSM = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+    var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+});
+
+       
+//overlay layers
+var Stamen_TonerHybrid = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}{r}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+	subdomains: 'abcd',
+	minZoom: 0,
+	maxZoom: 20,
+	ext: 'png'
+});
+        var OpenRailwayMap = 
+         L.tileLayer('https://{s}.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png', {
+	   maxZoom: 19,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}); 
+        
+        //Create Map
+        
+    var map = L.map('map', {
+        center: new L.LatLng(41.590833, -93.620833),
+        zoom: 11,
+        layers: [OSM,]
+    });
+        
+        
+//Layer Control
+    var baseMaps = {
+        "Street Map": OSM,
+        "Esri Street Map": Esri_WorldStreetMap,
+    };
+    
+    var overlayMaps = {
+        "Outline": Stamen_TonerHybrid,
+        "Railway Map": OpenRailwayMap,
+          
+    };
+    
+        L.control.layers(baseMaps,overlayMaps).addTo(map);
+ //Using AwesomeMarkers to Highlight some of the interesting events that took place in Des Moines and have pop ups that indicate where the person viewing should go to get more information        
+ var events = L.AwesomeMarkers.icon({
+  icon: 'calendar',
+  prefix: 'fa', //font awesome rather than bootstrap
+  markerColor: 'blue', // see colors above
+  iconColor: 'white',
+  extraClasses: 'fas', //this might not be needed
+});
+        
+var marker_1 = L.marker([41.5989, -93.6392], {icon: events, title: "Event",}).bindPopup('<b>Good Park Riot of 1966:</b> <br>Read more on the History Timeline Page').addTo(map);
+
+var marker_2 = L.marker([41.591541,-93.641147], {icon: events, title: "Event",}).bindPopup('<b>Destruction and Displacement in Sherman Hill:</b> <br>Read more in the Legislative History Page under Iowa').addTo(map);
+
+var marker_3 = L.marker([41.591194,-93.603840], {icon: events, title: "Event",}).bindPopup('<b>Iowa achieved Statehood in 1846!</b> <br>Learn more about Iowa\'s State History by scrolling through the Historical Timeline Page').addTo(map);
+
+var marker_4 = L.marker([41.520158,-93.615702], {icon: events, title: "Event",}).bindPopup('<b>Fort Des Moines housed the first African-American training corps in the United States: </b> <br>Take a look at the Historical Timeline Page').addTo(map);
+        
+  
+var constructMarker = L.AwesomeMarkers.icon({
+    icon: 'wrench',
+    markerColor: 'green',
+    prefix: 'fa', //font awesome rather than bootstrap 
+  });
+      
+        L.marker([41.599192, -93.587925], {icon: constructMarker, title: "Urban Renewal Project",}).bindPopup('<b>Construction of I-235 in the 1960s:</b> <br> Learn more scrolling through the Historical Timeline Page').addTo(map);
+        
+        L.marker([41.592873,-93.636107], {icon: constructMarker, title: "Urban Renewal Project",}).bindPopup('<b>Oakridge Area Urban Renewal Project: </b> <br> Learn more about this story in the Legislative History Page under Iowa').addTo(map);
+        L.marker([41.594436,-93.613727], {icon: constructMarker, title: "Urban Renewal",}).bindPopup('<b> Division of River Hills Neighborhood by I-235:</b> <br> Learn more reading through the Historical Timeline Page').addTo(map);
+
+    </script>
+    <p> <br>
+        little here
+        </p> <br>
+  
+
+        <img name="slide" id="slide" width="900" height="600" src=" " style="margin: 0 auto">
+     <script>
+           
+           var i =0; 
+           var images = [];
+           var time = 2000;
+           //images were taken on my trip to Vienna
+           images [0] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8418.jpg";
+           images [1] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_9340.jpg";
+           images [2] = "https://kendyl66.github.io/LA458-558/Assign3/view.jpg";
+           images [3] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8397.jpg";
+           images [4] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8949.jpg";
+            images [5] = "https://kendyl66.github.io/LA458-558/Assign3/IMG_8929.HEIC";
+           
+           //function 
+           function changeImg() {
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+        </script>
+    
+ <!-- link back to first page -->
+        <p> If you want to go back, <a href="index.html"> CLICK HERE!</a> </p>
+    </body>
+</html>

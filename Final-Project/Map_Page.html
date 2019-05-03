@@ -6,24 +6,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Maps</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
+      
+<script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script
-        src= "https://kendyl66.github.io/LA458-558/Final_Project/1940.gejson"></script>     
-     <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+    
+      <script src="1940.geojson"></script>     
+      
+      <!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
+         <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
 <style>
     #map { 
           width: 700px;
           height: 500px;
           margin: 0 auto;
         }
-    body {font-family: Arial, Helvetica, sans-serif;}
+     h1 {
+        font-family: 'Roboto';
+        font-size: 50px;
+        font-weight: 400;
+        color: black;
+        text-align: center;    
+    }
 
 .navbar {
   width: 100%;
   background-color: darkgrey;
   overflow: auto;
+    font-family: "Raleway", sans-serif;
 }
 
 .navbar a {
@@ -56,13 +71,15 @@
       <!-- I need to make sure and put links to each section when done-->
 <div class="navbar">
   <a href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
-   <a  href="#"><i class="fa fa-fw fa-book"></i> History</a>
-  <a class="active" href=""><i class="fa fa-fw fa-map"></i> Maps</a> 
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+   <a  href="#"><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+  <a class="active"href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a href="timeline/index.html"><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
   <a href="#"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
+    <a href="#"><i class="fa fa-fw fa-book"></i> Narrative</a>
   <a href="#"><i class="fa fa-fw fa-user"></i> Sources</a>
+    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
 </div>
-      <h1 style="text-align: center; font-family: arial"> </h1>
+      <h1> Interactive Maps </h1>
     <div id='map'></div>
       <script>
       var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -71,8 +88,8 @@
         var esriWorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 });
-    var map = L.map('map', {center: [42, -94],
-                           zoom: 7,
+    var map = L.map('map', {center: [41.590833, -93.620833],
+                           zoom: 11,
                            layers: [osm]
                            });
     var baseMaps = {
@@ -82,7 +99,13 @@
           
     L.control.layers(baseMaps).addTo(map);
           
-    var myMap = "https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson";
+
+//I don't konw how to load in my GeoJSON file of my map.
+          L.geoJSON(1940,{}).addTo(map);
+          
+   
+          
+   
      function style (feature) {
          return {
              stroke: false,
@@ -91,7 +114,22 @@
              opacity: 0.5,
              
          };
-     }
+     };
+//I am so stuck!!@#@#! I need it to be polygons which I don't know how to put in
+        //pointToLayer: function (feature, latlng) {
+            //return new L.polygon (latlng, 
+               // { stroke: true,
+               // fillOpacity:0.8,
+           //      radius : feature.properties.number + 10,
+        //        });
+       // }, 
+   //     onEachFeature: function (feature, layer) {
+   //         htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.ranking + "</b> <br> Acceptance Rating:" + feature.properties.acceptancerate; 
+       // layer.bindPopup (htmlText);
+       //         layer.bindTooltip(feature.properties.description);
+  //      }
+ //   }).addTo(map);
+
  
       </script>
     </body>
