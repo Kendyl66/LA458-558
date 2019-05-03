@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--Add in StyleSheets for markers-->
+        
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
+      
+<script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+h2 { text-align: center}
+
+p { text-align: center}
+.navbar {
+  width: 100%;
+  background-color: darkgrey;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: grey;
+}
+    
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+    #map { 
+        width: 700px;
+        height: 500px;
+        margin: 0 auto;
+        }
+</style>
+    <title> Legacy of Segregation</title>
+<body>
+
+<!-- I need to make sure and put links to each section when done-->
+<div class="navbar">
+  <a class="active"href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+   <a  href="#"><i class="fa fa-fw fa-book"></i> History</a>
+  <a href=""><i class="fa fa-fw fa-map"></i> Maps</a> 
+  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+  <a href="#"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
+  <a href="#"><i class="fa fa-fw fa-user"></i> Sources</a>
+</div>
+
+<h2>The Legacy of Segregation and Redlining on Des Moines, Iowa </h2>
+<p> I will be putting in the overview here along with my purpose for my project and the importance of the project. </p>
+    
+<div id='map'></div>
+    <script src="events.js"></script>
+   
+</body>
+</html> 

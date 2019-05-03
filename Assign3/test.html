@@ -164,14 +164,14 @@
         L.control.layers(baseMaps,overlayMaps).addTo(map);
         
  var whiteTree = L.AwesomeMarkers.icon({
-  icon: 'tree',
+  icon: 'calendar',
   prefix: 'fa', //font awesome rather than bootstrap
   markerColor: 'green', // see colors above
   iconColor: 'black',
   extraClasses: 'fas', //this might not be needed
 });
         
-var marker_1 = L.marker([48.204722, 16.380556], {icon: whiteTree}).addTo(map);
+L.marker([48.204722, 16.380556], {icon: whiteTree, title: "Park 1",}).bindPopup('Park 1 is the best park in the world!!').addTo(map);
 
 var marker_2 = L.marker([48.184722, 16.302778], {icon: whiteTree}).addTo(map);
 
