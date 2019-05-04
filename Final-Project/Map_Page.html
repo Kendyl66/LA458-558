@@ -58,6 +58,23 @@
 .active {
   background-color: grey;
 }
+        
+ .legend { line-height: 18px;
+            color: #555}
+ .legend i {
+            width: 20px;
+            height: 17px;
+            float: left;
+            margin-right: 5px;
+            opacity: 0.75;
+            }
+ .info {
+            padding: 9px 9px;
+            font: 10px/17px Arial, Verdana, sans-serif;
+            background: rgba(225,225,225,0.9);
+            box-shadow: 0 0 15px rgba( 0,0,0,0.5);
+            border-radius: 10px;
+            }
     
 /* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
 @media screen and (max-width: 500px) {
@@ -96,11 +113,11 @@
                            });
   // need to put in colors depending on percent value
     function getColor (d){
-        return d > 20 ? '#bd0026':
+        return d > 20 ? '#b10026':
         d > 10 ? '#f03b20':
         d > 5 ? '#fd8d3c':
         d > 1 ? '#fecc5c':
-        d < 1 ?'#ffffff':
+        d > 0 ?'#ffffcc':
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -111,22 +128,46 @@
                 weight: 2,
                 color: '#000000',
                 opacity: 1.0,
-                fillOpacity: 0.75, 
-                dashArray: '3'
+                fillOpacity: 0.6, 
+                //dashArray: '3'
             };
         }
+    function highlightFeature(e) {
+        var layer = e.target;
+        layer.setStyle({
+            weight: 5,
+            color: '#666',
+            dashArray:'',
+            fillOpacity:0.7
+        });
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {layer.bringToFront();
+        }
+    }
+        function resetHighlight(e) {geojsonLayer.resetStyle(e.target);
+        }
+        
     function zoomToFeature(e) {
         map.fitBounds(e.target.getBounds());
         }
+    function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+
     
         //Loading GeoJSON
 
 //Load GeoJSON
 var geojsonLayer = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson", {
   style: style,
+  onEachFeature: onEachFeature
 });
 
 geojsonLayer.addTo(map);
+    
         
         var baseMaps = {
         "OpenStreetMap": osm,
@@ -137,8 +178,24 @@ geojsonLayer.addTo(map);
         };
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
-          
- 
+        
+var legend = L.control({ 
+    position: 'bottomleft'});
+     
+legend.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'); 
+     var breaks = [1,2,6,11,30];
+    var labels = ['0%', '1%-5%', '6%-10%', '11%-20%','21% and Greater'];
+           
+        div.innerHTML += "<b> African American Population</b> <br>"
+         
+    for (var i = 0; i <breaks.length; i++){ 
+    div.innerHTML +=
+        '<i style="background:' + getColor(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
+        }
+    return div;
+     };
+     legend.addTo(map);
  
       </script>
     </body>
