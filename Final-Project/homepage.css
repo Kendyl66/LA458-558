@@ -54,31 +54,7 @@
     a:link{ color: black; font-size: 100%}
         a:visited{ color: navy}
         a:hover{ color: palevioletred}
-    
-        
-    #slide { align-content: center;
-        display: block;
-        margin: 0 auto;
-        width: 1000px;
-        height: 700px;
-        border: solid;
-            border-color:black;
-            border-width: thick;
-    }
-    #slide1 { align-content: center;
-        display: block;
-        margin: 0 auto;
-        width: 1000px;
-        height: 700px;
-        border: solid;
-            border-color:black;
-            border-width: thick;
-    }
-    .mySlides {
-            border: solid;
-            border-color:black;
-            border-width: thick;
-        }
+
     .navbar {
         width: 100%;
         background-color: darkgrey;
