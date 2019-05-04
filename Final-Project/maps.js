@@ -91,6 +91,7 @@ function getColor4(d) {
                 //dashArray: '3'
             };
         };
+
  
 //Load GeoJSON files for each year
 var geojsonLayer = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson", {
