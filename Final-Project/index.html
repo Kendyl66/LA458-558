@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-    <!--Add in StyleSheets for markers-->
+  <head>
+    <meta name="description" content="Project">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+      
+      
+      <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+      
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/> 
+        
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
+
+      <!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
+         <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+<!--Add in StyleSheets for markers-->
         
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
       
 <script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
       
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/> 
- <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-
-h2 { text-align: center}
-
-p { text-align: center}
+    
+       
+    <script src="https://profseeger.github.io/LA558-2019/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+        
+        <style>
+body {
+              margin-left: 5px;
+              margin-right: 5px;
+          }
+          
+     h1 {
+        font-family: 'Roboto';
+        font-size: 50px;
+        font-weight: 400;
+        color: black;
+        text-align: center;    
+    }
+          
 .navbar {
   width: 100%;
   background-color: darkgrey;
   overflow: auto;
+    font-family: "Raleway", sans-serif;
 }
-
+          
 .navbar a {
   float: left;
   padding: 12px;
@@ -34,15 +66,12 @@ p { text-align: center}
   text-decoration: none;
   font-size: 17px;
 }
-
 .navbar a:hover {
-  background-color: #000;
+  background-color: red;
 }
-
 .active {
   background-color: grey;
 }
-    
 /* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
 @media screen and (max-width: 500px) {
   .navbar a {
@@ -50,73 +79,35 @@ p { text-align: center}
     display: block;
   }
 }
-    #map { 
-        width: 700px;
-        height: 500px;
-        margin: 0 auto;
-        }
 </style>
-    <title> Legacy of Segregation</title>
-<body>
-
-<!-- I need to make sure and put links to each section when done-->
-<div class="navbar">
-  <a class="active"href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
-   <a  href="#"><i class="fa fa-fw fa-book"></i> History</a>
-  <a href=""><i class="fa fa-fw fa-map"></i> Maps</a> 
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-  <a href="#"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
-  <a href="#"><i class="fa fa-fw fa-user"></i> Sources</a>
-</div>
-
-<h2>The Legacy of Segregation and Redlining on Des Moines, Iowa </h2>
-<p> I will be putting in the overview here along with my purpose for my project and the importance of the project. </p>
+      
+ <script>
+$(document).ready(function() {
+    //load the defaut start page on doc ready
+    $('#loadedContent').load('page1.html');
+    $(".menuButton").click(function() {
+        //preventDefault(),
+        var a = this.name + ".html?";
+        console.log(a); 
     
-<div id='map'></div>
-    <script>
-    var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        $('#loadedContent').load(a);
+    });
 });
-        var Esri_WorldStreetMap = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-});
+</script>     
+           
+</head>
 
-var Stamen_TonerHybrid = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-hybrid/{z}/{x}/{y}{r}.{ext}', {
-	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-	subdomains: 'abcd',
-	minZoom: 0,
-	maxZoom: 20,
-	ext: 'png'
-});
-          var map = L.map('map', {center: [41.590833, -93.620833],
-                           zoom: 9,
-                           layers: [osm]
-                           });
-    var baseMaps = {
-        "OpenStreetMap": osm,
-        ",Streets":Esri_WorldStreetMap
-    };
-    var overlay = {
-        "Stamen Outline": Stamen_TonerHybrid
-    };   
-    L.control.layers(baseMaps, overlay).addTo(map);
-
-var eventTime = L.AwesomeMarkers.icon ({
-  icon: 'calendar',
-  prefix: 'fa', //font awesome 
-  markerColor: 'blue', 
-  iconColor: 'white',
-  extraClasses: 'fas', //this might not be needed
-});
-     // I decided to use the var marker_ in order to keep my items more organized
-    var marker_1 = L.marker([41.5989, -93.6392], {icon: eventTime}).bindPopup('Good Park Riot of 1966: Read more on the History Timeline Page').addTo(map);
-
-    var marker_2 = L.marker([48.184722, 16.302778], {icon: event}).addTo(map);
-
-    var marker_3 = L.marker([48.208056, 16.361111], {icon: event}).addTo(map);
-
-    var marker_4 = L.marker([48.234, 16.415], {icon: event}).addTo(map);
-        
- </script>  
+<body>
+<div class="navbar">
+  <a href="#" class="menuButton" name = "page1"><i class="fa fa-fw fa-home"></i> Home</a> 
+   <a  href="#" class="menuButton" name = "history"><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+  <a href="#" class="menuButton" name = "Map_Page"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a href="#" class="menuButton" name = "timeline/index"><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
+  <a href="#" class="menuButton" name = "links"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
+    <a href="#" class="menuButton" name = "narrative"><i class="fa fa-fw fa-book"></i> Narrative</a>
+  <a href="#" class="menuButton" name = "sources"><i class="fa fa-fw fa-user"></i> Sources</a>
+    <a href="#" class="menuButton" name = "contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+</div>
+<div id="loadedContent"> </div>
 </body>
-</html> 
+</html>

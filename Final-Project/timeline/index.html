@@ -8,8 +8,281 @@
   
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
 
-      <link rel="stylesheet" href="css/style.css">
+<style>
+    
+    section {
+  padding: 100px 0;
+}
 
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 400;
+  background-color: #eee;
+}
+
+h1 {
+  font-size: 200%;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+header {
+  background:#43a2ca;
+  color: #FFFFFF;
+  padding: 100px 0;
+}
+header p {
+  font-family: 'Allura';
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0;
+  font-size: 50px;
+  margin-top: -20px;
+}
+
+.timeline {
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  background: #74a9cf;
+  width: 5px;
+  height: 95%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.timeline-item:nth-child(even) .timeline-content {
+  float: right;
+  padding: 40px 30px 10px 30px;
+}
+.timeline-item:nth-child(even) .timeline-content .date .date2 {
+  right: auto;
+  left: 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  top: 30px;
+  left: -15px;
+  border-width: 10px 15px 10px 0;
+  border-color: transparent #f5f5f5 transparent transparent;
+}
+.timeline-item::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.timeline-content {
+  position: relative;
+  width: 45%;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background: #f5f5f5;
+  box-shadow: 0 20px 25px -15px rgba(0, 0, 0, 0.3);
+}
+.timeline-content::after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  width: 0;
+  height: 0;
+  top: 30px;
+  right: -15px;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #f5f5f5;
+}
+
+.timeline-img {
+  width: 30px;
+  height: 30px;
+  background: #023858;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  margin-top: 25px;
+  margin-left: -15px;
+}
+
+a:hover, a:focus {
+  color: #fb6a4a;
+  text-decoration: none;
+}
+
+.timeline-card {
+  padding: 0 !important;
+}
+.timeline-card p {
+  padding: 0 30px;
+}
+.timeline-card a {
+  margin-left: 20px;
+}
+
+.timeline-item:nth-child(1) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url('https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/Territory.jpg') center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(5) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/StateIowa.jpg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(7) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url('https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/Railroad.png') center center no-repeat;
+  background-size: contain;
+}
+.timeline-item:nth-child(9) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.2)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/AACoal.jpg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(11) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/Bystander.jpg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(14) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/FortDSM.jpeg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(17) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/HOLC.jpeg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(19) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/UrbanR.jpg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(22) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/GoodPark.JPG") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(23) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/blackpanther.jpg") center center no-repeat;
+  background-size: cover;
+}
+.timeline-item:nth-child(25) .timeline-img-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)), url("https://kendyl66.github.io/LA458-558/Final-Project/Timeline_Images/Housing.JPG") center center no-repeat;
+  background-size: cover;
+}
+.timeline-img-header {
+  height: 200px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.timeline-img-header h2 {
+  color: white;
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+}
+    
+.date {
+  background: #74c476;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.dateOD {
+  background: #74c476;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.date2 {
+  background: #41b6c4;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.date2OD {
+  background: #41b6c4;
+  display: inline-block;
+  color: #FFFFFF;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 50px;
+  }
+  .timeline .timeline-img {
+    left: 50px;
+  }
+  .timeline .timeline-content {
+    max-width: 100%;
+    width: auto;
+    margin-left: 70px;
+  }
+  .timeline .timeline-item:nth-child(even) .timeline-content {
+    float: none;
+  }
+  .timeline .timeline-item:nth-child(odd) .timeline-content::after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    width: 0;
+    height: 0;
+    top: 30px;
+    left: -15px;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #f5f5f5 transparent transparent;
+  }
+}
+.navbar {
+  width: 100%;
+  background-color: darkgrey;
+  overflow: auto;
+    font-family: "Raleway", sans-serif;
+    border-radius: 0%
+}
+          
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar a:hover {
+  background-color: black;
+}
+.active {
+  background-color: grey;
+}
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+
+    </style>
   
 </head>
 
@@ -30,7 +303,7 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-          	
+          	<h2> Iowa Territory</h2>
         	</div>
         	<div class="date">July 4, 1838</div>
           <p>Iowa Territory was incorporated into the United States in 1838. While slavery was illegal in Iowa, the territorial legislature was dominated by individuals from southern states, whose views were mirrored those devised in the South. </p>
@@ -83,7 +356,7 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-          	
+          	<h2> Statehood</h2>
         	</div>
         	<div class="date">December 28, 1846</div>
           <p>President James K. Polk made Iowa the 29th State in the United States. Originally, the size of Iowa was much larger, pushing up into Minnesota and the Dakotas, however, representatives from the norther states desired smaller boarders for Iowa in order to leave more land to develop “free” states for freed or runaway slaves to reside in.  They all finally agreed on the current size and shape of Iowa. </p>
@@ -112,7 +385,7 @@
           	<h2>Underground Railroad</h2>
         	</div>
         	<div class="date2OD">1850s</div>
-          <p>Des Moines was part of the Underground Railroad system which provided a network for slaves to flee the south and cross into free states, such as Iowa. It is noted that an abolitionist by the name of John Brown “escorted a group through the city in 1858” while others housed the slaves as they made their journey to Canada (<a> Lufkin, 17</a>).</p>
+          <p>Des Moines was part of the Underground Railroad system which provided a network for slaves to flee the south and cross into free states, such as Iowa. It is noted that an abolitionist by the name of John Brown “escorted a group through the city in 1858” while others housed the slaves as they made their journey to Canada<a>(Lufkin, 17)</a>.</p> <br>
          
         </div>
       </div>   
@@ -136,11 +409,11 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-          	
+          	 <h2> Iowa Coal Industry</h2>
         	</div>
         	<div class="date">1880s</div>
           <p>Starting in the 1880s, Iowa’s coal industry boomed brining in a large black population to work in the mines across the entire state. Instead of being concentrated to a few bigger cities, they were spread across the entire state. An increase of close to 4,000 African-Americans between 1870-80.</p>
-         
+         <br>
         </div>
       </div>  
       
@@ -161,11 +434,11 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-
+                <h2> Iowa State Bystander</h2>
         	</div>
         	<div class="date">1894</div>
           <p>The Iowa State Bystander, an African-American newspaper which ran until 19__, was created and it was a display of the pride and ethic awareness among the African-American community in Des Moines.  </p>
-         
+         <br>
         </div>
       </div>  
       
@@ -198,7 +471,7 @@
 
         <div class="timeline-content timeline-card js--fadeInRight">
         	<div class="timeline-img-header">
-
+                <h2>Fort Des Moines </h2>
         	</div>
         	<div class="date2">1917</div>
           <p>First training corps for black officers in the United States was at Fort Des Moines, which increased migration and because of the war, this greatly impacted the number of jobs available for African Americans. Between 1910-1920, the Black Population saw a 29% increase.   </p>
@@ -234,10 +507,10 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-
+                <h2> HOLC</h2>
         	</div>
         	<div class="date">1933/34</div>
-          <p>Home Owner’s Loan Corporation Redlining Maps </p> <a href=""> Read More</a> 
+          <p>Home Owner’s Loan Corporation Redlining Maps </p> <a href=""> Read More</a> <br> 
          <!--stopped at 1934-->
         </div>
       </div>
@@ -247,7 +520,7 @@
 
         <div class="timeline-content js--fadeInRight">
         	<div class="dateOD">1950s</div>
-          <h2> HUH</h2>
+          <h2> Post-War African American Population</h2>
           <p>After the Great Depression and World War II, in the 1950s, the African-American population in Iowa increased to around 19,692 or 0.8% of the total population in Iowa.  </p>
           
         </div>
@@ -258,11 +531,11 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-
+                <h2> Urban Renewal</h2>
         	</div>
         	<div class="date2OD">1950s-70s</div>
           <p>The rise in urban renewal projects across the entire came to Des Moines around 1957, when discussions about new highways and the clearing of "blighted" areas for new developments arose. In Des Moines, the urban renewal process worked its way through predominately low-income and African-American neighborhoods who were treated without much respect in terms of good communication and aid in finding new housing.  </p><a href=""> Read More</a> 
-          
+          <br>
         </div>
       </div>
     <div class="timeline-item">
@@ -294,11 +567,11 @@
 
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
-
+                <h2> Good Park Riots</h2>
         	</div>
         	<div class="date2">July 1966</div>
           <p>Good Park (1155 17th street, Des Moines, IA 50314) was the main hang out for kids and teenagers since the early 1940s. there was a wading pool, shelter, basketball courts and lots of green space to play. When the riot happened in Good Park in July 1966, some of the young people involved told the Des Moines Register reporters that “there was not enough for them to do at night. Some complained of the inability to find jobs; others expressed concern about the rough police treatment.”  The riots occurred “at a time when perceptions of police brutality were sparking riots in many American cities. African Americans, many stuck in northern urban ghettos with few economic opportunities, grew impatient with the slow progress of the mainstream civil rights movement.” </p><a href=""> Read More</a> 
-          
+          <br>
         </div>
       </div>
     <div class="timeline-item">
@@ -308,8 +581,11 @@
         <div class="timeline-content timeline-card js--fadeInLeft">
         	<div class="timeline-img-header">
 
+                 <h2> The Black Panther Party</h2>
+                
         	</div>
         	<div class="date2OD">July 1968</div>
+           
           <p>The Black Panther party emerged in Des Moines in 1968. The BPP grew quickly in Des Moines so the Oakland based organization did not have the capacity to exert any type of control over them. </p><br>
           
         </div>
@@ -330,9 +606,8 @@
         <div class="timeline-img"></div>
 
         <div class="timeline-content timeline-card js--fadeInLeft">
-        	<div class="timeline-img-header">
-
-        	</div>
+        	<div class="timeline-img-header"> <h2> Present Day</h2></div>
+            
         	<div class="date2OD">2010</div>
           <p>Looking at housing explicitly, in 2010, 65% of cost burdened renters in Des Moines were African American, they represented only 2.6% of all homeowners in the entire county, and in the tracts where many minorities lived had homes with a median value of $70,000 compared to the Polk County median value of $140,6000 (half). There were 4,600 households waiting for Section 8 vouchers.   </p><br>
           
@@ -342,7 +617,59 @@
   <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
 <script src='https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js'></script>
 
-    <script src="js/index.js"></script>
+    <script>
+        
+        $(function(){
+
+  window.sr = ScrollReveal();
+
+  if ($(window).width() < 768) {
+
+  	if ($('.timeline-content').hasClass('js--fadeInLeft')) {
+  		$('.timeline-content').removeClass('js--fadeInLeft').addClass('js--fadeInRight');
+  	}
+
+  	sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+  } else {
+  	
+  	sr.reveal('.js--fadeInLeft', {
+	    origin: 'left',
+	    distance: '300px',
+		  easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+	  sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+  }
+  
+  sr.reveal('.js--fadeInLeft', {
+	    origin: 'left',
+	    distance: '300px',
+		  easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+	  sr.reveal('.js--fadeInRight', {
+	    origin: 'right',
+	    distance: '300px',
+	    easing: 'ease-in-out',
+	    duration: 800,
+	  });
+
+
+});</script>
 
 </body>
 </html>

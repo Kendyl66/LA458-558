@@ -24,10 +24,13 @@
      <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
 <style>
     #map { 
-          width: 700px;
-          height: 500px;
+          width: 900px;
+          height: 600px;
           margin: 0 auto;
-        }
+        border: solid;
+            border-color: black; 
+            border-width: 5x;
+            }
      h1 {
         font-family: 'Roboto';
         font-size: 50px;
@@ -35,6 +38,24 @@
         color: black;
         text-align: center;    
     }
+        body   { 
+        color: black;
+            margin: 0 auto;
+        }
+    body:after {
+        background: url(DesMoines.jpg);
+        content: "";
+        opacity: 0.15;
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -100;   
+        width:auto;
+        height: 100%;
+        background-size: cover;
+        }
 .legend { line-height: 14px;
             color: #555}
   .legend i {
@@ -89,17 +110,8 @@
   </head>
 
   <body>
-      <!-- I need to make sure and put links to each section when done-->
-<div class="navbar">
-  <a href="practice.html"><i class="fa fa-fw fa-home"></i> Home</a> 
-   <a  href="#"><i class="fa fa-fw fa-flag"></i> Legislative History</a>
-  <a class="active"href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
-    <a href="timeline/index.html"><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
-  <a href="#"><i class="fa fa-fw fa-search"></i> Resources/Links</a>
-    <a href="#"><i class="fa fa-fw fa-book"></i> Narrative</a>
-  <a href="#"><i class="fa fa-fw fa-user"></i> Sources</a>
-    <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-</div>
+
+
       <h1> Interactive Maps </h1>
     <div id='map'></div>
       <script src="maps.js"> </script>
