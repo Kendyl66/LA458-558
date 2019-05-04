@@ -10,5 +10,115 @@
          <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
      <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
 
-        
+       <style>
+        h1 {
+        font-family: 'Roboto';
+        font-size: 50px;
+        font-weight: 400;
+        color: black;
+        text-align: center;    
+    }
+        body   { 
+        color: black;
+            margin: 0 auto;
+        }
+    body:after {
+        background: url(DesMoines.jpg);
+        content: "";
+        opacity: 0.15;
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -100;   
+        width:auto;
+        height: 100%;
+        background-size: cover;
+        }     
+.navbar {
+  width: 100%;
+  background-color: darkgrey;
+  overflow: auto;
+    font-family: "Raleway", sans-serif;
+    border-radius: 0%;
+}
+          
+.navbar a {
+  float: left;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar a:hover {
+  background-color: black;
+}
+.active {
+  background-color: grey;
+}
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+}
+           
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position:absolute;
+  z-index: 1;
+  top: auto;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 20px;}
+  .sidenav a {font-size: 18px;}
+}
+</style> 
     </head>
+    <body>
+    
+   <div class="sidenav">
+  <a href="#about">Residential Segregation</a>
+  <a href="#services">Federal Housing Policy</a>
+  <a href="#clients">Iowa and Des Moines Housing Policy</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<div class="main">
+  <h2>Sidebar</h2>
+  <p>This sidebar is of full height (100%) and always shown.</p>
+  <p>Scroll down the page to see the result.</p>
+  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
+</div> 
+    
+    
+    </body>
