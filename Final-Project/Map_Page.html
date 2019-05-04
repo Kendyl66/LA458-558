@@ -96,11 +96,11 @@
                            });
   // need to put in colors depending on percent value
     function getColor (d){
-        return d > 0.20 ? '#bd0026':
-        d > 0.10 ? '#f03b20':
-        d > 0.05 ? '#fd8d3c':
-        d > 0.01 ? '#fecc5c':
-        d < 0.01 ?'#ffffff':
+        return d > 20 ? '#bd0026':
+        d > 10 ? '#f03b20':
+        d > 5 ? '#fd8d3c':
+        d > 1 ? '#fecc5c':
+        d < 1 ?'#ffffff':
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -120,12 +120,10 @@
         }
     
         //Loading GeoJSON
- myURL = "https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson";
 
 //Load GeoJSON
-var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
+var geojsonLayer = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson", {
   style: style,
-  onEachFeature: onEachFeature
 });
 
 geojsonLayer.addTo(map);
