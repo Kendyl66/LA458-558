@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <meta name="description" content="Ex. 17: MapBox Tiile Layers and Intro">
+    <meta name="description" content="Comparison Maps">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Maps</title>
@@ -15,7 +15,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
     
-      <script src="1940.geojson"></script>     
+         
+   <script src="https://indicator.extension.iastate.edu/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
+         
       
       <!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
          <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
@@ -81,7 +83,7 @@
 </div>
       <h1> Interactive Maps </h1>
     <div id='map'></div>
-      <script>
+    <script>
       var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
@@ -92,44 +94,53 @@
                            zoom: 11,
                            layers: [osm]
                            });
-    var baseMaps = {
+  // need to put in colors depending on percent value
+    function getColor (d){
+        return d > 0.20 ? '#bd0026':
+        d > 0.10 ? '#f03b20':
+        d > 0.05 ? '#fd8d3c':
+        d > 0.01 ? '#fecc5c':
+        d < 0.01 ?'#ffffff':
+        '#FFFFFF'; //this will be the default if none of the above match these numbers
+    }
+    //now i need to set the function for style
+        function style(feature) {
+            return {
+                fillColor: getColor(feature.properties.Percent_To * 100),
+                stroke: true,
+                weight: 2,
+                color: '#000000',
+                opacity: 1.0,
+                fillOpacity: 0.75, 
+                dashArray: '3'
+            };
+        }
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+        }
+    
+        //Loading GeoJSON
+ myURL = "https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson";
+
+//Load GeoJSON
+var geojsonLayer = new L.GeoJSON.AJAX(myURL, {
+  style: style,
+  onEachFeature: onEachFeature
+});
+
+geojsonLayer.addTo(map);
+        
+        var baseMaps = {
         "OpenStreetMap": osm,
         "Satellite View": esriWorldImagery,
     };
+        var overlayMaps = {
+            "1940": geojsonLayer
+        };
           
-    L.control.layers(baseMaps).addTo(map);
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
           
-
-//I don't konw how to load in my GeoJSON file of my map.
-          L.geoJSON(1940,{}).addTo(map);
-          
-   
-          
-   
-     function style (feature) {
-         return {
-             stroke: false,
-             fillColor: getColor(feature.properties.number),
-             weight: 1,
-             opacity: 0.5,
-             
-         };
-     };
-//I am so stuck!!@#@#! I need it to be polygons which I don't know how to put in
-        //pointToLayer: function (feature, latlng) {
-            //return new L.polygon (latlng, 
-               // { stroke: true,
-               // fillOpacity:0.8,
-           //      radius : feature.properties.number + 10,
-        //        });
-       // }, these popups are not correct, I was just using what I had used before as an example about how I might go about doing it. 
-   //     onEachFeature: function (feature, layer) {
-   //         htmlText = "Univerisity:" + "<strong>" + feature.properties.description + "</strong> <br> Ranking:<b>" + feature.properties.ranking + "</b> <br> Acceptance Rating:" + feature.properties.acceptancerate; 
-       // layer.bindPopup (htmlText);
-       //         layer.bindTooltip(feature.properties.description);
-  //      }
- //   }).addTo(map);
-
+ 
  
       </script>
     </body>

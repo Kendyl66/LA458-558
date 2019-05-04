@@ -80,12 +80,7 @@
     zoom: 4,
     layers: [osm]
     });
-     
-var baseMaps = { "streets": osm,
-                "aerial": esriWorldImagery};
-     
-     
-  L.control.layers(baseMaps).addTo(map);
+
 
      
 //my data
@@ -127,6 +122,11 @@ var myURL = "https://kendyl66.github.io/LA458-558/ex8/map.geojson";
                 '#ff0000'; //white   
         
     }
+     var baseMaps = { "streets": osm,
+                "aerial": esriWorldImagery};
+     
+   var overlayMaps = {"dots": geojsonLayer};  
+  L.control.layers(baseMaps, overlayMaps).addTo(map);
  //Cretaing the legend
      
 var legend = L.control({ 
