@@ -9,7 +9,7 @@
                            layers: [osm]
                            });
   // need to put in colors depending on percent value
-    function getColor (d){
+    function getColor40 (d){
         return d > 20 ? '#b10026':
         d > 10 ? '#f03b20':
         d > 5 ? '#fd8d3c':
@@ -20,7 +20,7 @@
     //now i need to set the function for style
         function style(feature) {
             return {
-                fillColor: getColor(feature.properties.Percent_To * 100),
+                fillColor: getColor40(feature.properties.Percent_To * 100),
                 stroke: true,
                 weight: 2,
                 color: '#000000',
@@ -76,10 +76,10 @@ geojsonLayer.addTo(map);
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
         
-var legend = L.control({ 
+var legend1 = L.control({ 
     position: 'bottomleft'});
      
-legend.onAdd = function (map) {
+legend1.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'); 
      var breaks = [1,2,6,11,30];
     var labels = ['0%', '1%-5%', '6%-10%', '11%-20%','21% and Greater'];
@@ -88,9 +88,9 @@ legend.onAdd = function (map) {
          
     for (var i = 0; i <breaks.length; i++){ 
     div.innerHTML +=
-        '<i style="background:' + getColor(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
+        '<i style="background:' + getColor40(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
         }
     return div;
      };
-     legend.addTo(map);
+     legend1.addTo(map);
  
