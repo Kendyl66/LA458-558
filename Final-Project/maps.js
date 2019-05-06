@@ -9,57 +9,6 @@ var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
                            layers: [osm]
                            });
 
-function highlightFeature(e) {
-    var layer = e.target;
-
-    layer.setStyle({
-        weight: 4,
-        color: '#666',
-        dashArray: '',
-        fillOpacity: 0.7
-    });
-
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
-    info.update(layer.feature.properties);
-}
-
-function resetHighlight(e) {
-    geojsonLayer.resetStyle(e.target);
-    info.update();
-    
-}
-
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-
-function onEachFeature(feature, layer) {
-    layer.on({
-        mouseover: highlightFeature,
-        mouseout: resetHighlight,
-        click: zoomToFeature
-    });
-}
-
-
-var info = L.control();
-
-info.onAdd = function (map) {
-    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
-    this.update();
-    return this._div;
-};
-
-// method that we will use to update the control based on feature properties passed
-info.update = function (props) {
-    this._div.innerHTML = '<h4>Census Tract</h4>' +  (props ?
-        '<b>' + props.TRACTA + '</b><br />' + props.Percent_To
-        : 'Hover Over a Census Tract');
-};
-
-info.addTo(map);
 
   // need to put in colors depending on percent value for each map, so I will have 
     function getColor(d) {
@@ -149,7 +98,6 @@ function getColor4(d) {
 //Load GeoJSON files for each year
 var geojsonLayer = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson", {
   style: style,
-onEachFeature: onEachFeature,
 });
 
 geojsonLayer.addTo(map);
@@ -167,7 +115,7 @@ var geojsonLayer4 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Fin
 style: style4,
 });
 
-
+//I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
         "Satellite View": esriWorldImagery,
