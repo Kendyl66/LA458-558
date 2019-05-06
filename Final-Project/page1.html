@@ -66,6 +66,16 @@
         opacity: 0.75;
         padding: 15px 15px
     }
+        #slide { align-content: center;
+        display: block;
+        margin: auto;
+        width: 1000px;
+        height: 700px;
+        border: solid;
+            border-color:black;
+            border-width: thick;
+            
+    }
     a:link{ color: black; font-size: 100%}
         a:visited{ color: navy}
         a:hover{ color: palevioletred}
@@ -112,7 +122,34 @@
         
 <!-- sorry for all the long text, but since this is for my thesis and is my final product this is the type of information I have to include for my committee and peers-->
 <h1>The Legacy of Segregation and Redlining on Des Moines, Iowa </h1>
-        <h2> Master's Thesis Website by Kendyl Landeck</h2><br>
+        <h1 style="font-size: 35px"> Master's Thesis Website by Kendyl Landeck</h1><br>
+<img name="slide" id="slide" width="900" height="600" src=" " style="align-content: center">
+   
+       <script>
+           //Assign3: include at least 2 images
+           var i =0; 
+           var images = [];
+           var time = 4000;
+           //images were taken on my trip to Vienna
+           images [0] = "https://kendyl66.github.io/LA458-558/Final-Project/urbanRenewal2.jpg";
+           images [1] = "https://kendyl66.github.io/LA458-558/Final-Project/whiteonly.jpg";
+           images [2] = "https://kendyl66.github.io/LA458-558/Final-Project/girls.jpg";
+           images [3] = "https://kendyl66.github.io/LA458-558/Final-Project/redliningpage2.jpg";
+           
+           //function 
+           function changeImg() {
+               document.slide.src = images [i];
+               
+               if(i < images.length - 1){
+                 i++;
+               } else {
+                   i =0;
+               }
+            setTimeout("changeImg()", time);
+           }
+           
+           window.onload = changeImg;
+        </script>
         <h2> Overview</h2>
 <p> This research aims to address the housing history of African American people in Des Moines, including the discrimination that individuals have experienced over time.as well as, focus on individual people’s experiences they have faced with discrimination and housing over time. This research considers how federal and local policies have impacted where African Americans live. These main topics help answer the overarching question of what the lasting effects of redlining and segregation are regarding African Americans in Des Moines.<br> <br>
     
