@@ -5,7 +5,7 @@ var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 });
     var map = L.map('map', {center: [41.590833, -93.620833],
-                           zoom: 11,
+                           zoom: 12,
                            layers: [osm]
                            });
 
@@ -92,12 +92,102 @@ function getColor4(d) {
                 fillOpacity: 0.6, 
                 //dashArray: '3'
             };
-        };
+        }
 
- 
+function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+        info.update(layer.feature.properties);
+    }
+}
+function resetHighlight(e) {
+    geojsonLayer.resetStyle(e.target);
+    info.update();
+}
+function resetHighlight2(e) {
+    geojsonLayer2.resetStyle(e.target);
+}
+function resetHighlight3(e) {
+    geojsonLayer3.resetStyle(e.target);}
+function resetHighlight4(e) {
+    geojsonLayer4.resetStyle(e.target);
+}
+
+//function zoomToFeature(e) {
+    //map.fitBounds(e.target.getBounds());
+//}
+function onEachFeature(feature, layer) {
+    total =  feature.properties.Total.toLocaleString();
+  
+    percent = (feature.properties.Percent_To * 100).toFixed(2) + '%';
+    
+    tract = feature.properties.TRACTA.toLocaleString();
+  
+
+  layer.bindPopup('<strong>Census Tract: </strong>'+ tract + '<br>Percent: ' + percent),
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        //click: zoomToFeature
+    })
+}
+function onEachFeature1(feature, layer) {
+    total =  feature.properties.CY7001.toLocaleString();
+  
+    percent = (feature.properties.PerTot * 100).toFixed(2) + '%';
+    
+    tract = feature.properties.AREANAME.toLocaleString();
+  
+  layer.bindPopup('<strong>Census Tract: </strong>'+ tract + '<br>Percent: ' + percent),
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight2,
+        //click: zoomToFeature
+    })
+}
+function onEachFeature2(feature, layer) {
+     total =  feature.properties.Total_Pop.toLocaleString();
+  
+    percent = (feature.properties.PERCB * 100).toFixed(2) + '%';
+    
+    tract = feature.properties.AreaName.toLocaleString();
+  
+  layer.bindPopup('<strong>Census Tract: </strong>'+ tract + '<br>Percent: ' + percent),
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight3,
+        //click: zoomToFeature
+    })
+}
+function onEachFeature3(feature, layer) {
+    total =  feature.properties.Pop.toLocaleString();
+  
+    percent = (feature.properties.PERCB * 100).toFixed(2) + '%';
+    
+    tract = feature.properties.NAME10.toLocaleString();
+  
+  layer.bindPopup('<strong>Census Tract: </strong>'+ tract + '<br>Percent: ' + percent),
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight4,
+        //click: zoomToFeature
+    })
+}
+//for each polygon 
+
 //Load GeoJSON files for each year
 var geojsonLayer = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1940.geojson", {
   style: style,
+    onEachFeature: onEachFeature
 });
 
 geojsonLayer.addTo(map);
@@ -105,14 +195,17 @@ geojsonLayer.addTo(map);
 //Load GeoJSON
 var geojsonLayer2 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1970.geojson", {
  style: style2,
+    onEachFeature: onEachFeature1
 });
     
 var geojsonLayer3 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/2000.geojson", {
 style: style3,
+    onEachFeature: onEachFeature2
 });
 
 var geojsonLayer4 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/2010.geojson", {
 style: style4,
+    onEachFeature: onEachFeature3
 });
 
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 

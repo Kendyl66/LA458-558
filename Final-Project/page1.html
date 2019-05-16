@@ -1,8 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <meta charset="utf-8"/>
-    <meta name="exercises" content="universities"/>
+        <meta name="description" content="Project">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/> 
+        
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
+
+      <!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
+         <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+<!--Add in StyleSheets for markers-->
+        
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.css" />
+      
+<script src="https://cdn.jsdelivr.net/gh/lvoogdt/Leaflet.awesome-markers@2.0.2/dist/leaflet.awesome-markers.js"></script>
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    
+       
+    <script src="https://profseeger.github.io/LA558-2019/classes/leaflet-ajax-gh-pages/dist/leaflet.ajax.min.js"></script>
 <title> Home Page</title>
    
 <style>
@@ -69,7 +97,7 @@
     #slide { align-content: center;
         display: block;
         margin: auto;
-        width: 900px;
+        width: 1000px;
         height: 600px;
         border: solid;
             border-color:black;
@@ -137,13 +165,24 @@
 <!--added in my overview of what my research is -->
     
     <body data-gr-c-s-loaded="true">
+<div class="navbar">
+  <a class="active" href="page1.html" ><i class="fa fa-fw fa-home"></i> Home</a> 
+    <a href="timeline.html" ><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
+    <a  href="history.html" ><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+    <a href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a href="videos.html"><i class="fa fa-fw fa-video"></i> Videos</a>
+    <a href="links.html"><i class="fa fa-fw fa-search">
+    </i> Resources/Links</a>
+    <a href="sources.html"><i class="fa fa-fw fa-user"></i> Sources</a>
+
+</div>
 <!-- For some reason, the loading of the pages off a single page has not been working properly. I let Professor Seeger know about the issues of going back to a page after originally visiting it and the mapping points not showing up unless you refresh the page. So if you are wondering about why the markers disappeared, this is why.-->
         
 <!-- sorry for all the long text, but since this is for my thesis and is my final product this is the type of information I have to include for my committee and peers-->
 <button onclick="topFunction()" id="myBtn" title="Go to top">Back to Top</button>
         <h1>The Legacy of Segregation and Redlining on Des Moines, Iowa </h1>
         <h1 style="font-size: 35px"> Master's Thesis Website by Kendyl Landeck</h1><br>
-<img name="slide" id="slide" width="800" height="600" src=" " style="align-content: center">
+<img name="slide" id="slide" width="900" height="700" src=" " style="align-content: center">
    
        <script>
            //Assign3: include at least 2 images
@@ -155,6 +194,7 @@
            images [1] = "https://kendyl66.github.io/LA458-558/Final-Project/whiteonly.jpg";
            images [2] = "https://kendyl66.github.io/LA458-558/Final-Project/girls.jpg";
            images [3] = "https://kendyl66.github.io/LA458-558/Final-Project/redliningpage2.jpg";
+           images [4] = "https://kendyl66.github.io/LA458-558/Final-Project/anti_negro_housing.JPG";
            
            //function 
            function changeImg() {

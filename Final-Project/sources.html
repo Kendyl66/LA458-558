@@ -1,4 +1,8 @@
-  <html> <head>
+  <html>
+      <head>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+             <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
        <title> Sources</title>
        <style>
       
@@ -63,9 +67,56 @@
 #myBtn:hover {
   background-color: #555; /* Add a dark-grey background on hover */
 }
+.navbar {
+        width: 100%;
+        background-color: darkgrey;
+        overflow: auto;
+        font-family: 'Raleway', sans-serif;
+        }
+
+ .navbar a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+.navbar a:hover {
+  background-color: #000;
+}
+.navbar a:visited {
+  color: white;
+}
+.active {
+  background-color: grey;
+}
+    
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+    
+    a {color: aliceblue;
+    }
+    a:hover {color: blue}
+
        </style> 
        </head>
 <body>
+       <div class="navbar">
+  <a href="page1.html" ><i class="fa fa-fw fa-home"></i> Home</a> 
+    <a href="timeline.html" ><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a>  
+    <a   href="history.html" ><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+    <a  href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a  href="videos.html"><i class="fa fa-fw fa-video"></i> Videos</a>
+    <a href="links.html"><i class="fa fa-fw fa-search">
+    </i> Resources/Links</a>
+    <a class="active" href="sources.html"><i class="fa fa-fw fa-user"></i> Sources</a>
+
+</div>
  <button onclick="topFunction()" id="myBtn" title="Go to top">Back to Top</button>   
     <!--added in my sources for my research-->
     

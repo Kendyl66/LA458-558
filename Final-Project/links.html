@@ -1,7 +1,12 @@
-   <head>
+<!DOCTYPE html>
+<html>
+<head>
        <title> Links and Resources</title>
-       <style>
-      
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+             <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+ <style>   
  body   { 
         color: black;
             margin: 0 auto;
@@ -46,9 +51,57 @@
         text-align: center;
         font-size: 20px
            }
+    .navbar {
+        width: 100%;
+        background-color: darkgrey;
+        overflow: auto;
+        font-family: 'Raleway', sans-serif;
+        }
+
+    .navbar a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+.navbar a:hover {
+  background-color: #000;
+}
+.navbar a:visited {
+  color: white;
+}
+.active {
+  background-color: grey;
+}
+    
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+    
+    a {color: aliceblue;
+    }
+    a:hover {color: blue}
+
        </style> 
        </head>
 <body>
+    <div class="navbar">
+  <a href="page1.html" ><i class="fa fa-fw fa-home"></i> Home</a> 
+    <a href="timeline.html" ><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a>  
+    <a   href="history.html" ><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+    <a  href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a  href="videos.html"><i class="fa fa-fw fa-video"></i> Videos</a>
+    <a class="active" href="links.html"><i class="fa fa-fw fa-search">
+    </i> Resources/Links</a>
+    <a href="sources.html"><i class="fa fa-fw fa-user"></i> Sources</a>
+
+</div>
+    
 <h1> Websites:</h1>
    <li> <b> <a href="https://blackiowa.pastperfectonline.com/">African American Museum of Iowa</a></b></li>
     <li> <b> <a href="https://benjamindavidsteele.wordpress.com/2013/10/17/the-shame-of-iowa-and-the-midwest/">The Shame of Iowa and the Midwest</a></b></li>
@@ -68,3 +121,4 @@
      <li> <b> <a href="https://ir.uiowa.edu/cgi/viewcontent.cgi?article=1103&context=annals-of-iowa">Sundown Towns: A Hidden Dimension of American Racism</a></b></li>
     <li> <b> <a href="https://www.huduser.gov/portal/Publications/pdf/HUD-514_HDS2012.pdf">Housing Discrimination Against Racial and Ethnic Minorities 2012 </a></b></li>
 </body>
+</html>
