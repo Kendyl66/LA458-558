@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="description" content="Project">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+      
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="crossorigin=""/> 
+        
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script> 
+
+      <!--Brought in 3 fonts from Google fonts to made the visual aspect of my webpage better with more interesting fonts-->
+         <link href="https://fonts.googleapis.com/css?family=Roboto:100i,300,400,500,700" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+
+<title> About</title>
+   
+<style>
+   
+    div {
+            display: block; 
+            margin-left: 0 auto;
+            margin-right: 0 auto;
+            
+        }
+    body   { 
+        color: black;
+            margin: 0 auto;
+        }
+    body:after {
+        background: url(DesMoines.jpg);
+        content: "";
+        opacity: 0.19;
+        position:fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -100;   
+        width:auto;
+        height: 100%;
+        background-size: cover;
+        }
+     h1 {
+        font-family: 'Roboto';
+        font-size: 50px;
+        font-weight: 400;
+        color: black;
+        text-align: center;    
+    }
+    
+     h2 {
+        font-family: 'Roboto';
+        color: black;
+        text-align: center;
+        font-size: 25px;
+         margin: 0px 50px 0px 50px;
+         background-color: white;
+        opacity: 0.75;
+        padding: 15px 15px
+    }
+    
+    p {text-align: center;
+        font-family: 'Raleway', sans-serif;
+        color: black;
+        font-size: 20px;
+        margin: 0px 50px 0px 50px;
+        background-color: white;
+        opacity: 0.75;
+        padding: 15px 15px
+    }
+    
+    #slide { align-content: center;
+        display: block;
+        margin: auto;
+        width: 1100px;
+        height: 600px;
+        border: solid;
+            border-color:black;
+            border-width: thick;
+            
+    }
+    a:link{ color: black; font-size: 100%}
+        a:visited{ color: navy}
+        a:hover{ color: palevioletred}
+    #myBtn {
+        display: none; /* Hidden by default */
+        position: fixed; /* Fixed/sticky position */
+        bottom: 20px; /* Place the button at the bottom of the page */
+        right: 30px; /* Place the button 30px from the right */
+        z-index: 99; /* Make sure it does not overlap */
+        border: none; /* Remove borders */
+        outline: none; /* Remove outline */
+        background-color: black; /* Set a background color */
+        color: white; /* Text color */
+        cursor: pointer; /* Add a mouse pointer on hover */
+        padding: 15px; /* Some padding */
+        border-radius: 10px; /* Rounded corners */
+        font-size: 13px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+    .navbar {
+        width: 100%;
+        background-color: darkgrey;
+        overflow: auto;
+        font-family: 'Raleway', sans-serif;
+        }
+
+    .navbar a {
+        float: left;
+        padding: 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 17px;
+        }
+
+    .navbar a:hover {
+  background-color: #000;
+}
+    .navbar a:visited {
+  color: white;
+}
+    .active {
+  background-color: grey;
+}
+    
+/* I learned that this allows you to have your navigation bar work with the size of the screen it is being viewed on*/ 
+@media screen and (max-width: 500px) {
+    .navbar a {
+    float: none;
+    display: block;
+  }
+}
+        </style>        
+    </head>
+    
+<!--added in my overview of what my research is -->
+    
+    <body>
+<div class="navbar">
+  <a  href="page1.html" ><i class="fa fa-fw fa-home"></i> Home</a>
+    <a class="active"href="about.html"><i class="fa fa-fw fa-bookmark"></i> About</a>
+    <a href="timeline.html" ><i class="fa fa-fw fa-calendar-check"></i> Historical Timeline</a> 
+    <a  href="history.html" ><i class="fa fa-fw fa-flag"></i> Legislative History</a>
+    <a href="Map_Page.html"><i class="fa fa-fw fa-map"></i> Interactive Maps</a> 
+    <a href="videos.html"><i class="fa fa-fw fa-video"></i> Videos</a>
+    <a href="links.html"><i class="fa fa-fw fa-search">
+    </i> Resources/Links</a>
+    <a href="sources.html"><i class="fa fa-fw fa-user"></i> Sources</a>
+
+</div>
+        <h1> The Project </h1>
+        <p> The Legacy of Redlining and Segregation in Des Moines, IA addresses the impact that past federal and local policy, such as redlining and housing discriminatory practices, on the City of Des Moines. The primary purpose of this study is to provide a historical analysis that will help the public gain more knowledge around African American history and experience in Iowa. It will provide information about<br><br>
+           <b>1.</b> how segregation was implemented and enforced<br>
+            <b>2.</b> how segregation shaped the City of Des Moines<br>
+            <b>3.</b> how segregation resulted in lower quality neighborhoods for African American families<br>
+            <b>4.</b> how the effects of segregation persist<br><br>
+
+
+        Viewing and mapping racial composition data from 1920-2010 will supplement federal and local policy history to help analyze the real impact racial discrimination has had on the city.  This study also aims to provide some narrative about experiences African Americans currently living in the community, as well as people's experiences documented in newspapers, had in finding housing and facing discrimination. <br><br>
+            
+        This research intends to provide more public knowledge to the overall community about African Americans in Des Moines, which will hopefully initiate a broader conversation related to race and housing. Over the last decade, there have been a few reports, books and media compilations that have discussed the history of race and discrimination in Iowa. Some of the most influential and essential sources include, the report, "One Economy: Building Opportunity for All, The State of Black Polk County" produced by the African American Leadership Forum-Des Moines in 2017, the book, Outside In: A History of African-Americans in Iowa, 1838 to 2000 written by Bill Silag, Susan Bridgford and Hal Chase, and the multiple documentaries and information produced by Iowa Public Television. These sources provide a wide range of knowledge and historical background to aid in discussions surrounding race in Iowa. I desire to use these sources and contribute by providing an analysis of redlining and segregation using ArcGIS, web-mapping and literature. In the end, this study will aim to offer planning recommendations that address better ways to mitigate the effects of segregated housing on the present-day African American community and the ever-growing, diverse population of Des Moines.<br><br>
+
+        The project builds off two existing studies that have been addressing similar issues discussed here. In Minneapolis, the "Mapping Prejudice" project has been doing research and collecting data regarding racially restrictive covenants within Hennepin County since 2014. Their initial efforts to illuminate the racial disparity in Minneapolis produced fascinating data showing how many of the city's "most spectacular parks were ringed by residential districts that barred people of color from taking up residence" ultimately creating an invisible barrier around public spaces (Delegard, Mattke, Ehrman-Solberg, Petersen, & Mills). Their findings have shown a direct correlation between how space within the city was shaped and how covenants have created lasting effects on specific communities negatively affected. The researchers intend that their "database and map will be a powerful community resource that should serve as a foundation for productive community conversations and fact-based policy making."  In 2016, "Mapping Prejudice" started to create the country's first comprehensive database and visualization of racial covenants. <br><br>
+            
+        The Minneapolis project was influenced by a project, "Mapping Inequality," which started at the University of Richmond and has been operating since 2016. Their goal has been to digitize HOLC redlining maps to produce, analyze and display the data in a way that is made accessible for the public.<br><br>
+            
+        Just as the Mapping Prejudice team desires to have their maps and database help facilitate discussion about race and start fact-based policy making, it is also my desire to produce an easily accessible, well-research and visually pleasing website to provide this vital information to the public. It is also significant because there are no projects that have examined this history in Des Moines and attempted to see what the effects of redlining and segregation during the 20th and 21st centuries have had on the landscape today. I intend to fill a gap in the research and make the information accessible for the public to learn from and use. <br><br>
+
+        I hope this research will supplement other projects starting to unfold around the City of Des Moines and the State of Iowa focusing on Civil Rights history and preservation of historic African American sites, as well as influence the ongoing discussions on revitalization and housing/workforce development in the region.<br><br>
+</p>
+     <br><br>    <h1> Why does this all matters? </h1>
+
+<p>
+        First, it addresses a subject which most Iowans do not want to discuss or think about. Talking about race and effects of past transgressions is a topic among Midwestern states that are actively pushed down and glossed over, however, in this political and divisive cultural climate gaining an understanding of people who are different from oneself is a crucial part in becoming a united country and moving forward in a positive direction. Second, through the knowledge of how communities have historically developed and the effects of the restrictive policies, we can plan and revitalize better, more tolerant and loving communities. I am of the mindset that planners are one of the first lines of defense when it comes to addressing issues of social justice through the creation of environments which allow conversations to happen and bring people together instead of separating them. So much of the way we view the world is based on how we grew up and where we grew up, if planners are able to understand the historical ramifications of past policies and how it still affects areas today, then we will be able to develop justice-based and community-centered areas which, as I said above, bring people together. <br><br>
+
+        The history of African Americans in Des Moines has been pushed aside and ignored for decades. The Des Moines community, as a whole has continued to be predominately white (78% in 2010, 77% in 2012 and 2015, and 76% in 2017). While the city's demographics are starting to become more diverse, these populations still do not make up a significant percentage of the overall city's total population. Their culture and presence bring forth new policy and social discussions regarding support, services, and housing for the Des Moines Metropolitan area. When specifically looking at the African American community in Des Moines, there are areas in which still today we can see remnants of older, once vibrant communities that have been disregarded over time and have fallen into states of deterioration or urban renewal demolition. These are the areas today that are still seen as less desirable for most white citizens, meaning the only people willing or able to live there are low-income or diverse populations because they do not have as many options. Residential segregation, while illegal today, has left its mark on the landscape of small cities like Des Moines and because many people believe it is a thing of the past, there is no determination to resurface these ideas and histories that still impact the communities they reside in today.<br><br>
+
+        The conversation regarding race, discrimination, and segregation is not a new one; however, it remains essential and unresolved. In Des Moines, much of the research done on the African American community is not easily accessible, there is no current research documenting redlining and segregation, and no specific policies to remedy this history of discrimination. <br><br>
+
+        It is my hope that this research provides a platform for people to gain knowledge about past and present race relations, start more conversations about how this might have affected their communities and aid in changing how planning and decisions are done in the City of Des Moines. I believe this research's most important contribution is the production of material, provided to the public, in an easy and accessible format, as well as provide a service to support the good of the community.  <br><br>
+
+        </p>
+        
+        <h1> About the Researcher</h1>
+        <p> Hi! My name is Kendyl Landeck. I am Master's Student at Iowa State University studying Community and Regional Planning. I have a passion for researching social justic topics and addressing issues of equity in Metropolitan areas. I hope that this research can be a beneifical tool for the community of Des Moines, Iowa to improve community engagement, promote better policy and to spark converstaions around the importance of race in all aspects of our lives. </p><br><br>
+        
