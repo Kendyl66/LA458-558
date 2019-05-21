@@ -74,11 +74,11 @@ function getColor3(d) {
             };
         }
 function getColor4(d) {
-        return d > 20 ? '#b10026' :
-        d > 10 ? '#f03b20' :
-        d > 5 ? '#fd8d3c' :
-        d > 1 ? '#fecc5c' :
-        d > 0 ?'#ffffcc' :
+        return d > 20 ? '#5e3c99' :
+        d > 10 ? '#b2abd2' :
+        d > 5 ? '#f7f7f7' :
+        d > 1 ? '#fdb863' :
+        d > 0 ?'#e66101' :
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -94,16 +94,16 @@ function getColor4(d) {
             };
         }
 function getColor5(d) {
-        return d= A ? '#b10026' :
-        d = B ? '#f03b20' :
-        d = C ? '#fd8d3c' :
-        d= D ? '#fecc5c' :
+        return d == 4 ? '#005824' :
+        d == 3 ? '#0570b0' :
+        d == 2 ? '#fe9929' :
+        d == 1 ? '#99000d' :
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
         function style5(feature) {
             return {
-                fillColor: getColor4(feature.properties.HOLC_Grade),
+                fillColor: getColor5(feature.properties.HOLC_N),
                 stroke: true,
                 weight: 2,
                 color: '#000000',
@@ -136,9 +136,13 @@ function resetHighlight2(e) {
     geojsonLayer2.resetStyle(e.target);
 }
 function resetHighlight3(e) {
-    geojsonLayer3.resetStyle(e.target);}
+    geojsonLayer3.resetStyle(e.target);
+}
 function resetHighlight4(e) {
     geojsonLayer4.resetStyle(e.target);
+}
+function resetHighlight5(e) {
+    geojsonLayer5.resetStyle(e.target);
 }
 
 //function zoomToFeature(e) {
@@ -201,6 +205,18 @@ function onEachFeature3(feature, layer) {
         //click: zoomToFeature
     })
 }
+function onEachFeature4(feature, layer) {
+    grade =  feature.properties.HOLC_Grade();
+    
+    identify = feature.properties.HOLC_ID();
+  
+  layer.bindPopup('<strong>HOLC Grade </strong>'+ grade + '<br>ID: ' + identify),
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight5,
+        //click: zoomToFeature
+    })
+}
 //for each polygon 
 
 //Load GeoJSON files for each year
@@ -227,6 +243,11 @@ style: style4,
     onEachFeature: onEachFeature3
 });
 
+var geojsonLayer5 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/redline1936.geojson", {
+style: style5,
+    onEachFeature: onEachFeature4
+});
+
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
@@ -236,7 +257,8 @@ style: style4,
             "1940": geojsonLayer,
             "1970": geojsonLayer2,
             "2000": geojsonLayer3,
-            "2010": geojsonLayer4,  
+            "2010": geojsonLayer4,
+            "Redline Map": geojsonLayer5,
         };
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
@@ -262,3 +284,24 @@ legend1.onAdd = function (map) {
 
           
      legend1.addTo(map);
+
+var legend2 = L.control({ 
+    position: 'bottomright'});
+     
+legend2.onAdd = function (map) {
+        var div = L.DomUtil.create('div', 'info legend'); 
+     var breaks = [4,3,2,1];
+    var labels = ['A', 'B', 'C', 'D'];    
+           
+        div.innerHTML += "<b>HOLC Redlining Map</b> <br>"
+         
+    for (var i = 0; i <breaks.length; i++){ 
+    div.innerHTML +=
+        '<i style="background:' + getColor5(breaks[i]) + ' "></i> ' + labels[i] + (breaks ? '' + '<br>' : '');
+        }
+    return div;
+     };
+          
+
+          
+     legend2.addTo(map);
