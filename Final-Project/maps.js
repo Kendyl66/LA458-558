@@ -248,6 +248,7 @@ style: style5,
     onEachFeature: onEachFeature4
 });
 
+
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
@@ -259,6 +260,7 @@ style: style5,
             "2000": geojsonLayer3,
             "2010": geojsonLayer4,
             "HOLC Map": geojsonLayer5,
+
         };
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
