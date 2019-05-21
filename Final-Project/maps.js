@@ -12,11 +12,11 @@ var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
   // need to put in colors depending on percent value for each map, so I will have 
     function getColor(d) {
-        return d > 20 ? '#b10026' :
-        d > 10 ? '#f03b20' :
-        d > 5 ? '#fd8d3c' :
-        d > 1 ? '#fecc5c' :
-        d > 0 ?'#ffffcc' :
+        return d > 20 ? '#5e3c99' :
+        d > 10 ? '#b2abd2' :
+        d > 5 ? '#f7f7f7' :
+        d > 1 ? '#fdb863' :
+        d > 0 ?'#e66101' :
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -34,11 +34,11 @@ var osm = L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
           
           
 function getColor2(d) {
-        return d > 20 ? '#b10026' :
-        d > 10 ? '#f03b20' :
-        d > 5 ? '#fd8d3c' :
-        d > 1 ? '#fecc5c' :
-        d > 0 ?'#ffffcc' :
+        return d > 20 ? '#5e3c99' :
+        d > 10 ? '#b2abd2' :
+        d > 5 ? '#f7f7f7' :
+        d > 1 ? '#fdb863' :
+        d > 0 ?'#e66101':
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -54,11 +54,11 @@ function getColor2(d) {
             };
         }
 function getColor3(d) {
-        return d > 20 ? '#b10026' :
-        d > 10 ? '#f03b20' :
-        d > 5 ? '#fd8d3c' :
-        d > 1 ? '#fecc5c' :
-        d > 0 ?'#ffffcc' :
+        return d > 20 ? '#5e3c99' :
+        d > 10 ? '#b2abd2' :
+        d > 5 ? '#f7f7f7' :
+        d > 1 ? '#fdb863' :
+        d > 0 ?'#e66101' :
         '#FFFFFF'; //this will be the default if none of the above match these numbers
     }
     //now i need to set the function for style
@@ -258,7 +258,7 @@ style: style5,
             "1970": geojsonLayer2,
             "2000": geojsonLayer3,
             "2010": geojsonLayer4,
-            "Redline Map": geojsonLayer5,
+            "HOLC Map": geojsonLayer5,
         };
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
