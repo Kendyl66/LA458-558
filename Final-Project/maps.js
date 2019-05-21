@@ -93,6 +93,25 @@ function getColor4(d) {
                 //dashArray: '3'
             };
         }
+function getColor5(d) {
+        return d= A ? '#b10026' :
+        d = B ? '#f03b20' :
+        d = C ? '#fd8d3c' :
+        d= D ? '#fecc5c' :
+        '#FFFFFF'; //this will be the default if none of the above match these numbers
+    }
+    //now i need to set the function for style
+        function style5(feature) {
+            return {
+                fillColor: getColor4(feature.properties.HOLC_Grade),
+                stroke: true,
+                weight: 2,
+                color: '#000000',
+                opacity: 1.0,
+                fillOpacity: 0.6, 
+                //dashArray: '3'
+            };
+        }
 
 function highlightFeature(e) {
     var layer = e.target;
