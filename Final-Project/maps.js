@@ -112,6 +112,22 @@ function getColor5(d) {
                 //dashArray: '3'
             };
         }
+function getColor6(d) {
+        return d == 0 ? '#ffffff' :
+        '#FFFFFF'; //this will be the default if none of the above match these numbers
+    }
+    //now i need to set the function for style
+        function style6(feature) {
+            return {
+                fillColor: getColor6(feature.properties.CityFIPS),
+                stroke: true,
+                weight: 2,
+                color: '#000000',
+                opacity: 1.0,
+                fillOpacity: 0, 
+                //dashArray: '3'
+            };
+        }
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -130,7 +146,6 @@ function highlightFeature(e) {
 }
 function resetHighlight(e) {
     geojsonLayer.resetStyle(e.target);
-    info.update();
 }
 function resetHighlight2(e) {
     geojsonLayer2.resetStyle(e.target);
@@ -143,6 +158,9 @@ function resetHighlight4(e) {
 }
 function resetHighlight5(e) {
     geojsonLayer5.resetStyle(e.target);
+}
+function resetHighlight6(e) {
+    geojsonLayer6.resetStyle(e.target);
 }
 
 //function zoomToFeature(e) {
@@ -246,6 +264,9 @@ style: style5,
 onEachFeature: onEachFeature5
 });
 
+var geojsonLayer6 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/dsm.geojson", {
+style: style6,
+});
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
@@ -257,6 +278,7 @@ onEachFeature: onEachFeature5
             "2000": geojsonLayer3,
             "2010": geojsonLayer4,
             "HOLC Map": geojsonLayer5,
+            "City": geojsonLayer6,
 
         };
           
