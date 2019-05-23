@@ -248,7 +248,6 @@ style: style5,
     onEachFeature: onEachFeature4
 });
 
-
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
@@ -264,6 +263,7 @@ style: style5,
         };
           
     L.control.layers(baseMaps, overlayMaps).addTo(map);
+
    
     // loading in each different legend
 var legend1 = L.control({ 
