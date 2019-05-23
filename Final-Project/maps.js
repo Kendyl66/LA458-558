@@ -141,6 +141,9 @@ function resetHighlight3(e) {
 function resetHighlight4(e) {
     geojsonLayer4.resetStyle(e.target);
 }
+function resetHighlight5(e) {
+    geojsonLayer5.resetStyle(e.target);
+}
 
 //function zoomToFeature(e) {
     //map.fitBounds(e.target.getBounds());
