@@ -205,12 +205,10 @@ function onEachFeature3(feature, layer) {
         //click: zoomToFeature
     })
 }
-function onEachFeature4(feature, layer) {
-    grade =  feature.properties.HOLC_Grade();
-    
-    identify = feature.properties.HOLC_ID();
+function onEachFeature5(feature, layer) {
+    grade =  feature.properties.HOLC_Grade.toLocaleString();
   
-  layer.bindPopup('<strong>HOLC Grade </strong>'+ grade + '<br>ID: ' + identify),
+  layer.bindPopup('<strong>HOLC Grade: </strong>'+ grade),
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight5,
@@ -245,7 +243,7 @@ style: style4,
 
 var geojsonLayer5 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/DesMoines_red.geojson", {
 style: style5,
-    onEachFeature: onEachFeature4
+onEachFeature: onEachFeature5
 });
 
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
