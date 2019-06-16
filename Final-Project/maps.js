@@ -128,6 +128,26 @@ function getColor6(d) {
                 //dashArray: '3'
             };
         }
+function getColor7(d) {
+        return d > 20 ? '#5e3c99' :
+        d > 10 ? '#b2abd2' :
+        d > 5 ? '#f7f7f7' :
+        d > 1 ? '#fdb863' :
+        d > 0 ?'#e66101' :
+        '#FFFFFF'; //this will be the default if none of the above match these numbers
+    }
+    //now i need to set the function for style
+        function style7(feature) {
+            return {
+                fillColor: getColor7(feature.properties.AA_PER* 100),
+                stroke: true,
+                weight: 2,
+                color: '#000000',
+                opacity: 1.0,
+                fillOpacity: 0.6, 
+                //dashArray: '3'
+            };
+        }
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -161,6 +181,9 @@ function resetHighlight5(e) {
 }
 function resetHighlight6(e) {
     geojsonLayer6.resetStyle(e.target);
+}
+function resetHighlight7(e) {
+    geojsonLayer7.resetStyle(e.target);
 }
 
 //function zoomToFeature(e) {
@@ -223,6 +246,7 @@ function onEachFeature3(feature, layer) {
         //click: zoomToFeature
     })
 }
+
 function onEachFeature5(feature, layer) {
     grade =  feature.properties.HOLC_Grade.toLocaleString();
   
@@ -230,6 +254,20 @@ function onEachFeature5(feature, layer) {
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight5,
+        //click: zoomToFeature
+    })
+}
+function onEachFeature6(feature, layer) {
+    total =  feature.properties.TOT_POP.toLocaleString();
+  
+    percent = (feature.properties.AA_PER * 100).toFixed(2) + '%';
+    
+    tract = feature.properties.NAME.toLocaleString();
+  
+  layer.bindPopup('<strong>Enumeration District: </strong>'+ tract + '<br>Percent: ' + percent),
+      layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight7,
         //click: zoomToFeature
     })
 }
@@ -267,12 +305,18 @@ onEachFeature: onEachFeature5
 var geojsonLayer6 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/dsm.geojson", {
 style: style6,
 });
+
+var geojsonLayer7 = new L.GeoJSON.AJAX("https://kendyl66.github.io/LA458-558/Final-Project/1920.geojson", {
+style: style7,
+onEachFeature: onEachFeature6
+});
 //I was unable to figure out how to properly put pop up tools on my maps, but I intend to figure this out soon. 
         var baseMaps = {
         "OpenStreetMap": osm,
         "Satellite View": esriWorldImagery,
     };
         var overlayMaps = {
+            "1920": geojsonLayer7,
             "1940": geojsonLayer,
             "1970": geojsonLayer2,
             "2000": geojsonLayer3,
